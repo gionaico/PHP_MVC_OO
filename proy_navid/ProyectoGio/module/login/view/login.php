@@ -1,4 +1,4 @@
-<script src="module/login/view/model/login.js"></script>
+<script src="module/login/view/js/login.js"></script>
 <br>
 <br>
 <br>
