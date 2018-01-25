@@ -202,11 +202,18 @@
 
                   <div class="form-group ">
                     <label class="control-label" for="message">Description Product:</label>
-                    <span class="help-block"><p id="characterLeft" class="help-block ">You have reached the limit 350 caracters</p></span> 
+                    <span class="help-block"><p id="characterLeft">You have reached the limit 350 caracters</p></span> 
                     <textarea class="form-control color_input" type="textarea" name="message" id="message" placeholder="Message" maxlength="350" rows="7"></textarea>
                     <span id="sp_message"></span> 
                   </div>
+                  
 
+                  <div class="form-group ">
+                    <label class="control-label" for="price">Product Price:</label>
+                    <input id="price" name="price" type="numbers" placeholder="105.48" class="form-control input-md color_input" required="" value="">
+                    <span id="sp_price"></span> 
+                    <span class="help-block"><p id="characterLeft">If you need to use decimals numbers, please use a DOT to mark them. The number has to be greater than 0.01 and less than 1000000 <br> Ex: 1080.58</p></span> 
+                  </div>
                   
 
 

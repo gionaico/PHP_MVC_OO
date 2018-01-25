@@ -2,11 +2,7 @@
 <br>
 <br>
 <br>
-<div class="container" id="div_bienvenida" style="display: none;">
-    
-        <p class="aboutus-text">Welcome &nbsp;<strong id="id_session"></strong></p>
-    
-</div>
+
 
 <div class="modal fade"  id="modal_login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2" hidden>
     <div class="modal-dialog" role="document">

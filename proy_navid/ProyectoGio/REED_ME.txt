@@ -1,1 +1,20 @@
-tiene todas las vistas y funciona el formulario y el dropzone
+
+
+
+- Dropzone para añadir una foto de los productos que se quiere vender a travez de la plataforma que ofrece la aplicacion.
+
+- Login con Javascript 
+	* Lo que logra es mostrar o en su caso ocultar informacion en funcion del tipo de usuario que se esta loguenado.
+
+	* Admin puede ver el crud de todos los usuarios registrados en la aplicacion. Normal User no tiene acceso al crud anteriormete mencionado.
+
+- Mensaje de bienvenida al usuario con javascript
+
+- Esta en enlazado el añadir productos para venderlos con el login, es decir, una persona que quiere vender un producto a travez de la plataforma que ofrece la aplicacion antes tiene que hacer login y en caso de no estar registrado le obliga a registrarse y posteriormente hacer el login y subir los datos de su producto.
+	* Esto consigue que los productos esten identificados un un id en BD y que cada producto este ligado a su vez a un usuario que ya esta en la BD.
+
+
+mejoras pendientes
+	*API
+	*carrito
+	*crud user-producto

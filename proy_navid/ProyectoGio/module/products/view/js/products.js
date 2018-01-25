@@ -7,6 +7,8 @@ var user_namePattern="^[_A-Za-z0-9-\\+]{4,}$";
 
 var phonePattern="^[0-9]{9}$";
 
+var pricePattern="^[0-9]{1,6}([.][0-9]{1,2})?$";
+
 var emailPattern = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
 
 var addPattern="^[a-zA-Z1-9 ]{3,}$";
@@ -143,7 +145,7 @@ $(document).ready(function () {
 
     $("#message").keyup(function() {
         if ($(this).val()=="") {
-            $("#sp_email").html("<span></span>");
+            $("#sp_message").html("<span></span>");
         }else{
             var check=checkInput("#message", messagePattern);
             if(check==true) {
@@ -151,6 +153,22 @@ $(document).ready(function () {
                 $("#sp_message").html("<span style='color:green;'>Correct</span>");
             }else{
                 $("#sp_message").html("<span style='color:#BA1C2E;'>Min 10 caracters</span>");
+            }
+        }   
+    });
+
+    $("#price").keyup(function() {
+        if ($(this).val()=="") {
+            $("#sp_price").html("<span></span>");
+        }else{
+            // var check=$("#price").val();
+            // console.log(typeof(check));
+            var check=checkInput("#price", pricePattern);
+            if(check==true) {
+                $("#price").removeAttr("style");              
+                $("#sp_price").html("<span style='color:green;'>Correct</span>");
+            }else{
+                $("#sp_price").html("<span style='color:#BA1C2E;'>Invalid Format. Please read the help message.</span>");
             }
         }   
     });
@@ -228,6 +246,8 @@ $(document).ready(function () {
             $("#sp_color").html("<span style='color:green;'>Correct</span>");         
         }   
     });
+
+
 
 
 
@@ -487,14 +507,10 @@ function validaForm(){
         var phone = document.getElementById('phone').value;
         var email = document.getElementById('email').value;
         var message = document.getElementById('message').value;
+        var price = document.getElementById('price').value;
         
 
-        // if (($("#un").val()=="")|| (checkInput("#un", user_namePattern)===false)) {
-        //     $("#un").focus();
-        //     $("#un").attr("style", "background:#FFC9C9; border:red 2px solid");
-        //     result=false;
-        //     return false;
-        // }
+        
          if (($("#pbt").val()=="")|| (checkInput("#pbt", tittlePattern)===false)) {
             $("#pbt").focus();
             $("#pbt").attr("style", "background:#FFC9C9; border:red 2px solid");
@@ -584,6 +600,12 @@ function validaForm(){
             result=false;
             return false;
         }
+        if (($("#price").val()=="")|| (checkInput("#price", pricePattern)===false)) {
+            $("#price").focus();
+            $("#price").attr("style", "background:#FFC9C9; border:red 2px solid");
+            result=false;
+            return false;
+        }
         
         if (result) {
 
@@ -604,10 +626,10 @@ function validaForm(){
         }
         // alert(product_type);
         if (product_type==="Sale Vehicle") {
-            var data = {"un": un, "pbt": pbt, "country":country, "province": province, "city":city, "add1": add1, "phone": phone, "email": email, "product_type": product_type, "brand": brand, "model":model, "year":year, "combustible":combustible, "color":color, "message": message};
+            var data = {"un": un, "pbt": pbt, "country":country, "province": province, "city":city, "add1": add1, "phone": phone, "email": email, "product_type": product_type, "brand": brand, "model":model, "year":year, "combustible":combustible, "color":color, "message": message, "price":price};
             console.log(1+" "+data);
         }else{
-            var data = {"un": un, "pbt": pbt, "country":country, "province": province, "city":city, "add1": add1, "phone": phone, "email": email, "product_type": product_type, "message": message};
+            var data = {"un": un, "pbt": pbt, "country":country, "province": province, "city":city, "add1": add1, "phone": phone, "email": email, "product_type": product_type, "message": message, "price":price};
             console.log(2+" "+data);
         }
         console.log(data);
@@ -640,7 +662,7 @@ function validaForm(){
         
         }, "json").fail(function(xhr, textStatus, errorThrown){
             alert(xhr.responseText);
-          console.log("Inside error json");
+          console.log("Inside error jsoddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddn");
           console.log(xhr.responseJSON);
           
             if (xhr.status === 0) {
@@ -690,9 +712,13 @@ function validaForm(){
                 $("#sp_email").html("<span></span>");
             }
 
-            if (xhr.responseJSON.message){
+            if (xhr.responseJSON.error.message){
                 $("#message").focus().after("<div class='div_errPhp'><span  class='error' >" + xhr.responseJSON.error.message + "</span><br></div>");
                 $("#sp_message").html("<span></span>");
+            }
+            if (xhr.responseJSON.error.price){
+                $("#price").focus().after("<div class='div_errPhp'><span  class='error' >" + xhr.responseJSON.error.price + "</span><br></div>");
+                $("#sp_price").html("<span></span>");
             }
 
             if (xhr.responseJSON.error_avatar){

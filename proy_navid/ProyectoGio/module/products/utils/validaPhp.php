@@ -27,6 +27,10 @@ function validate_prod($value) {
             'filter' => FILTER_VALIDATE_REGEXP,
             'options' => array('regexp' => '/^[a-zA-Z1-9 ]{20,}$/')
         ),
+        'price' => array(
+            'filter' => FILTER_VALIDATE_REGEXP,
+            'options' => array('regexp' => '/^[0-9]{1,6}([.][0-9]{1,2})?$/')
+        ),
         
     );
 
@@ -116,6 +120,10 @@ function validate_prod($value) {
 
         if (!$resultado['message']) {
             $error['message'] = '<strong>*php</strong> Invalid Format. It must be min 3 characters';
+            $valido = false;
+        }
+        if (!$resultado['price']) {
+            $error['price'] = '<strong>*php</strong> Invalid Format.';
             $valido = false;
         }
 

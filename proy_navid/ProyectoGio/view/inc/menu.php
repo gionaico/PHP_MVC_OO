@@ -55,6 +55,8 @@
 					    <li id="li_login"><a href="#"   data-toggle="modal" data-target="#modal_login"><span class="glyphicon glyphicon-log-in"></span > Login</a></li>
 
 					    <li style="display: none;" id="li_logOut"><a href="#"    ><span class="glyphicon glyphicon-log-out"></span >Log-out</a></li>
+
+					    <li><a class="" ><span id="cont_prod" style="color: orange;">0</span><span style="font-size: 23px;" class="glyphicon glyphicon-shopping-cart"></span>&nbsp;Basket</a></li>
 					</ul>
 					<!-- 
 					<ul class="nav navbar-nav navbar-right">
@@ -64,6 +66,7 @@
 					
 				     	 
 				</div>
+
 			</div>			
 		<!-- <div class="container">
 			<div class="row pull-right">
@@ -73,6 +76,19 @@
 			</div>
 		</div> -->
 		</nav>
+		<br>
+		<br>
+		<br>
+			<div class="container">
+		<div class="row">
+				<div class="pull-left" id="div_bienvenida" style="display: none;">    
+			        <p class="aboutus-text">Welcome &nbsp;<strong id="id_session"></strong></p>
+				</div>
+				<!-- <div class="pull-right">
+					<button type="button" style="font-size: 16px;" class="btn btn-primary "><span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;Basket</button>
+				</div> -->
+			</div>
+		</div>
 
 	</header>
 	<body>
