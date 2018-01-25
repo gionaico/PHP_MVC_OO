@@ -371,7 +371,7 @@ load_countries_v1();
 function load_countries_v1() {
     $.get( "module/products/controller/controller_products.php?load_country=true",
         function( response ) {
-        alert(response);
+        //alert(response);
             if(response === 'error'){
                 load_countries_v2("resources/ListOfCountryNamesByName.json");
             }else{
@@ -632,7 +632,7 @@ function validaForm(){
             var data = {"un": un, "pbt": pbt, "country":country, "province": province, "city":city, "add1": add1, "phone": phone, "email": email, "product_type": product_type, "message": message, "price":price};
             console.log(2+" "+data);
         }
-        console.log(data);
+        console.log("antes de controller "+data);
         var data_users_JSON = JSON.stringify(data);
                    alert(data_users_JSON);
 
@@ -647,7 +647,7 @@ function validaForm(){
             // alert(response.success);
             //var json2 = JSON.parse(response);
             //alert("ffffffffffffffffff"+json2.success+"ccccccc"); response
-           //alert(json2.succes); //
+           //alert(json2); //
             if (response.success) {
                 alert("entra sssssssssd");
                 window.location.href = response.redirect; 

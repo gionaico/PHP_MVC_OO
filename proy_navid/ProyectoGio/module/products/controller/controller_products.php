@@ -34,7 +34,7 @@ function alta_users() {
     $usersJSON = json_decode($_POST["alta_users_json"], true);//convierte en un array asociativo
     
     $result = validate_prod($usersJSON);
-    // echo ($result['resultado']);//imrime en forma de alert
+    // echo ($result['datos']['price']);//imrime en forma de alert
     // exit;
     $date_today=date("m.d.y");
 
@@ -59,6 +59,7 @@ function alta_users() {
                 'phone' => $result['datos']['phone'],
                 'email' => $result['datos']['email'],
                 'message' => $result['datos']['message'],
+                'price' => $result['datos']['price'],
                 'product_type' => $result['datos']['product_type'],
                 'brand' => $result['datos']['brand'],
                 'model' => $result['datos']['model'],
@@ -79,13 +80,15 @@ function alta_users() {
                 'phone' => $result['datos']['phone'],
                 'email' => $result['datos']['email'],
                 'message' => $result['datos']['message'],
+                'price' => $result['datos']['price'],
                 'product_type' => $result['datos']['product_type'],
                 'date_today' =>$date_today,
                 'avatar' => $result_avatar['datos']
             );
         }
 
-        
+        // echo $arrArgument['price'];
+        // exit;
 
         $arrValue = false;
         $path_model = $_SERVER['DOCUMENT_ROOT'] . '/proy_navid/ProyectoGio/module/products/model/model/';

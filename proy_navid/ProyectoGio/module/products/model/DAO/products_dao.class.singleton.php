@@ -28,6 +28,11 @@ class productDAO {
         $phone = $arrArgument['phone'];
         $email = $arrArgument['email'];
         $message = $arrArgument['message'];
+        //$price =$arrArgument['price'];
+         $price =floatval($arrArgument['price']);
+
+        // echo $price;
+        //  exit;
         $product_type = $arrArgument['product_type'];
         $avatar= $arrArgument['avatar'];
         $date_today= $arrArgument['date_today'];
@@ -40,16 +45,16 @@ class productDAO {
             $color = $arrArgument['color'];   
           
             if ($country=="ES") {
-                $sql = "INSERT INTO products (avatar, date_today, user_name, title, country, province, city, address, phone, email, description, product_type, brand, model, year, combustible, color) VALUES ('avatar', '$date_today', $un', '$pbt', '$country', '$province', '$city', '$add1', '$phone', '$email', '$message', '$product_type', '$brand', '$model', '$year', '$combustible', '$color' )";
+                $sql = "INSERT INTO products (avatar, date_today, user_name, title, country, province, city, address, phone, email, description, price, product_type, brand, model, year, combustible, color) VALUES ('avatar', '$date_today', $un', '$pbt', '$country', '$province', '$city', '$add1', '$phone', '$email', '$message', '$price', '$product_type', '$brand', '$model', '$year', '$combustible', '$color' )";
             }else{
-                $sql = "INSERT INTO products (avatar, date_today, user_name, title, country, address, phone, email, description, product_type, brand, model, year, combustible, color) VALUES ('avatar', '$date_today', $un', '$pbt', '$country', '$add1', '$phone', '$email', '$message', '$product_type', '$brand', '$model', '$year', '$combustible', '$color' )";
+                $sql = "INSERT INTO products (avatar, date_today, user_name, title, country, address, phone, email, description, price, product_type, brand, model, year, combustible, color) VALUES ('avatar', '$date_today', $un', '$pbt', '$country', '$add1', '$phone', '$email', '$message', '$price', '$product_type', '$brand', '$model', '$year', '$combustible', '$color' )";
             }       
         }else{
             if ($country=="ES") {
-              $sql = "INSERT INTO products (avatar, date_today, user_name, title, country, province, city, address, phone, email, description, product_type) VALUES ('$avatar', '$date_today', '$un', '$pbt', '$country', '$province', '$city', '$add1', '$phone', '$email', '$message', '$product_type')";
+              $sql = "INSERT INTO products (avatar, date_today, user_name, title, country, province, city, address, phone, email, description, price, product_type) VALUES ('$avatar', '$date_today', '$un', '$pbt', '$country', '$province', '$city', '$add1', '$phone', '$email', '$message', '$price', '$product_type')";
                       
              }else{
-              $sql = "INSERT INTO products (avatar, date_today, user_name, title, country, address, phone, email, description, product_type) VALUES ('$avatar', '$date_today', '$un', '$pbt', '$country', '$add1', '$phone', '$email', '$message', '$product_type')";
+              $sql = "INSERT INTO products (avatar, date_today, user_name, title, country, address, phone, email, description, price, product_type) VALUES ('$avatar', '$date_today', '$un', '$pbt', '$country', '$add1', '$phone', '$email', '$message', '$price', '$product_type')";
              }
         }
       return $db->ejecutar($sql);
