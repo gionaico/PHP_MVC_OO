@@ -71,4 +71,14 @@ $path_DAO = $_SERVER['DOCUMENT_ROOT'] . '/proy_navid/ProyectoGio/';
             connect::close($conexion);
             return $res;
 		}
+		/*-----------------------------------------------------------------------------------------*/
+        /*-----------------------------------------------------------------------------------------*/
+		function product_details($id){
+			$sql = 'SELECT * FROM products WHERE cod_pro="'.$id.'"';
+			
+			$conexion = connect::con();
+            $res = mysqli_query($conexion, $sql);
+            connect::close($conexion);
+            return $res;
+		}
 }

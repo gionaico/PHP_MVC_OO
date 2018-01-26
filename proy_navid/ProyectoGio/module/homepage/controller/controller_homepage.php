@@ -32,7 +32,7 @@
                 if (isset($_POST['data_location'])) {
                     $locationJSON = json_decode($_POST["data_location"], true);//convierte en un array asociativo
                     $daoproduct = new DAOUser();
-                    $rdo = $daoproduct->search($locationJSON);
+                    $rdo = $daoproduct->Search($locationJSON);
                     
                     $user = array();
                     //$usuario= array();
@@ -67,24 +67,13 @@
             case 'btn_search':
                 if (isset($_POST['data'])) {
                     $locationJSON = json_decode($_POST["data"], true);//convierte en un array asociativo
-                    $daoproduct = new DAOUser();
-                    $rdo = $daoproduct->search($locationJSON);
+                    $daoproduct = new DAOProducts();
+                    $rdo = $daoproduct->Search($locationJSON);
                     
-                    $user = array();
-                    //$usuario= array();
+                    $All_productos = array();
                     
-                    // while($row = $rdo->fetch_assoc()){
-                    //     $usuario['user'] = $row['user_name'];
-                    //     $usuario['title'] = $row['title'];
-                    //     $usuario['city'] = $row['city'];
-                    //     // $user['"'.$row['user_name'].'"']=$usuario;
-                    //     // $usuario['product'] = $row['title'];
-                    //     array_push($user, $usuario);
-                    // }
-                    // echo json_encode($user);//pasa el array que viene de DAO
-
                      while($row = $rdo->fetch_assoc()){                                                
-                        $usuario = array(
+                        $producto = array(
                             'user' => $row['user_name'],
                             'title' => $row['title'],
                             'phone' => $row['phone'],
@@ -92,12 +81,14 @@
                             'product_type' => $row['product_type'],
                             'avatar' => $row['avatar'],
                             'date' => $row['date_today'],
-                            'city' => $row['city']
+                            'city' => $row['city'],
+                            'price' => $row['price'],
+                            'cod_pro' => $row['cod_pro']
                         );
-                        array_push($user, $usuario);
+                        array_push($All_productos, $producto);
                         $_SESSION['productos'] = $user;
                     }
-                    echo json_encode($user);//pasa el array que viene de DAO
+                    echo json_encode($All_productos);//pasa el array que viene de DAO
                     exit;
                 }elseif ($draw="products" ) {
                     // echo $_SESSION['productos'][1]['phone'];
@@ -106,7 +97,48 @@
                 }
                  // echo $_POST['word_wrotten'];
                  break;
-             
+             case 'prodToDetaills':
+                    $id_prod=$_GET["id"];
+                    
+                    // $locationJSON = json_decode($_POST["data"], true);//convierte en un array asociativo
+                    $daoproduct = new DAOUser();
+                    $rdo = $daoproduct->product_details($id_prod);
+                    
+                    $All_productos =$rdo->fetch_assoc();
+                    
+                    //  $All_productos = array();
+                    
+                    //  while($row = $rdo->fetch_assoc()){                                                
+                    //     $producto = array(
+                    //         'user' => $row['user_name'],
+                    //         'title' => $row['title'],
+                    //         'phone' => $row['phone'],
+                    //         'email' => $row['email'],
+                    //         'product_type' => $row['product_type'],
+                    //         'avatar' => $row['avatar'],
+                    //         'date' => $row['date_today'],
+                    //         'city' => $row['city'],
+                    //         'price' => $row['price'],
+                    //         'cod_pro' => $row['cod_pro'],
+                    //         'country' => $row['country'],
+                    //         'province' => $row['province'],
+                    //         'address' => $row['address'],
+                    //         'description' => $row['description'],
+                    //         'brand' => $row['brand'],
+                    //         'model' => $row['model'],
+                    //         'year' => $row['year'],
+                    //         'combustible' => $row['combustible'],
+                    //         'color' => $row['color'],
+                    //     );
+                    //     array_push($All_productos, $producto);
+                        
+                    // }
+                    echo json_encode($All_productos);//pasa el array que viene de DAO
+                    exit;
+               
+                 //echo $_POST['word_wrotten'];
+                 break;
+
              default:
                  try{
                     $daoproduct = new DAOUser();
