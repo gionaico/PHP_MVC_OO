@@ -101,12 +101,31 @@
              div_resultado.appendChild(div_row);   
             }
         }
-
+        /*AGREGAR AL CARRITO-----------------------------------------*/
         $('.prodToBasket').click(function(){
             var id = this.getAttribute('id');
             console.log(id);
+            $.post("module/homepage/controller/controller_homepage.php?homepage=prodToBasket&id="+id,
+                    
+                function (response) {
+                    console.log(response);
+                    // sessionStorage.setItem('num_prod', response);   
+                    // var num_prod=sessionStorage.getItem('num_prod');
+                    var basket=document.getElementById('cont_prod');
+                    basket.innerHTML=response;         
+                  
+                }).fail(function() {
+                    alert( "recepcion de datos fallida en boton detalles producto" );
+                });
+
          });
 
+
+
+
+
+
+        /*Ver detalles del producto-----------------------------------------*/
         $('.prodToDetaills').click(function(){
             var id = this.getAttribute('name');
             //tengo que hacer una consulta nueva para imrimir los detalles en el modal

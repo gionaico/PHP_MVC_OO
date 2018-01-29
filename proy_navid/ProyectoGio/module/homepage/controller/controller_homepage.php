@@ -139,6 +139,31 @@
                  //echo $_POST['word_wrotten'];
                  break;
 
+             case 'prodToBasket':
+
+                if (!isset($_SESSION['prod_carritos'])) {
+                    $_SESSION['prod_carritos'] = array();
+                }
+
+                $id_prod=$_GET["id"];
+                // $prod_carrito["'".$id_prod."'"] = $id_prod;
+                $cantidad=count($_SESSION['prod_carritos']);
+                $_SESSION['prod_carritos']["".$cantidad.""] = $id_prod;
+                // $cant_total=count($_SESSION['prod_carritos']);
+                $_SESSION['cant_total']=count($_SESSION['prod_carritos']);
+                echo ($_SESSION['cant_total']);
+                //echo($_SESSION['prod_carritos'][1]);
+                // echo "<PRE>";
+                //     print_r($_SESSION['prod_carritos'][1]);
+                // echo "</PRE>";
+
+                exit;
+                     
+                
+             break;
+
+
+
              default:
                  try{
                     $daoproduct = new DAOUser();
