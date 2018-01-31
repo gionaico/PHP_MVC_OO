@@ -104,6 +104,7 @@
         /*AGREGAR AL CARRITO-----------------------------------------*/
         $('.prodToBasket').click(function(){
             var id = this.getAttribute('id');
+
             console.log(id);
             $.post("module/homepage/controller/controller_homepage.php?homepage=prodToBasket&id="+id,
                     
@@ -111,6 +112,9 @@
                     console.log(response);
                     // sessionStorage.setItem('num_prod', response);   
                     // var num_prod=sessionStorage.getItem('num_prod');
+                    
+
+                    
                     var basket=document.getElementById('cont_prod');
                     basket.innerHTML=response;         
                   

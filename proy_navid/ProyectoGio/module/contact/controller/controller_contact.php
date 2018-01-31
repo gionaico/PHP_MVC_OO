@@ -16,6 +16,11 @@
   
  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDSqOoI0Dz0NsL3-lLYzBC2tS4PVfDZ0Jc&callback=initMap"></script>
 
+<!-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDSqOoI0Dz0NsL3-lLYzBC2tS4PVfDZ0Jc&libraries=places"></script> -->
+
+<!-- <script type="text/javascript"
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDSqOoI0Dz0NsL3-lLYzBC2tS4PVfDZ0Jc&libraries=geometry,places">
+</script> -->
 <!-- <script src="https://maps.googleapis.com/maps/api/js?sensor=false&callback=init"></script> -->
 <!-- <script type="text/javascript">
     var map;

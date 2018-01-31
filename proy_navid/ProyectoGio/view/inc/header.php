@@ -29,6 +29,6 @@
     <!-- <link rel="stylesheet" type="text/css" href="view/css/jquery.dataTables.min.css"> -->
     <!-- TRADUCCION WEB -->
 	<script src="view/js/multilenguage.js"></script> 
-	<script src="module/basket/view/js/basket.js"></script>
+	<script src="view/js/carro_compra.js"></script>
 </head>
 <body>
