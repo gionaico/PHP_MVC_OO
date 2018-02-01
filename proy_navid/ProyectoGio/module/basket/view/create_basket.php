@@ -21,8 +21,9 @@ https://www.youtube.com/watch?v=Cdq_29IVxoA
             <thead>                        
                 <tr style="background: silver;" >
                     <td><b>Product</b></td>
-                    <td><b>Price</b></td>
+                    <td><b>Euros/Unit</b></td>
                     <td><b>Quantity</b></td>
+                    <td><b>Price</b></td>
                     <td class="text-center" ><b>SETTINGS&nbsp;</b><span class="glyphicon glyphicon-cog"></span></td>
                 </tr>
             </thead>

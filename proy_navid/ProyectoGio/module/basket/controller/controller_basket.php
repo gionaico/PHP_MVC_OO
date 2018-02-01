@@ -8,8 +8,9 @@
 			echo ($_SESSION['cant_total']);
 			exit;
 			break;
-		case 'me_basket':
-			echo ($_SESSION['cant_total']);
+		case 'view_basket':
+			
+			echo json_encode($_SESSION['All_p']);
 			exit;
 			break;
 		

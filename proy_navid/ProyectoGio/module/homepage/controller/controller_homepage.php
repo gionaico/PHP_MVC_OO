@@ -142,6 +142,9 @@
              case 'prodToBasket':
 
                 $id_prod=$_GET["id"];
+                $price_prod=$_GET["price"];
+                $title_prod=$_GET["title"];
+
                 
 
 
@@ -187,7 +190,8 @@
                     $p1=null;             
                 $p1 = array(
                         'id'=> $id_prod,
-                        'price'=> 15,
+                        'title'=> $title_prod,
+                        'price'=> $price_prod,
                          'quantity'=>1
                             );
                 array_push($_SESSION['All_p'], $p1);

@@ -55,7 +55,9 @@
                 var parr6=document.createElement("p"); 
                 var parr7=document.createElement("p");
                 var button=document.createElement("button");
-                    button.setAttribute("id", json[i].cod_pro); 
+                    button.setAttribute("id", json[i].cod_pro);
+                    button.setAttribute("price", json[i].price);
+                    button.setAttribute("title", json[i].title); 
                     button.setAttribute("class", "btn btn-primary prodToBasket");
                 var button2=document.createElement("button");
                     button2.setAttribute("name", json[i].cod_pro); 
@@ -104,9 +106,11 @@
         /*AGREGAR AL CARRITO-----------------------------------------*/
         $('.prodToBasket').click(function(){
             var id = this.getAttribute('id');
+            var price = this.getAttribute('price');
+            var title = this.getAttribute('title');
 
             console.log(id);
-            $.post("module/homepage/controller/controller_homepage.php?homepage=prodToBasket&id="+id,
+            $.post("module/homepage/controller/controller_homepage.php?homepage=prodToBasket&id="+id+"&price="+price+"&title="+title,
                     
                 function (response) {
                     console.log(response);
