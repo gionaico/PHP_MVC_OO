@@ -5,66 +5,92 @@
     <title>jQuery-multilang Example</title>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" type="text/css" href="../ProyectoGio/view/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="../ProyectoGio/view/css/my_styles.css">
-
-
-    
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-	
 
-	
-	<!-- Datepicker -->
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-	<script src="jquery.js"></script>
-
-	<script type="text/javascript">
-		var arrLang = {
-			'en' : {
-				'home' : 'HOME',
+<script>
+		var arrLang = [
+			 {
+				'home' : '1',
 				'about' : 'about us',
 				'contact' : 'contact us'
 			},
-			'es' : {
-				'home' : 'inicio',
+			 {
+				'home' : '2',
 				'about' : 'acerca',
 				'contact' : 'contacto'
 			}
-		};
+		];
 
-		$(function(){
-			$('.traslate').click(function(){
-				var lang =$(this).attr('id');
-				$('.lang').each(function(index, element){
-					$(this).text(arrLang[lang][$(this).attr('key')]);
-				});
+		$(document).ready(function () {
+
+
+
+
+			$('#1').click(function(){
+				console.log(arrLang);
 			});
-		});
-	</script>
 
+
+
+
+
+
+			$('#2').click(function(){
+				var arrLang1 = {
+						'home' : '3',
+						'about' : 'about us',
+						'contact' : 'contact us'
+					
+				}
+				arrLang.push(arrLang1);
+				// if (arrLang[0]['contact']=='contact 6us') {
+				// 	alert("tri");
+				// }else{
+				// 	alert("false");
+				// }
+				var uno=JSON.stringify(arrLang);
+				localStorage.setItem("uno", uno);
+				var local=localStorage.getItem('uno');
+				 var trans=JSON.parse(local);
+				console.log(trans);//arrLang[0]['contact']);
+			});
+
+
+
+			$('#3').click(function(){
+				var id=this.getAttribute('id');
+				var local=localStorage.getItem('uno');
+				var trans=JSON.parse(local);
+
+				for (var i =0 ; i<trans.length; i++) {
+					if (trans[i]['home']=='1') {
+						alert("esta en b "+i);
+						trans.splice(i,1);
+					}
+					if (trans[i]['home']=='2') {
+						trans[i]['home']='99';
+					}
+				}
+
+				// for (var i =0 ; i<trans.length; i++) {
+				// 	if (trans[i]['home']=='2') {
+				// 		 trans.slice(i);
+				// 	}
+				// }
+
+				console.log(trans);
+			});
+
+
+
+		});
+
+	</script>
 </head>
 <body>
-	<button class="traslate" id="en">English</button>
-	<button class="traslate" id="es">Spanish</button>
-	<a href="#" title=""><img src="../ProyectoGio/view/img/multilenguage/catalonia.png" alt=""></a>
-	<a href="#" title=""><img src="../ProyectoGio/view/img/multilenguage/spain.png" alt="" class="traslate" id="es"></a>
-	<a href="#" title=""><img src="../ProyectoGio/view/img/multilenguage/uk.png" alt="" class="traslate" id="en"></a>
-	<div>
-		<ul>
-			<li class="lang" key="home">home</li>
-			<li class="lang" key="about">about us</li>
-			<li class="lang" key="contact">contact us</li>
-			<!-- <li class="traslate" key=""></li>
-			<li class="traslate" key=""></li> -->
-		</ul>
-	</div>
+	<button class="traslate" id="1">1</button>
+	<button class="traslate" id="2">2</button>
+	<button class="traslate" id="3">3</button>
 
-
-
-
-
-	
 </body>
 </html>

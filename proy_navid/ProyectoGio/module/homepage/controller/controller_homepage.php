@@ -144,103 +144,48 @@
                 $id_prod=$_GET["id"];
                 $price_prod=$_GET["price"];
                 $title_prod=$_GET["title"];
-
-                
-
-
-                 //unset($_SESSION['All_p']);
+                /*-------------------Creo la variable global si previamente no esta dfinida*/
                 if (!isset($_SESSION['All_p'])) {
                     $_SESSION['All_p']=array();
                 }
 
-                // $p1=null;             
-                // $p1 = array(
-                //         'id'=> $id_prod,
-                //         'price'=> 15,
-                //          'quantity'=>0
-                //             );
-                // array_push($_SESSION['All_p'], $p1);
-                
-
-
-                // $equipo_futbol = array
-                //                     (
-                //                     array("Rooney","Chicharito","Gigs"),
-                //                     array("Suarez"),
-                //                     array("Torres","Terry","Etoo")
-                //                     );
-                 $cont=0;
-                 $as=false;
-                 for ($i=0; $i <count($_SESSION['All_p']) ; $i++) { 
+                $valido=false;
+                /*Recorre el array $_SESSION['All_p'] para saber si ya hay un array dento con el mismo id 
+                y si existe lo unico que modifica es la cantidad de ese producto concreto.*/
+                for ($i=0; $i <count($_SESSION['All_p']) ; $i++) { 
                      if ($_SESSION['All_p'][$i]['id']==$id_prod) {
                         $o=$_SESSION['All_p'][$i]['quantity'];
                         $_SESSION['All_p'][$i]['quantity']=$o+1;
                         
-                        $as=true;
+                        $valido=true;
                          // echo("es el ".$i);
                          // exit;
                      }
                      //echo($_SESSION['All_p'][$i]['id']);
                        // exit;
-                 }
-                // echo($as);
-                 //exit;
+                }
+                /*En el caso de que $valido sea false crea un array nuevo y no introduce en $_SESSION['All_p']*/
 
-                 if ($as==false) {
+                 if ($valido==false) {
                     $p1=null;             
-                $p1 = array(
+                    $p1 = array(
                         'id'=> $id_prod,
                         'title'=> $title_prod,
                         'price'=> $price_prod,
-                         'quantity'=>1
+                        'quantity'=>1
                             );
-                array_push($_SESSION['All_p'], $p1);
+                    array_push($_SESSION['All_p'], $p1);
                  }
+                // $pepe=$_SESSION['All_p'];
 
-                 $pepe=$_SESSION['All_p'];
-//                   echo "<PRE>";
-//     print_r($_SESSION['All_p']);
-// echo "</PRE>";
-                //  foreach($pepe as $equipo){
-                //     $cont++;
-                //     foreach($equipo as $jugador){
-                //         if ($jugador==2) {
-                //             // $ol=$equipo['quantity'];
-                //             // $equipo['quantity']=$ol+1;
-                //              echo ("esti ".$jugador);
-                //              exit;
-                //         }
-                //     }
-                // }
-                // echo ($cont);
-                //         exit;
-                // $_SESSION['All_p'][0]['quantity']=98;
-
-
-                // echo json_encode($_SESSION['All_p']);
-                // exit;
                 $total=0;
+                /*Recorre el array $_SESSION['All_p'] para sacar el total de productos que hay en el carrito*/
                 for ($i=0; $i <count($_SESSION['All_p']) ; $i++) { 
                      $pr=$_SESSION['All_p'][$i]['quantity'];
                      $total=$total+$pr;
-                 }
-                     $_SESSION['cant_total']=$total;
+                }
+                $_SESSION['cant_total']=$total;
                  echo($total);
-
-
-                // if (!isset($_SESSION['prod_carritos'])) {
-                //     $_SESSION['prod_carritos'] = array();
-                // }
-                // // $prod_carrito["'".$id_prod."'"] = $id_prod;
-                // $cantidad=count($_SESSION['prod_carritos']);
-                // $_SESSION['prod_carritos']["".$cantidad.""] = $id_prod;
-                // // $cant_total=count($_SESSION['prod_carritos']);
-                // $_SESSION['cant_total']=count($_SESSION['prod_carritos']);
-                // echo ($_SESSION['cant_total']);
-                //echo($_SESSION['prod_carritos'][1]);
-                // echo "<PRE>";
-                //     print_r($_SESSION['prod_carritos'][1]);
-                // echo "</PRE>";
 
                 exit;
                      
