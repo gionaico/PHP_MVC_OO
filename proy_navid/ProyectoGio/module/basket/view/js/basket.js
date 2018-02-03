@@ -1,8 +1,7 @@
 $(document).ready(function () {
 // $('#tab_comprar').DataTable();
-$.post("module/basket/controller/controller_basket.php?basket=view_basket",
-	function(response){
-		 var json_cont2 = JSON.parse(response);
+		var json=localStorage.getItem('productos_carrito');
+		 var json_cont2 = JSON.parse(json);
 		console.log(json_cont2);
 
 
@@ -73,7 +72,7 @@ $.post("module/basket/controller/controller_basket.php?basket=view_basket",
                 {"dataProd_json": data_JSON},
 			function(response){
 				 	console.log(response);
-				 	
+
 				 	$.post("module/basket/controller/controller_basket.php?basket=menu_basket",
 					function(response){
 						console.log(response);
@@ -101,9 +100,7 @@ $.post("module/basket/controller/controller_basket.php?basket=view_basket",
     	});
 
 		   
-	}).fail(function() {
-        alert( "recepcion de datos fallida en boton detalles producto" );
-    });
+
 
 
 		// var tabla_carrito=document.getElementById('body_comprar');

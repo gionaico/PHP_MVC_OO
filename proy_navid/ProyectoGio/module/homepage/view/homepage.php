@@ -76,8 +76,9 @@
                 <div class="input-group">
                     <input class="form-control color_input" id="search_home" list="datalist_search" name="search_home" placeholder="Search for" required/>
                     <span class="input-group-btn">
-                        <a type="submit" href="?page=homepage&view=search" class="btn btn-primary " id="btn_search"><i class="glyphicon glyphicon-search"></i></a>
+                        <a type="submit" href="#" class="btn btn-primary " id="btn_search"><i class="glyphicon glyphicon-search"></i></a>
                     </span>
+                    <!-- index.php?page=homepage&view=search -->
                     <datalist id="datalist_search">
                         <option value="dddd"></option>
                         

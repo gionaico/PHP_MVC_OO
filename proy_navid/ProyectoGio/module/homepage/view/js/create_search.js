@@ -1,13 +1,8 @@
  $(document).ready(function () {
-        $.post("module/homepage/controller/controller_homepage.php?homepage=btn_search",
-        
-     function (response) {
-        //console.log(response);
-        var json = JSON.parse(response);
-             //console.log(json[0]["product"]);
-             console.log(json);
-             //console.log(json.length);
-//             console.log(json.length);
+        var local_1=localStorage.getItem('productos_buscados');
+        var json=JSON.parse(local_1);
+        console.log(json);
+    
 
         var div_resultado=document.getElementById('resultado');
 
@@ -94,7 +89,7 @@
                     div_content.appendChild(parr6);
                     div_content.appendChild(parr7);
 
-// data-toggle="modal" data-target="#modal_login"
+        // data-toggle="modal" data-target="#modal_login"
 
 
             }
@@ -103,28 +98,106 @@
              div_resultado.appendChild(div_row);   
             }
         }
-        /*AGREGAR AL CARRITO-----------------------------------------*/
+        /*AGREGAR AL CARRITO-------------------------------------------------------*/
         $('.prodToBasket').click(function(){
             var id = this.getAttribute('id');
+            // console.log(id);
             var price = this.getAttribute('price');
             var title = this.getAttribute('title');
 
-            console.log(id);
-            $.post("module/homepage/controller/controller_homepage.php?homepage=prodToBasket&id="+id+"&price="+price+"&title="+title,
+
+           //localStorage.removeItem("productos_carrito");
+            var carritoLocalStor=localStorage.getItem('productos_carrito');
+
+            if (carritoLocalStor) {
+                console.log("existe");
+                var repetido=false;
+                var array_1=JSON.parse(carritoLocalStor);
+                for (var i =0; i <array_1.length; i++) {
+                    if (array_1[i]['id']==id) {
+                        var catidad_actual=array_1[i]['quantity'];
+                        array_1[i]['quantity']=(catidad_actual+1);
+                        repetido=true;
+                    }
+
+                }
+
+
+                if (repetido) {
+                    var nuevo_json=JSON.stringify(array_1);
+                    localStorage.setItem("productos_carrito", nuevo_json);
+                }else{
+                    var nuevo_producto = {
+                                'id' : id,
+                                'price' : price ,
+                                'title' : title,
+                                'quantity' : 1
+                            
+                        }
                     
-                function (response) {
-                    console.log(response);
-                    // sessionStorage.setItem('num_prod', response);   
-                    // var num_prod=sessionStorage.getItem('num_prod');
+                    array_1.push(nuevo_producto);
+                    console.log(array_1);
+                    var array_prod=JSON.stringify(array_1);
+                    //localStorage.removeItem("productos_carrito");
+                    localStorage.setItem("productos_carrito", array_prod);
+
+                    //var carritoLocalStor=localStorage.getItem('productos_carrito');
+                    
+                }
+
+
+                
+            }else{
+                console.log("existe nooo");
+                var productosCarrito = new Array;
+                var nuevo_producto = {
+                            'id' : id,
+                            'price' : price ,
+                            'title' : title,
+                            'quantity' : 1 
+                        
+                    }
+                productosCarrito.push(nuevo_producto);
+
+                var array_prod=JSON.stringify(productosCarrito);
+                localStorage.setItem("productos_carrito", array_prod);
+
+                // var carritoLocalStor=localStorage.getItem('productos_carrito');
+                //  var array_1=JSON.parse(carritoLocalStor);
+                //  alert("ssssssssss");
+                // console.log(array_1);
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            // $.post("module/homepage/controller/controller_homepage.php?homepage=prodToBasket&id="+id+"&price="+price+"&title="+title,
+                    
+            //     function (response) {
+            //         console.log(response);
+            //         // sessionStorage.setItem('num_prod', response);   
+            //         // var num_prod=sessionStorage.getItem('num_prod');
                     
 
                     
-                    var basket=document.getElementById('cont_prod');
-                    basket.innerHTML=response;         
+            //         var basket=document.getElementById('cont_prod');
+            //         basket.innerHTML=response;         
                   
-                }).fail(function() {
-                    alert( "recepcion de datos fallida en boton detalles producto" );
-                });
+            //     }).fail(function() {
+            //         alert( "recepcion de datos fallida en boton detalles producto" );
+            //     });
 
          });
 
@@ -133,7 +206,7 @@
 
 
 
-        /*Ver detalles del producto-----------------------------------------*/
+        /*Ver detalles del producto---------------------------------------------------*/
         $('.prodToDetaills').click(function(){
             var id = this.getAttribute('name');
             //tengo que hacer una consulta nueva para imrimir los detalles en el modal
@@ -168,26 +241,6 @@
                 }).fail(function() {
                     alert( "recepcion de datos fallida en boton detalles producto" );
                 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
          });//end_prodToDetaills
-
- 
-      
-    }).fail(function() {
-        alert( "recepcion de datos fallida" );
-    });
     
-});    
+}); //Document.ready   

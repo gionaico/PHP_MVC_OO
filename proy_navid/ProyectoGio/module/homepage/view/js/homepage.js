@@ -141,172 +141,48 @@ $(document).ready(function () {
 });//END_DOCUMENT.READY
 
 
-
-// function load_countries_v2() {
-//     $.getJSON( "resources/ListOfCountryNamesByName.json", function(data) {
-//       $("#country").empty();
-//       $("#country").append('<option value="" selected="selected">Select country</option>');
-
-//       $.each(data, function (i, valor) {
-//         $("#country").append("<option value='" + valor.sISOCode + "'>" + valor.sName + "</option>");
-//       });
-//     })
-//     .fail(function() {
-//         alert( "error load_countries" );
-//     });
-// }SELECT * FROM `products` WHERE city='gandia' AND title ='KkkkkkkkkkkkkKK'
+/*--------------------------------------------------------------------------------------------------------------------------*/
 function btn_search(){
+
+    var province = document.getElementById('province_home').value;
+    var city = document.getElementById('city_home').value;
     var word_wrotten=document.getElementById('search_home').value;
-    var province_home=document.getElementById('province_home').value;
-    var city_home=document.getElementById('city_home').value;
+   
+    var data = {"province": province, "city": city, "word_wrotten":word_wrotten};
+ 
+        var data_prod = JSON.stringify(data);
 
-    var data = {"province": province_home, "city": city_home, "word_wrotten":word_wrotten};
-    console.log("data es ");
-    console.log(data);
-    var data_JSON = JSON.stringify(data);
+        //alert(data_location_JSON);
 
-     $.post("module/homepage/controller/controller_homepage.php?homepage=btn_search",
-        {"data": data_JSON},
+    $.post("module/homepage/controller/controller_homepage.php?homepage=btn_search",
+        {"data_prod": data_prod},
+
+
      function (response) {
-        var json = JSON.parse(response);
-             //console.log(json[0]["product"]);
-             console.log(json);
-             //console.log(json.length);
-             console.log(json.length);
-
-
-
-        var div_resultado=document.getElementById('resultado');
-
-        var cont=0;
-        for (var i=0; i<json.length; i++) {
-            
-            if ((i==0)||((i%4)==0)) {
-                var div_row=document.createElement("div");
-                div_row.setAttribute("class", "row");
-                // div_row.setAttribute("id", i);
-            }
-
-            if (cont>4) {
-                cont=0;
-            }
-            if (cont<=4) {
-                cont++;
-
-                var div_col=document.createElement("div");
-                div_col.setAttribute("class", "col-md-3");
-
-                var div_thumbnail=document.createElement("div");
-                div_thumbnail.setAttribute("class", "team-img thumbnail");
-
-                var img=document.createElement("img");
-                    img.setAttribute("src", json[i].avatar);
-
-                var div_content=document.createElement("div");
-                    div_content.setAttribute("class", "team-content");
-
-                var h=document.createElement("h3");
-                    h.innerHTML=json[i].product_type;
-
-                var border_team=document.createElement("div");
-                    border_team.setAttribute("class", "border-team")
-
-                var parr0=document.createElement("p");
-                var parr1=document.createElement("p");
-                var parr2=document.createElement("p");
-                var parr3=document.createElement("p");
-                var parr4=document.createElement("p");
-                var parr5=document.createElement("p");
-                    
-                    parr1.innerHTML="<strong>User: </strong>"+json[i].user;
-                    parr2.innerHTML="<strong>Title: </strong>"+json[i].title;
-                    parr3.innerHTML="<strong>Phone: </strong>"+json[i].phone;
-                    parr4.innerHTML="<strong>Email: </strong>"+json[i].email;
-                    parr5.innerHTML="<strong>Publication Date: </strong>"+json[i].date;
-
-                    div_row.appendChild(div_col);
-                    div_col.appendChild(div_thumbnail);
-                    div_thumbnail.appendChild(img);
-                    div_thumbnail.appendChild(div_content);
-                    div_content.appendChild(h);
-                    div_content.appendChild(border_team);
-                    div_content.appendChild(parr1);
-                    div_content.appendChild(parr2);
-                    div_content.appendChild(parr3);
-                    div_content.appendChild(parr4);
-                    div_content.appendChild(parr5);
-            }
-
-            if ((i%4)==0) {
-             div_resultado.appendChild(div_row);   
-            }
-        }
-
-        
-
-
-
-            
-
-
-        // for (var i=0; i<json.length; i++) {
-        //     var div_col=document.createElement("div");
-        //         div_col.setAttribute("class", "col-md-3");
-        //     var div_thumbnail=document.createElement("div");
-        //         div_thumbnail.setAttribute("class", "team-img thumbnail");
-
-        //     var img=document.createElement("img");
-        //         img.setAttribute("src", json[i].avatar);
-
-        //     var div_content=document.createElement("div");
-        //         div_content.setAttribute("class", "team-content");
-
-        //     var h=document.createElement("h3");
-        //         h.innerHTML=json[i].product_type;
-
-        //     var border_team=document.createElement("div");
-        //         border_team.setAttribute("class", "border-team")
-
-        //     var parr0=document.createElement("p");
-        //     var parr1=document.createElement("p");
-        //     var parr2=document.createElement("p");
-        //     var parr3=document.createElement("p");
-        //     var parr4=document.createElement("p");
-        //     var parr5=document.createElement("p");
-                
-        //         parr1.innerHTML="<strong>User: </strong>"+json[i].user;
-        //         parr2.innerHTML="<strong>Title: </strong>"+json[i].title;
-        //         parr3.innerHTML="<strong>Phone: </strong>"+json[i].phone;
-        //         parr4.innerHTML="<strong>Email: </strong>"+json[i].email;
-        //         parr5.innerHTML="<strong>Publication Date: </strong>"+json[i].date;
-                
-
-        //             div_row.appendChild(div_col);
-        //             div_col.appendChild(div_thumbnail);
-        //             div_thumbnail.appendChild(img);
-        //             div_thumbnail.appendChild(div_content);
-        //             div_content.appendChild(h);
-        //             div_content.appendChild(border_team);
-        //             div_content.appendChild(parr1);
-        //             div_content.appendChild(parr2);
-        //             div_content.appendChild(parr3);
-        //             div_content.appendChild(parr4);
-        //             div_content.appendChild(parr5);
-                    
-        //     }      
-        //     var div_dummies=document.getElementById("dummies");
-        //             div_dummies.appendChild(div_row);
+        //console.log(response);
+        //var json = JSON.parse(response);
+        localStorage.removeItem("productos_buscados");
+        localStorage.setItem("productos_buscados", response);
+        var redirect="index.php?page=homepage&view=search";
+        window.location.href = redirect; 
+        // var local=localStorage.getItem('productos_buscados');
+        //  var trans=JSON.parse(local);
+        //  alert("ddddddddddddd");
+        // console.log(trans)
             
     })
     .fail(function() {
-        alert( "error dfsdgffg" );
-    });
-    
+        alert( "Error RESPONSE btn_search" );
+    });   
 }
+
+/*--------------------------------------------------------------------------------------------------------------------------*/
+
 
 function autocomplete(word_wrotten){
     var province = document.getElementById('province_home').value;
     var city = document.getElementById('city_home').value;
+
     var data = {"province": province, "city": city, "word_wrotten":word_wrotten};
  
         var data_location_JSON = JSON.stringify(data);
@@ -330,9 +206,11 @@ function autocomplete(word_wrotten){
 
     })
     .fail(function() {
-        alert( "error dfsdgffg" );
+        alert( "Error RESPONSE autocomplete" );
     });
 }
+
+/*--------------------------------------------------------------------------------------------------------------------------*/
 
 function load_provinces_v2() {
     $.get("resources/provinciasypoblaciones.xml", function (xml) {
@@ -350,6 +228,8 @@ function load_provinces_v2() {
     });
 }
 
+
+/*--------------------------------------------------------------------------------------------------------------------------*/
 
 function load_cities_v2(prov) {
     $.get("resources/provinciasypoblaciones.xml", function (xml) {

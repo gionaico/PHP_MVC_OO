@@ -6,7 +6,7 @@ $path_DAO = $_SERVER['DOCUMENT_ROOT'] . '/proy_navid/ProyectoGio/';
     // require_once ("model/connect.php");
     
     // session_start();
-	class DAOUser{
+	class DAOProducts{
 		
 		/*-----------------------------------------------------------------------------------------*/
         /*-----------------------------------------------------------------------------------------*/

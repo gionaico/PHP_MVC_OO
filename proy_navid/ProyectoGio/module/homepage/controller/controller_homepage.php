@@ -9,7 +9,7 @@
      
      if (!isset($_GET['homepage'])) {
          try{
-                $daouser = new DAOUser();
+                $daouser = new DAOProducts();
                 $rdo = $daouser->select_all_products();
             }catch (Exception $e){
                 $callback = 'index.php?page=503';
@@ -31,7 +31,7 @@
              case 'search':
                 if (isset($_POST['data_location'])) {
                     $locationJSON = json_decode($_POST["data_location"], true);//convierte en un array asociativo
-                    $daoproduct = new DAOUser();
+                    $daoproduct = new DAOProducts();
                     $rdo = $daoproduct->Search($locationJSON);
                     
                     $user = array();
@@ -65,10 +65,11 @@
                  break;
 
             case 'btn_search':
-                if (isset($_POST['data'])) {
-                    $locationJSON = json_decode($_POST["data"], true);//convierte en un array asociativo
+               
+                    $data_prod = json_decode($_POST["data_prod"], true);//convierte en un array asociativo
+            
                     $daoproduct = new DAOProducts();
-                    $rdo = $daoproduct->Search($locationJSON);
+                    $rdo = $daoproduct->Search($data_prod);
                     
                     $All_productos = array();
                     
@@ -85,23 +86,18 @@
                             'price' => $row['price'],
                             'cod_pro' => $row['cod_pro']
                         );
-                        array_push($All_productos, $producto);
-                        $_SESSION['productos'] = $All_productos;
+                        array_push($All_productos, $producto);                
                     }
                     echo json_encode($All_productos);//pasa el array que viene de DAO
+                
                     exit;
-                }elseif ($draw="products" ) {
-                    // echo $_SESSION['productos'][1]['phone'];
-                    echo json_encode($_SESSION['productos']);
-                    exit;
-                }
-                 // echo $_POST['word_wrotten'];
+                 
                  break;
              case 'prodToDetaills':
                     $id_prod=$_GET["id"];
                     
                     // $locationJSON = json_decode($_POST["data"], true);//convierte en un array asociativo
-                    $daoproduct = new DAOUser();
+                    $daoproduct = new DAOProducts();
                     $rdo = $daoproduct->product_details($id_prod);
                     
                     $All_productos =$rdo->fetch_assoc();
@@ -196,7 +192,7 @@
 
              default:
                  try{
-                    $daoproduct = new DAOUser();
+                    $daoproduct = new DAOProducts();
                     $rdo = $daoproduct->select_all_products();
                 }catch (Exception $e){
                     $callback = 'index.php?page=503';
