@@ -1,9 +1,10 @@
 $(document).ready(function () {
 // $('#tab_comprar').DataTable();
 		var json=localStorage.getItem('productos_carrito');
-		 var json_cont2 = JSON.parse(json);
+		var json_cont2 = JSON.parse(json);
 		console.log(json_cont2);
-
+		var totalPagar=document.getElementById('totalPagar');
+		var pagoTotal=0;
 
 		var tabla_carrito=document.getElementById('body_comprar');
 		for (var i = 0; i < json_cont2.length; i++) {
@@ -16,7 +17,7 @@ $(document).ready(function () {
 			select.setAttribute("class", "select_quantity");
 			select.setAttribute("id", json_cont2[i]['id']);
 			var td4=document.createElement("td");
-			td4.setAttribute("id", json_cont2[i]['id']);
+			td4.setAttribute("id", "td"+json_cont2[i]['id']);
 			var td5=document.createElement("td");
 			var button=document.createElement("button");
 			button.setAttribute("id", json_cont2[i]['id']);
@@ -27,6 +28,7 @@ $(document).ready(function () {
 			td1.innerHTML=json_cont2[i]['title'];
 	        td2.innerHTML=json_cont2[i]['price']+" $";
 	        td4.innerHTML=(json_cont2[i]['price']*json_cont2[i]['quantity'])+" $";
+	        pagoTotal=pagoTotal+(json_cont2[i]['price']*json_cont2[i]['quantity']);
 	        button.innerHTML="Delete";
 
 	        td5.appendChild(button);
@@ -55,47 +57,90 @@ $(document).ready(function () {
         tabla_carrito.appendChild(tr1);
         
 		}
+		totalPagar.innerHTML=pagoTotal+" $";
+
 		$(".select_quantity").change(function() {
 			var id = this.getAttribute('id');
 			var value = $(this).val();
-	       alert("cambia "+id+" "+value);
-	       /*------------------------------------------en prueba----------------------------------------------------*/
+			//parseInt(cantidad_ac, 10)
+	       // alert("cambia "+id+" "+value);
+	       /*------------------------------------------Pintar en Navegador----------------------------------------------------*/
 	       /////
-	       	var data = {"id": id, "quantity": value};
-        	var data_JSON = JSON.stringify(data);
+	       for (var i =0; i <json_cont2.length; i++) {
+	            if (json_cont2[i]['id']==id) {
+	            	var price_producto=json_cont2[i]['price'];
+	                json_cont2[i]['quantity']=parseInt(value, 10);
+	            }
+	        }
 
-                   alert(data_JSON);
-    
+	        var nuevo_json=JSON.stringify(json_cont2);
+            	localStorage.setItem("productos_carrito", nuevo_json);
 
-
-	       $.post("module/basket/controller/controller_basket.php?basket=select_quantity",
-                {"dataProd_json": data_JSON},
-			function(response){
-				 	console.log(response);
-
-				 	$.post("module/basket/controller/controller_basket.php?basket=menu_basket",
-					function(response){
-						console.log(response);
-						// var json_cont = JSON.parse(response);
-						 var basket2=document.getElementById('cont_prod');
-				        basket2.innerHTML=response;//json_cont;   
-					}).fail(function() {
-				        alert( "recepcion de datos fallida en boton detalles producto" );
-				    });
-				 // 	var json_cont2 = JSON.parse(response);
-					// console.log(json_cont2);
-				   
-			}).fail(function() {
-			       alert( "recepcion de datos fallida en boton detalles producto" );
-			   });
+            var carrito_3=localStorage.getItem('productos_carrito');
+           	var json_menu = JSON.parse(carrito_3);
+            // alert(json[0]['quantity']);
+            var total=0;
+            var cantidad_ac=0;
+            var precio=0;
+            var suma_precio=0;
+            for (var i=0; i <json_menu.length ; i++) { 
+                 cantidad_ac=json_menu[i]['quantity'];
+                 total=total+cantidad_ac;
+                 precio=parseFloat(json_menu[i]['price']);
+                 suma_precio=suma_precio+(cantidad_ac*precio);
+            }
+            // alert(total);
+            var basket2=document.getElementById('cont_prod');
+                    basket2.innerHTML=total;
 			////
-			/*------------------------------------------en prueba----------------------------------------------------*/
+			/*----------------------------------------------------------------------------------------------*/
+			var priceUnidades=document.getElementById("td"+id); 
+			priceUnidades.innerHTML=(price_producto*parseFloat($(this).val()))+" $";
+			totalPagar.innerHTML=suma_precio+" $";
+			//alert(priceUnidades);	
+
     	});
 
 		$(".delete_product").click(function() {
-			var id = this.getAttribute('tr');
-			$("#"+id).remove();
-	       alert("delete "+id);
+			var id_fila = this.getAttribute('tr');
+			$("#"+id_fila).remove();
+	       // alert("delete "+id);
+	       var id_producto=this.getAttribute('id');
+	       
+	       var carrito_delete_product=localStorage.getItem('productos_carrito');
+	       var json_delProd = JSON.parse(carrito_delete_product);
+	        
+	       for (var i=0; i <json_delProd.length ; i++) { 
+	            if (json_delProd[i]['id']==id_producto) {
+                    var posicion=i;
+                }
+	       }
+	       json_delProd.splice(posicion,1);
+
+	       var nuevo_json=JSON.stringify(json_delProd);
+           localStorage.setItem("productos_carrito", nuevo_json);
+	       alert(this.getAttribute('id'));
+	       /*------------------------------------------Pintar en Navegador----------------------------------------------------*/
+	       /////
+	       var carrito_delete2=localStorage.getItem('productos_carrito');
+	       var json_delPro = JSON.parse(carrito_delete2);
+	        var total=0;
+            var cantidad_ac=0;
+                 var precio=0;
+var suma_precio=0;
+            for (var i=0; i <json_delPro.length ; i++) { 
+                 cantidad_ac=json_delPro[i]['quantity'];
+                 total=total+cantidad_ac;
+precio=parseFloat(json_delPro[i]['price']);
+suma_precio=suma_precio+(cantidad_ac*precio);
+                 //total=total+(parseInt(cantidad_ac, 10));
+            }
+            // alert(total);
+            var basket2=document.getElementById('cont_prod');
+                    basket2.innerHTML=total;
+totalPagar.innerHTML=suma_precio+" $";
+            ////
+			/*----------------------------------------------------------------------------------------------*/
 
     	});
 
@@ -103,49 +148,6 @@ $(document).ready(function () {
 
 
 
-		// var tabla_carrito=document.getElementById('body_comprar');
 
-		// var tr1=document.createElement("tr");
-		// var td1=document.createElement("td");
-		// var td2=document.createElement("td");
-		// var td3=document.createElement("td");
-		// var select=document.createElement("select");
-		
-
-		// td1.innerHTML="pepon";
-  //       td2.innerHTML=15;
-  //       td3.innerHTML=5;
-
-  //       tr1.appendChild(td1);
-  //       tr1.appendChild(td2);
-  //       tr1.appendChild(td3);
-
-         
-  //         for(var i = 1; i <=10; i++){
-  //         	var option=document.createElement("option");
-  //         	option.setAttribute("value", ""+i+"");
-  //         	option.innerHTML=i;
-  //         	select.appendChild(option);
-           
-  //         }
-
-
-
-  //       var tr2=document.createElement("tr");
-		// var td11=document.createElement("td");
-		// var td22=document.createElement("td");
-		// var td33=document.createElement("td");
-
-		// td11.innerHTML="tetete";
-  //       td22.innerHTML=1596;
-  //       td33.innerHTML=59;
-
-  //       select.appendChild(option);
-  //       td3.appendChild(select);
-  //       tr2.appendChild(td11);
-  //       tr2.appendChild(td22);
-  //       tr2.appendChild(td33);
-  //       tabla_carrito.appendChild(tr1);
-  //       tabla_carrito.appendChild(tr2);
 
 });

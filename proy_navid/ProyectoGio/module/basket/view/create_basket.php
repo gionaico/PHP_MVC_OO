@@ -35,7 +35,7 @@ https://www.youtube.com/watch?v=Cdq_29IVxoA
 
     </div>
     <div class="col-md-offset-1 col-md-4 " >
-        TOTAL:
+        <p><strong>Total: </strong><i id="totalPagar"></i></p>
     </div>
 </div>
 

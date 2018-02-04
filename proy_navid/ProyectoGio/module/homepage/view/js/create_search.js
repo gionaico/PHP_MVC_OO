@@ -168,36 +168,20 @@
                 // console.log(array_1);
             }
 
+            var carrito_3=localStorage.getItem('productos_carrito');
+            var json_3 = JSON.parse(carrito_3);
+            // alert(json[0]['quantity']);
+            var total=0;
+            var cantidad_ac=0;
+            for (var i=0; i <json_3.length ; i++) { 
+                 cantidad_ac=json_3[i]['quantity'];
+                 total=total+cantidad_ac;
+                 //total=total+(parseInt(cantidad_ac, 10));
+            }
+            // alert(total);
+            var basket2=document.getElementById('cont_prod');
+                    basket2.innerHTML=total;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            // $.post("module/homepage/controller/controller_homepage.php?homepage=prodToBasket&id="+id+"&price="+price+"&title="+title,
-                    
-            //     function (response) {
-            //         console.log(response);
-            //         // sessionStorage.setItem('num_prod', response);   
-            //         // var num_prod=sessionStorage.getItem('num_prod');
-                    
-
-                    
-            //         var basket=document.getElementById('cont_prod');
-            //         basket.innerHTML=response;         
-                  
-            //     }).fail(function() {
-            //         alert( "recepcion de datos fallida en boton detalles producto" );
-            //     });
 
          });
 
