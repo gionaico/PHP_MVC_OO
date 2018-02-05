@@ -57,7 +57,9 @@ $(document).ready(function () {
         tabla_carrito.appendChild(tr1);
         
 		}
-		totalPagar.innerHTML=pagoTotal+" $";
+		totalPagar.innerHTML=pagoTotal.toFixed( 2 )+" $";
+		// console.log(typeof(pagoTotal));
+		//console.log(typeof(pagoTotal.toFixed( 2 )));
 
 		$(".select_quantity").change(function() {
 			var id = this.getAttribute('id');
@@ -153,7 +155,8 @@ $(document).ready(function () {
 	        }else{
 		       console.log("paga de usuario "+usuarioLogeado);
 		       var precio_peddido=(document.getElementById('totalPagar').innerHTML);
-
+		       var productosPedido=localStorage.getItem('productos_carrito');
+		       // console.log(json);
 
 
 		       var data = {"precio_peddido": precio_peddido, "user": usuarioLogeado};
@@ -161,11 +164,18 @@ $(document).ready(function () {
 
 			               //alert(jsonPedido);
 				$.post('module/basket/controller/controller_basket.php?basket=t_pedidos',
-				 {"jsonPedido": jsonPedido},
+				 {"jsonPedido": jsonPedido, "productosPedido":productosPedido},
 				function(response){
-					 	//var json = JSON.parse(response);
-					 	//alert(json);
-						console.log(response);
+					 	var json = JSON.parse(response);
+						console.log(json.success);
+					 	if (json.success) {
+					 		localStorage.removeItem("productos_carrito");
+					 		alert(json.resultado);
+					 		window.location.href ="index.php";
+					 	}else{
+					 		alert(json.resultado);
+					 	}
+					 	//alert(response);
 					   
 				}).fail(function() {
 				       alert( "recepcion de datos fallida en boton detalles producto" );
