@@ -1,45 +1,28 @@
 <?php
 @session_start();
+$path_controller = $_SERVER['DOCUMENT_ROOT'] . '/proy_navid/ProyectoGio/';    
+    include ($path_controller . "module/basket/model/DAObasket.php");
+
 	 $_SESSION['cant_total'];
 	 $_SESSION['prod_carritos'];
 		
 	switch ($_GET['basket']) {
 
-		case 'menu_basket'://llega de view/js/carro_compra.js
-			echo ($_SESSION['cant_total']);
+		case 't_pedidos'://llega de basket.js
+			$Pedido = json_decode($_POST["jsonPedido"], true);
+			$date_today=date("m.d.y");
+
+			$daoPedido = new DAObasket();
+            $rdo = $daoPedido->insertarPedido($Pedido, $date_today);
+
+            if ($rdo) {
+            	$msn="You will recieve your products in the next days";
+            }else{
+            	$msn="Error DB";
+            }
+			echo json_encode($msn);
 			exit;
 			break;
-
-		case 'view_basket'://llega de basket.js
-			echo json_encode($_SESSION['All_p']);
-			exit;
-			break;
-
-		case 'select_quantity'://llega de basket.js
-			$JSON = json_decode($_POST["dataProd_json"], true);
-			$products=$_SESSION['All_p'];
-
-			 echo "<PRE>";
-			    print_r($_SESSION['All_p']);
-			echo "</PRE>";
-			for ($i=0; $i <count($_SESSION['All_p']) ; $i++) { 
-                     if ($_SESSION['All_p'][$i]['id']==$JSON['id']) {
-                        $_SESSION['All_p'][$i]['quantity']=$JSON['quantity'];
-                        
-                     }
-                }
-            echo "<PRE>";
-			    print_r($_SESSION['All_p']);
-			echo "</PRE>";
-			//echo json_encode($JSON['id']);
-			// echo json_encode($_POST['dataProd_json']);
-			exit;
-			break;
-
-		// case 'view_basket'://llega de basket.js
-		// 	echo json_encode($_SESSION['All_p']);
-		// 	exit;
-		// 	break;
 		
 		default:
 			# code...

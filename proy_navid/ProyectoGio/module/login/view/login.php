@@ -15,8 +15,12 @@
             </div>
             <div class="modal-body" id="container">
                 
-                <div class="form-group " id="info_logPro" style="display: none;">
+                <div class="form-group infoInLogin" id="info_logPro" style="display: none;">
                     <p class="text-center">Before to intro your product, please you have to make login. If you are not registered, please register bofore to make login.</p>
+                </div>
+
+                <div class="form-group infoInLogin" id="info_pay" style="display: none;">
+                    <p class="text-center">Before to pay your product, please you have to make login. If you are not registered, please register bofore to make login.</p>
                 </div>
 
                 <div class="form-group ">

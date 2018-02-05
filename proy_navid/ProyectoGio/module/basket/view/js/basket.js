@@ -127,25 +127,53 @@ $(document).ready(function () {
 	        var total=0;
             var cantidad_ac=0;
                  var precio=0;
-var suma_precio=0;
+			var suma_precio=0;
             for (var i=0; i <json_delPro.length ; i++) { 
                  cantidad_ac=json_delPro[i]['quantity'];
                  total=total+cantidad_ac;
-precio=parseFloat(json_delPro[i]['price']);
-suma_precio=suma_precio+(cantidad_ac*precio);
+				precio=parseFloat(json_delPro[i]['price']);
+				suma_precio=suma_precio+(cantidad_ac*precio);
                  //total=total+(parseInt(cantidad_ac, 10));
             }
             // alert(total);
             var basket2=document.getElementById('cont_prod');
                     basket2.innerHTML=total;
-totalPagar.innerHTML=suma_precio+" $";
+			totalPagar.innerHTML=suma_precio+" $";
             ////
 			/*----------------------------------------------------------------------------------------------*/
 
     	});
 
-		   
+    	$('#pay_products').click(function() {
+    		var usuarioLogeado=sessionStorage.getItem('app-usuarioLogeado');//llega en string
+    		if ((typeof(usuarioLogeado) == "undefined") || (usuarioLogeado == null)) {
+	    		$('#modal_login').modal('show'); // abrir
+	       		var info_logPro=document.getElementById('info_pay');
+	            info_logPro.style.display='block';
+	        }else{
+		       console.log("paga de usuario "+usuarioLogeado);
+		       var precio_peddido=(document.getElementById('totalPagar').innerHTML);
 
+
+
+		       var data = {"precio_peddido": precio_peddido, "user": usuarioLogeado};
+			   var jsonPedido = JSON.stringify(data);
+
+			               //alert(jsonPedido);
+				$.post('module/basket/controller/controller_basket.php?basket=t_pedidos',
+				 {"jsonPedido": jsonPedido},
+				function(response){
+					 	//var json = JSON.parse(response);
+					 	//alert(json);
+						console.log(response);
+					   
+				}).fail(function() {
+				       alert( "recepcion de datos fallida en boton detalles producto" );
+				   });
+		    }
+	    		
+		   
+    	});
 
 
 

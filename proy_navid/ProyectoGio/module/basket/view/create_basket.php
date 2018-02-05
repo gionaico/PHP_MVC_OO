@@ -36,6 +36,7 @@ https://www.youtube.com/watch?v=Cdq_29IVxoA
     </div>
     <div class="col-md-offset-1 col-md-4 " >
         <p><strong>Total: </strong><i id="totalPagar"></i></p>
+        <button id="pay_products" class="btn btn-warning" style="color:black"><b>Proceed to Checkout</b></button>
     </div>
 </div>
 

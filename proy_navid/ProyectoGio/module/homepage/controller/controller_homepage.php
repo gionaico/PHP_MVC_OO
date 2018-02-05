@@ -96,94 +96,17 @@
              case 'prodToDetaills':
                     $id_prod=$_GET["id"];
                     
-                    // $locationJSON = json_decode($_POST["data"], true);//convierte en un array asociativo
                     $daoproduct = new DAOProducts();
                     $rdo = $daoproduct->product_details($id_prod);
                     
                     $All_productos =$rdo->fetch_assoc();
                     
-                    //  $All_productos = array();
-                    
-                    //  while($row = $rdo->fetch_assoc()){                                                
-                    //     $producto = array(
-                    //         'user' => $row['user_name'],
-                    //         'title' => $row['title'],
-                    //         'phone' => $row['phone'],
-                    //         'email' => $row['email'],
-                    //         'product_type' => $row['product_type'],
-                    //         'avatar' => $row['avatar'],
-                    //         'date' => $row['date_today'],
-                    //         'city' => $row['city'],
-                    //         'price' => $row['price'],
-                    //         'cod_pro' => $row['cod_pro'],
-                    //         'country' => $row['country'],
-                    //         'province' => $row['province'],
-                    //         'address' => $row['address'],
-                    //         'description' => $row['description'],
-                    //         'brand' => $row['brand'],
-                    //         'model' => $row['model'],
-                    //         'year' => $row['year'],
-                    //         'combustible' => $row['combustible'],
-                    //         'color' => $row['color'],
-                    //     );
-                    //     array_push($All_productos, $producto);
-                        
-                    // }
                     echo json_encode($All_productos);//pasa el array que viene de DAO
                     exit;
                
                  //echo $_POST['word_wrotten'];
                  break;
 
-             case 'prodToBasket':
-
-                $id_prod=$_GET["id"];
-                $price_prod=$_GET["price"];
-                $title_prod=$_GET["title"];
-                /*-------------------Creo la variable global si previamente no esta dfinida*/
-                if (!isset($_SESSION['All_p'])) {
-                    $_SESSION['All_p']=array();
-                }
-
-                $valido=false;
-                /*Recorre el array $_SESSION['All_p'] para saber si ya hay un array dento con el mismo id 
-                y si existe lo unico que modifica es la cantidad de ese producto concreto.*/
-                for ($i=0; $i <count($_SESSION['All_p']) ; $i++) { 
-                     if ($_SESSION['All_p'][$i]['id']==$id_prod) {
-                        $o=$_SESSION['All_p'][$i]['quantity'];
-                        $_SESSION['All_p'][$i]['quantity']=$o+1;
-                        
-                        $valido=true;
-                         // echo("es el ".$i);
-                         // exit;
-                     }
-                     //echo($_SESSION['All_p'][$i]['id']);
-                       // exit;
-                }
-                /*En el caso de que $valido sea false crea un array nuevo y no introduce en $_SESSION['All_p']*/
-
-                 if ($valido==false) {
-                    $p1=null;             
-                    $p1 = array(
-                        'id'=> $id_prod,
-                        'title'=> $title_prod,
-                        'price'=> $price_prod,
-                        'quantity'=>1
-                            );
-                    array_push($_SESSION['All_p'], $p1);
-                 }
-                // $pepe=$_SESSION['All_p'];
-
-                $total=0;
-                /*Recorre el array $_SESSION['All_p'] para sacar el total de productos que hay en el carrito*/
-                for ($i=0; $i <count($_SESSION['All_p']) ; $i++) { 
-                     $pr=$_SESSION['All_p'][$i]['quantity'];
-                     $total=$total+$pr;
-                }
-                $_SESSION['cant_total']=$total;
-                 echo($total);
-
-                exit;
                      
                 
              break;
@@ -212,4 +135,53 @@
      }
 
      // }
+             // case 'prodToBasket':
+
+             //    $id_prod=$_GET["id"];
+             //    $price_prod=$_GET["price"];
+             //    $title_prod=$_GET["title"];
+             //    /*-------------------Creo la variable global si previamente no esta dfinida*/
+             //    if (!isset($_SESSION['All_p'])) {
+             //        $_SESSION['All_p']=array();
+             //    }
+
+             //    $valido=false;
+             //    /*Recorre el array $_SESSION['All_p'] para saber si ya hay un array dento con el mismo id 
+             //    y si existe lo unico que modifica es la cantidad de ese producto concreto.*/
+             //    for ($i=0; $i <count($_SESSION['All_p']) ; $i++) { 
+             //         if ($_SESSION['All_p'][$i]['id']==$id_prod) {
+             //            $o=$_SESSION['All_p'][$i]['quantity'];
+             //            $_SESSION['All_p'][$i]['quantity']=$o+1;
+                        
+             //            $valido=true;
+             //             // echo("es el ".$i);
+             //             // exit;
+             //         }
+             //         //echo($_SESSION['All_p'][$i]['id']);
+             //           // exit;
+             //    }
+             //    /*En el caso de que $valido sea false crea un array nuevo y no introduce en $_SESSION['All_p']*/
+
+             //     if ($valido==false) {
+             //        $p1=null;             
+             //        $p1 = array(
+             //            'id'=> $id_prod,
+             //            'title'=> $title_prod,
+             //            'price'=> $price_prod,
+             //            'quantity'=>1
+             //                );
+             //        array_push($_SESSION['All_p'], $p1);
+             //     }
+             //    // $pepe=$_SESSION['All_p'];
+
+             //    $total=0;
+             //    /*Recorre el array $_SESSION['All_p'] para sacar el total de productos que hay en el carrito*/
+             //    for ($i=0; $i <count($_SESSION['All_p']) ; $i++) { 
+             //         $pr=$_SESSION['All_p'][$i]['quantity'];
+             //         $total=$total+$pr;
+             //    }
+             //    $_SESSION['cant_total']=$total;
+             //     echo($total);
+
+             //    exit;
 ?>
