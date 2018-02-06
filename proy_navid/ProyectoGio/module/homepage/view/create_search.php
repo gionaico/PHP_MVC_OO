@@ -1,13 +1,46 @@
 
 <script src="module/homepage/view/js/create_search.js"></script>
+<script src="module/homepage/view/js/homepage.js"></script>
 <div class="container">
-    <br>
-    <br>
-    <br>
+    
+    <h2 class="aboutus-title">Search Results</h2>
     <div class="row">
-        <h2 class="aboutus-title">Search Results</h2>
-        <!-- <button id="gio" class='btn btn-primary prodToBasket' type='button'>Add to<span class='glyphicon glyphicon-shopping-cart'></span>    </button> -->
+        <div class="form-group">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3 col-md-offset-1"> <!-- col-md-offset-3 -->
+                        <select id="province_home" name="province_home" class="form-control input-md color_input" required="">
+                            <option selected="">Select Province</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <select id="city_home" name="city_home" class="form-control input-md color_input" required="">
+                            <option selected="">Select City</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <input class="form-control color_input" id="search_home" list="datalist_search" name="search_home" placeholder="Search for" required/>
+                            <span class="input-group-btn">
+                                <a type="submit" href="#" class="btn btn-primary " id="btn_search"><i class="glyphicon glyphicon-search"></i></a>
+                            </span>
+                            <!-- index.php?page=homepage&view=search -->
+                            <datalist id="datalist_search">
+                                <option value="dddd"></option>
+                                
+                            </datalist>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+    <br>
+    <br>
+    <br>
+    <!-- <div class="row"> -->
+        <!-- <button id="gio" class='btn btn-primary prodToBasket' type='button'>Add to<span class='glyphicon glyphicon-shopping-cart'></span>    </button> -->
+    <!-- </div> -->
     <div id="resultado">
         
     </div>

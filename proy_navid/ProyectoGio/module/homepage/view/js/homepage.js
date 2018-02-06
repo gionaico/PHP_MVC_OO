@@ -13,67 +13,67 @@ $(document).ready(function () {
 
 
 
-    // $("#submit_dummies").click(function(){
+    $("#submit_dummies").click(function(){
         
-    //     var div_row=document.createElement("div");
-    //         div_row.setAttribute("class", "row");
+        var div_row=document.createElement("div");
+            div_row.setAttribute("class", "row");
 
-    //     for (var i=0; i<4; i++) {
-    //         var num_att0=Math.round(Math.random()*8);
-    //         var num_att1=Math.round(Math.random()*8);
-    //         var num_att2=Math.round(Math.random()*8);
-    //         var num_att3=Math.round(Math.random()*8);
-    //         var num_att4=Math.round(Math.random()*1);
-    //         // console.log(i+" uno "+num_att+" dos "+num_att2); 
+        for (var i=0; i<4; i++) {
+            var num_att0=Math.round(Math.random()*8);
+            var num_att1=Math.round(Math.random()*8);
+            var num_att2=Math.round(Math.random()*8);
+            var num_att3=Math.round(Math.random()*8);
+            var num_att4=Math.round(Math.random()*1);
+            // console.log(i+" uno "+num_att+" dos "+num_att2); 
 
-    //         var div_col=document.createElement("div");
-    //             div_col.setAttribute("class", "col-md-3");
+            var div_col=document.createElement("div");
+                div_col.setAttribute("class", "col-md-3");
 
-    //         var div_thumbnail=document.createElement("div");
-    //             div_thumbnail.setAttribute("class", "team-img thumbnail");
+            var div_thumbnail=document.createElement("div");
+                div_thumbnail.setAttribute("class", "team-img thumbnail");
 
-    //         var img=document.createElement("img");
-    //             img.setAttribute("src", "view/img/servicies/servicies1.jpg");
+            var img=document.createElement("img");
+                img.setAttribute("src", "view/img/servicies/servicies1.jpg");
 
-    //         var div_content=document.createElement("div");
-    //             div_content.setAttribute("class", "team-content");
+            var div_content=document.createElement("div");
+                div_content.setAttribute("class", "team-content");
 
-    //         var h=document.createElement("h3");
-    //             h.innerHTML=coches_brand[num_att0];
+            var h=document.createElement("h3");
+                h.innerHTML=coches_brand[num_att0];
 
-    //         var border_team=document.createElement("div");
-    //             border_team.setAttribute("class", "border-team")
+            var border_team=document.createElement("div");
+                border_team.setAttribute("class", "border-team")
 
-    //         var parr0=document.createElement("p");
-    //         var parr1=document.createElement("p");
-    //         var parr2=document.createElement("p");
-    //         var parr3=document.createElement("p");
-    //         var parr4=document.createElement("p");
-    //         var parr5=document.createElement("p");
+            var parr0=document.createElement("p");
+            var parr1=document.createElement("p");
+            var parr2=document.createElement("p");
+            var parr3=document.createElement("p");
+            var parr4=document.createElement("p");
+            var parr5=document.createElement("p");
                 
-    //             parr1.innerHTML="<strong>Model: </strong>"+coches_model[num_att1];
-    //             parr2.innerHTML="<strong>Year: </strong>"+coches_year[num_att2];
-    //             parr3.innerHTML="<strong>Color: </strong>"+coches_color[num_att3];
-    //             parr4.innerHTML="<strong>Combustible: </strong>"+coches_combustible[num_att4];
-    //             parr5.innerHTML="<strong>Owner type: </strong>"+coches_owner[num_att4];
+                parr1.innerHTML="<strong>Model: </strong>"+coches_model[num_att1];
+                parr2.innerHTML="<strong>Year: </strong>"+coches_year[num_att2];
+                parr3.innerHTML="<strong>Color: </strong>"+coches_color[num_att3];
+                parr4.innerHTML="<strong>Combustible: </strong>"+coches_combustible[num_att4];
+                parr5.innerHTML="<strong>Owner type: </strong>"+coches_owner[num_att4];
                 
 
-    //         var div_dummies=document.getElementById("dummies");
-    //                 div_row.appendChild(div_col);
-    //                 div_col.appendChild(div_thumbnail);
-    //                 div_thumbnail.appendChild(img);
-    //                 div_thumbnail.appendChild(div_content);
-    //                 div_content.appendChild(h);
-    //                 div_content.appendChild(border_team);
-    //                 div_content.appendChild(parr1);
-    //                 div_content.appendChild(parr2);
-    //                 div_content.appendChild(parr3);
-    //                 div_content.appendChild(parr4);
-    //                 div_content.appendChild(parr5);
+            var div_dummies=document.getElementById("dummies");
+                    div_row.appendChild(div_col);
+                    div_col.appendChild(div_thumbnail);
+                    div_thumbnail.appendChild(img);
+                    div_thumbnail.appendChild(div_content);
+                    div_content.appendChild(h);
+                    div_content.appendChild(border_team);
+                    div_content.appendChild(parr1);
+                    div_content.appendChild(parr2);
+                    div_content.appendChild(parr3);
+                    div_content.appendChild(parr4);
+                    div_content.appendChild(parr5);
                     
-    //                 div_dummies.appendChild(div_row);
-    //     }
-    // });
+                    div_dummies.appendChild(div_row);
+        }
+    });
 
     $('#tableProducts').DataTable();
 
@@ -126,7 +126,7 @@ $(document).ready(function () {
         //     }      
         // }, false );
 
-        
+        //alert("entar");
         var word_wrotten=$(this).val();
         
         autocomplete(word_wrotten);
@@ -147,6 +147,9 @@ function btn_search(){
     var province = document.getElementById('province_home').value;
     var city = document.getElementById('city_home').value;
     var word_wrotten=document.getElementById('search_home').value;
+    localStorage.setItem("worldToFind", word_wrotten);
+    alert(localStorage.getItem('worldToFind'));
+    //exit;
    
     var data = {"province": province, "city": city, "word_wrotten":word_wrotten};
  
@@ -199,9 +202,10 @@ function autocomplete(word_wrotten){
              console.log(json[0].title);
              
              for (var i=0; i<json.length; i++) {
+                //alert('fgdfgdf');
                  // $("#datalist_search").append('<option value="" selected="selected">Select city</option>');
-                 $("#datalist_search").append("<option value='" + json[i].title + "'>" + json[i].title + "</option>");
-             // console.log(json[i]["title"]);
+                 jQuery("#datalist_search").append("<option value='" + json[i].title + "'>" + json[i].title + "</option>");
+              console.log(json[i]["title"]);
              }
 
     })

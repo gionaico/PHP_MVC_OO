@@ -1,11 +1,41 @@
 $(document).ready(function () {
 // $('#tab_comprar').DataTable();
+
+var worldToFind=localStorage.getItem('worldToFind');
+alert(worldToFind);
+var script=document.getElementById('script_api');
+var divApi=document.getElementById('results_api');
+script.setAttribute("src", "https://svcs.ebay.com/services/search/FindingService/v1?SECURITY-APPNAME=giovanny-Proyecto-PRD-9134e8f72-11cd8019&OPERATION-NAME=findItemsByKeywords&SERVICE-VERSION=1.0.0&RESPONSE-DATA-FORMAT=JSON&callback=_cb_findItemsByKeywords&REST-PAYLOAD&keywords="+worldToFind+" para coche&paginationInput.entriesPerPage=6&GLOBAL-ID=EBAY-ES&siteid=186");
+divApi.appendChild(script);
+
+
+
+
+
+
+
+
+
+	var containers_tabla=document.getElementsByClassName('tabla_basket1');
+
+	if (localStorage.getItem('productos_carrito') ) {
 		var json=localStorage.getItem('productos_carrito');
 		var json_cont2 = JSON.parse(json);
+	}
+
+
+
+	if ((json_cont2) && (json_cont2.length>0)) {
+		console.log("if");
+		var parrafo=document.getElementById('p_basket');
+		parrafo.style.display='none';
+		for (var i =0 ; i <containers_tabla.length; i++) {
+			containers_tabla[i].style.display='';
+		}
+
 		console.log(json_cont2);
 		var totalPagar=document.getElementById('totalPagar');
 		var pagoTotal=0;
-
 		var tabla_carrito=document.getElementById('body_comprar');
 		for (var i = 0; i < json_cont2.length; i++) {
 			var tr1=document.createElement("tr");
@@ -185,7 +215,10 @@ $(document).ready(function () {
 		   
     	});
 
-
+    }
+    // 	var totalPagar=document.getElementById('div_carrito');
+    	console.log("no if");
+     
 
 
 });
