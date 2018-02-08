@@ -57,6 +57,8 @@
 					    <li style="display: none;" id="li_logOut"><a href="#"    ><span class="glyphicon glyphicon-log-out"></span >Log-out</a></li>
 
 					    <li><a href="index.php?page=basket&view=basket" class="" ><span id="cont_prod" style="color: orange;"></span><span style="font-size: 23px;" class="glyphicon glyphicon-shopping-cart"></span>&nbsp;Basket</a></li>
+
+					    <li><a href="index.php?page=myAccount&view=myAccount" class="" ><span>&nbsp;prueba</span></a></li>
 					</ul>
 					<!-- 
 					<ul class="nav navbar-nav navbar-right">

@@ -2,7 +2,7 @@
 $path_DAO = $_SERVER['DOCUMENT_ROOT'] . '/proy_navid/ProyectoGio/';
     // include($path . "module/user/model/DAOUser.php");
     
-    include ($path_DAO . "model/connectProducts.php");
+    include ($path_DAO . "model/connect.php");
     // require_once ("model/connect.php");
     
     // session_start();
@@ -13,7 +13,7 @@ $path_DAO = $_SERVER['DOCUMENT_ROOT'] . '/proy_navid/ProyectoGio/';
 		function select_all_products(){
 			$sql = "SELECT * FROM products ORDER BY date_today DESC";
 			
-			$conexion = connect::con();
+			$conexion = connect::conProductos();
             $res = mysqli_query($conexion, $sql);
             connect::close($conexion);
             return $res;
@@ -48,7 +48,7 @@ $path_DAO = $_SERVER['DOCUMENT_ROOT'] . '/proy_navid/ProyectoGio/';
 				$sql = 'SELECT * FROM products WHERE province="'.$province.'" and city="'.$city.'"';
 			}
 
-			$conexion = connect::con();
+			$conexion = connect::conProductos();
             $res = mysqli_query($conexion, $sql);
             // $cant_filas=mysqli_num_rows($res);
             
@@ -76,7 +76,7 @@ $path_DAO = $_SERVER['DOCUMENT_ROOT'] . '/proy_navid/ProyectoGio/';
 		function product_details($id){
 			$sql = 'SELECT * FROM products WHERE cod_pro="'.$id.'"';
 			
-			$conexion = connect::con();
+			$conexion = connect::conProductos();
             $res = mysqli_query($conexion, $sql);
             connect::close($conexion);
             return $res;

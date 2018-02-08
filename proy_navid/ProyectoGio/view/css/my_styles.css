@@ -1,3 +1,9 @@
+.a_myAccount h3{
+    color: black;
+}
+.a_myAccount span{
+    color: #696969;
+}
 .infoInLogin{
  background-color: #BC1010;
     padding: 7px 10px;
@@ -13,8 +19,17 @@
 }
 .img_pro{
     width: 300px;
-    height: 250px;
+    height: 150px;
     
+}
+.img_myAccount{
+    width: 120px;
+    height: 90px;
+    
+    /*margin-top: 3px;  */
+    padding: 5px 5px;
+    /*margin-top: 11px; */   
+    /*position: absolute;*/
 }
 .my_btn_dark{
 background-color: #222;
@@ -244,6 +259,11 @@ a:hover, a:active {
 }
 .team-img:hover {
     background:#f39c12;
+    
+}
+
+.team-img2:hover {
+    background:#DCDCDC;
     
 }
 

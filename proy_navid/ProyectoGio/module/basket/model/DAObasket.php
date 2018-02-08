@@ -1,6 +1,6 @@
 <?php
 $path_validaphp = $_SERVER['DOCUMENT_ROOT'] . '/proy_navid/ProyectoGio/';    
-    include ($path_validaphp . "model/connectCompras.php");
+    include ($path_validaphp . "model/connect.php");
     class DAObasket{
 
   //   	function insertarPedido($array, $date){

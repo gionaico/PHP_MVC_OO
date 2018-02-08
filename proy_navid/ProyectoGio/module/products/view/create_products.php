@@ -50,7 +50,7 @@
                   </div>
 
                   <div class="form-group ">
-                    <label class="control-label" for="pbt">Publication Title</label>  
+                    <label class="control-label" for="pbt">Product Name</label>  
                     <input id="pbt" name="pbt" type="text" placeholder="EX: New Dishwasher"   class="form-control input-md color_input" required="" value="">
                     <span id="sp_pbt"></span>
                   </div>
