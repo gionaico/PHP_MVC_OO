@@ -1,8 +1,5 @@
-<br>
-<br>
-<br>
 
-<div class="aboutus-secktion paddingTB60">
+<div class="aboutus-secktion ">
     <div class="container">
         <div class="row">
                     <div class="col-md-5">

@@ -20,7 +20,8 @@ $path_controller = $_SERVER['DOCUMENT_ROOT'] . '/proy_navid/ProyectoGio/';
           'foto' => $row['avatar'],
           'price' => $row['price'],
           'total_price' => $row['total_price'],
-          'order_date' => $row['order_date']
+          'order_date' => $row['order_date'],
+          'description' => $row['description']
         );
         array_push($pedido, $datos_pedido);
       }
@@ -41,11 +42,12 @@ $path_controller = $_SERVER['DOCUMENT_ROOT'] . '/proy_navid/ProyectoGio/';
             $prod=array(
               'id_pedido' => $pedido2[$j]['id_pedido'],
               'cod_pro' => $pedido2[$j]['cod_pro'],
-              'titulo' => $row['title'],
-              'foto' => $row['avatar'],
+              'titulo' => $pedido2[$j]['titulo'],
+              'foto' => $pedido2[$j]['foto'],
               'price' => $pedido2[$j]['price'],
               'total_price' => $pedido2[$j]['total_price'],
-              'order_date' => $pedido2[$j]['order_date']
+              'order_date' => $pedido2[$j]['order_date'],
+              'description' => $pedido2[$j]['description']
             );
             array_push($a_new, $prod);
           }

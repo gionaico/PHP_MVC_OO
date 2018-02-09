@@ -1,40 +1,101 @@
-CREATE TABLE IF NOT EXISTS `usuario2` (
-`user` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
-`first_name` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
-`last_name` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
-`dni` varchar(9) COLLATE utf8_spanish_ci NOT NULL,
-`birthdate` varchar(10) COLLATE utf8_spanish_ci NOT NULL,
-`genere` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
-`country` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
-`address` varchar(200) COLLATE utf8_spanish_ci NOT NULL,
-`zip` int(5) NOT NULL,
-`phone` int(9) NOT NULL,
-`email` varchar(500) COLLATE utf8_spanish_ci NOT NULL,
-`password` varchar(500) COLLATE utf8_spanish_ci NOT NULL,
-`cmpy` varchar(200) COLLATE utf8_spanish_ci NOT NULL,
-
-`hobbies` varchar(200) COLLATE utf8_spanish_ci NOT NULL,
-
-PRIMARY KEY (`user`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_[...]
-
-
-
-INSERT INTO `usuario2` (`user`,`first_name`, `last_name`,`dni`,`birthdate`,`genere`, `country`,
- `address`, `zip`, `phone`, `email`, `password`, `cmpy`, `hobbies`) VALUES('gioando','gioando','gioando',
- '48986542S', '01/10/1989', 'Man', 18, 'ES', 'sssssssdddss', 54659, 654654654, 'ssss@sssss.ccc', 321654, 
- 'ACSA', 'natacion');
-
-
-
-
- -- TABLE PRODUCTS---------------------------------------------------------------------------------------
- -- phpMyAdmin SQL Dump
+-- phpMyAdmin SQL Dump
 -- version 4.6.5.2
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-01-2018 a las 13:12:09
+-- Tiempo de generación: 09-02-2018 a las 22:36:46
+-- Versión del servidor: 10.1.21-MariaDB
+-- Versión de PHP: 5.6.30
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Base de datos: `practica_1.0`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuario2`
+--
+
+CREATE TABLE `usuario2` (
+  `user` varchar(50) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `first_name` varchar(50) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `last_name` varchar(50) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `dni` varchar(9) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `birthdate` varchar(10) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `genere` varchar(20) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `country` varchar(100) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `address` varchar(200) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `zip` int(5) NOT NULL,
+  `phone` int(9) NOT NULL,
+  `email` varchar(500) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `password` varchar(500) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `cmpy` varchar(200) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `hobbies` varchar(200) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `user_type` tinyint(1) DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `usuario2`
+--
+
+INSERT INTO `usuario2` (`user`, `first_name`, `last_name`, `dni`, `birthdate`, `genere`, `country`, `address`, `zip`, `phone`, `email`, `password`, `cmpy`, `hobbies`, `user_type`) VALUES
+('ANASTASIA', 'SSSSSSSSS', 'DDDDDDD', '98798765A', '05/05/1999', 'Man', 'PORTUGAL', 'AAAAAAAAAAA', 6547, 654123654, 'AAAAAAAA@GGGGGGGGG.VVVVV', 'xcvzxv65656aaaa666A', 'AAAAAAAAAA', 'Trucks:', 0),
+('FFFFFFFFF', 'IAN', 'IAN', '98741565S', '05/05/1995', 'Man', 'PORTUGAL', 'IANON', 7777, 602240448, 'WWWWWW@PPPP.AAAA', 'ddddddddddd6565A', 'IANON', 'Motorbike:', 0),
+('gioando', 'gioando', 'gioando', '48986542S', '01/10/1989', 'Man', 'ES', 'sssssssdddss', 54659, 654654654, 'ssss@sssss.ccc', '321654', 'ACSA', 'natacion', 0),
+('GIOGIO', 'GIOGIO', 'GIOGIO', '20974308X', '05/05/1987', 'Man', 'PORTUGAL', 'AAAAAA', 6545, 951159357, 'AAAAAAAA@PLPLP.OIJ', '$2y$10$upQOozNA3rBDlifQBXr8VOrihFojNJ7NorGEQ.bod12McxaYLCx5a', 'QQQQQQQQQ', 'Motorbike:', 0),
+('GIOVANI', 'GIOGIO', 'GIONAS', '31982923C', '03/21/1984', 'Man', 'SPAIN', 'ALICANTE', 4689, 852159357, 'PEPE@UNEMAIL.COM', '$2y$10$SRtB01Ax.QnDujPrcFAokezY.jzCHuWB0g6BmP26xUNlp3Wq0HKby', 'UNACUQUIERA', 'Motorbike:', 1),
+('GOIOIOI', 'SOISOIS', 'SOJSJN', '95770846L', '05/14/1997', 'Man', 'SPAIN', 'PKLPLPL', 6547, 654654528, 'SDFJSDKFJ@DDD.BND', 'DFSF545a', 'SDFSPPL', 'Motorbike:', 0),
+('IANDO', 'IANDO', 'IANDO', '01998672H', '05/12/1981', 'Man', 'SPAIN', 'SDFGSFGDFGDFGDF', 6545, 951357456, 'PORPE@FGH.COJD', '$2y$10$BgDWM8WgHTpTdd0yJGT/tue2biQbr4PvITbNXA6mfuJgYSKyl1vRK', 'PROPROPRO', 'Trucks:', 0),
+('JUANLUIS', 'JUAN', 'PEREZ', '15824733C', '05/20/1980', 'Man', 'PORTUGAL', 'CALLECUBA', 8541, 951235745, 'GMC.ERC@GMAIL.COM', '$2y$10$XyIilJiV1oz/pKAtbRgBCORcdKtieLf4sZmddpFpIkz/qa7wqtaBe', 'ISWL', 'Trucks:', 0),
+('PEDRO', 'PEDRO', 'PEDRO', '32165454A', '05/05/1999', 'Man', 'SPAIN', 'AAAAAAAAAAA', 6547, 658974565, 'AAAAAAAAA@DDDDDDDDDD.CS', 'AAAAAAAAA5656a', 'SSSSSSS', 'Trucks:', 0),
+('SSSSSSSSS', 'AAAAAAAAAAAAAA', 'PPPPPPPPPPPP', '98765463A', '05/05/1999', 'Man', 'SPAIN', 'AAAAAAAAAAA', 6547, 654987987, 'AAAAAAAAAA@SSSSSSSSSS.CCCC', 'SSSSSSSSSS6564a', 'AAAAAAAAAAA', 'Motorbike:', 0);
+
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `usuario2`
+--
+ALTER TABLE `usuario2`
+  ADD PRIMARY KEY (`user`);
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+
+
+
+
+
+
+
+
+
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `products`
+--
+
+-- phpMyAdmin SQL Dump
+-- version 4.6.5.2
+-- https://www.phpmyadmin.net/
+--
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 09-02-2018 a las 22:25:04
 -- Versión del servidor: 10.1.21-MariaDB
 -- Versión de PHP: 5.6.30
 
@@ -58,10 +119,11 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `products` (
+  `cod_pro` int(11) NOT NULL,
   `user_name` varchar(100) NOT NULL,
   `title` varchar(100) NOT NULL,
   `country` varchar(45) DEFAULT NULL,
-  `province` varchar(45) DEFAULT NULL,
+  `province` varchar(45) DEFAULT 'NULL',
   `city` varchar(45) DEFAULT NULL,
   `address` varchar(200) DEFAULT NULL,
   `phone` int(15) DEFAULT NULL,
@@ -74,33 +136,34 @@ CREATE TABLE `products` (
   `combustible` varchar(50) DEFAULT NULL,
   `color` varchar(50) DEFAULT NULL,
   `avatar` char(150) NOT NULL,
-  `date_today` varchar(10) NOT NULL
+  `date_today` varchar(10) NOT NULL,
+  `price` decimal(8,2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `products`
 --
 
-INSERT INTO `products` (`user_name`, `title`, `country`, `province`, `city`, `address`, `phone`, `email`, `description`, `product_type`, `brand`, `model`, `year`, `combustible`, `color`, `avatar`, `date_today`) VALUES
-('DDDDDDDDDDDDDDDD', 'Sdfgsdgsdg', 'ES', '34', 'SALAMANQUINOS, LOS', 'sdklmfgklsdfngkln', 645654654, 'sdfsdf@dgdfg.cv', 'sdsssssssssssssssssssseeeeeeeeeee', 'Car spare parts', NULL, NULL, NULL, NULL, NULL, 'media/products/18819-11.png', '01.10.18'),
-('DOMINA', 'Kkkkkkkkkkkkkkk', 'ES', '37', 'SAELICES EL CHICO', 'dfgjknsdfgdkjfg', 654654654, 'dfgdsfg@fgdfgdf.sdfsdf', 'dfgdfgdfhfghfghfghgfhsdfsdfsdsssssssss', 'Car spare parts', NULL, NULL, NULL, NULL, NULL, 'media/products/default-potho.jpg', '01.10.18'),
-('FINAA', 'Assssssssssssssss', 'ES', '37', 'SALMORAL', 'dsfsfddddd', 654654654, 'sdfsdf@sdfgsdfg.ccc', 'sssssssssssssssssssssssssssssss', 'Car spare parts', NULL, NULL, NULL, NULL, NULL, 'media/products/default-potho.jpg', '01.10.18'),
-('GIOGIO', 'Dkfjgnksdfngkjn', 'ES', '34', 'ABARCA DE CAMPOS', 'safdnsdkfjgnkjn', 654654654, 'sdfsdf@dfsgsf.ccc', 'sdfsdfgklgfknhfghnhnjnknknkjbjhvjv', 'Car spare parts', NULL, NULL, NULL, NULL, NULL, 'media/products/30046-kokokooko.jpg', '01.09.18'),
-('IANDO', 'Perro en venta', 'ES', '01', 'VALDEGOVIA', 'sssssssss df4 8', 654654654, 'fgfgd@fghfg.coco', 'precio muy economico preguntalo ya corre sssssssssssssssssssssssss', 'Car spare parts', NULL, NULL, NULL, NULL, NULL, 'media/products/30046-kokokooko.jpg', '01.10.18'),
-('MARCOS', 'Sdfsdfsdfsdfsd', 'ES', '26', 'SAJAZARRA', 'asssssssssssssssssb', 987987145, 'sdffsdfsd@sdfsdf.ccc', 'zdfdfsdfsdf sssssssssssssssssssssssssssssssssssssss', 'Car spare parts', NULL, NULL, NULL, NULL, NULL, 'media/products/18880-11.png', '01.10.18'),
-('OOOOOOOOOOOOOOO', 'Koniniunuinui', 'ES', '34', 'ABARCA DE CAMPOS', 'sssssssssssss', 654654654, 'dsfsd@sdfgsdfg.ccx', 'sfdddddddddddddddddddddddddddd', 'Car spare parts', NULL, NULL, NULL, NULL, NULL, '', '01.10.18'),
-('PAPAPA', 'Dfsjbhkfbjhbfsbdfjh', 'ES', '24', 'OCEJA DE VALDELLORMA', 'asaaaaaaaaaaaaaaaaa', 989989985, 'sdfasdfs@sdfsdf.cccc', 'jdfhsdvfjvbjsdfvb bbbbbbbbbbbbbbbbbbbbbbbb', 'Car spare parts', NULL, NULL, NULL, NULL, NULL, 'media/products/default-potho.jpg', '01.10.18'),
-('PATRICIO', 'Sdfsdfjknkjnjk', 'ES', '37', 'ABUSEJO', 'sdfdsfsd454', 654654654, 'asdasdf@sdfsdf.csdsd', 'dfffffffffffffffffffffffffwsssssssssssssss', 'Car spare parts', NULL, NULL, NULL, NULL, NULL, 'media/products/8821-11.png', '01.10.18'),
-('POLEN', 'SDFBJSBFJBSDF', 'ES', '01', 'ABERASTURI', 'DDDDDDDDDDD', 654654654, 'DFGDFNGFGH@DFSGDFG.CKJKJ', 'DFFFFFFFFFFFFFFDFDDDDDDDRGGGGGGGGG', 'Car spare parts', NULL, NULL, NULL, NULL, NULL, 'media/products/18819-11.png', '01.10.18'),
-('POTOTO', 'Dfsfjkbfdbkj', 'ES', '34', 'SALAMANQUINOS, LOS', 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 989989987, 'aaaaaaaaaaaaa@dddddddddddd.cccc', 'jkgbsdfgbjkbdfgmkkkkkkkkkkkkkkkkkkkkkkkkkkkkk', 'Car spare parts', NULL, NULL, NULL, NULL, NULL, 'media/products/15444-11.png', '01.10.18'),
-('PPPPP', 'Hbjjhbjbjhbjhbjh', 'ES', '46', 'GANDIA', 'ssssssssssssss', 654654987, 'sdfsf@sdfsdf.cxv', 'dplfdplsdfp dfgmfkgm fgmkfkgm sdkmfgksg', 'Car spare parts', NULL, NULL, NULL, NULL, NULL, 'media/products/30046-kokokooko.jpg', '01.10.18'),
-('PPPPPPPPPP', 'Fdjklnfgnk', 'ES', '34', 'SALAMANQUINOS, LOS', 'dfsmdfklsdmfklm', 654654654, 'sdfgdfgdfgAA@sdfsdf.sdfsd', 'sdssssssssssddssssssssssssssssssssssssssss', 'Car spare parts', NULL, NULL, NULL, NULL, NULL, 'media/products/7312-11.png', '01.10.18'),
-('PRADO', 'KDFNGKLNDG', 'ES', '37', 'SAELICES EL CHICO', 'DKFJGNKJDFGJK', 654654654, 'sdfdfg@sgsdf.czxvc', 'sdffffffffffffffffffffffffffdddddddddd', 'Car spare parts', NULL, NULL, NULL, NULL, NULL, 'media/products/18819-11.png', '01.10.18'),
-('PROMETEO', 'Sdfgdkjfgbkdbgk', 'ES', '34', 'SALAMANQUINOS, LOS', 'sssssssssssssssssss', 987412365, 'dsfsdfsdf@sdfsdfsd.dddd', 'ssssssssssssssssssssssssssssssssssssssssssssssss', 'Car spare parts', NULL, NULL, NULL, NULL, NULL, 'media/products/default-potho.jpg', '01.10.18'),
-('PROMETEO2', 'Sdfdddddddddddddd', 'ES', '37', 'SAELICES EL CHICO', 'saddddddddddddddddddddd', 987987987, 'dsfsdf@fsdgdfg.ccc', 'dddddddddddddddddddddddddddddddd', 'Car spare parts', NULL, NULL, NULL, NULL, NULL, 'media/products/28072-11.png', '01.10.18'),
-('PROROR', 'Sdfssssssssss', 'ES', '34', 'SALAMANQUINOS, LOS', 'ssssssssssssssssssssss', 989989989, 'aaaaaaaaaaaa@dddddddddddd.cc', 'ssssssssssssssssssssssssssssssssss', 'Car spare parts', NULL, NULL, NULL, NULL, NULL, 'media/products/default-potho.jpg', '01.10.18'),
-('VICENT', 'Sdflkgnldkfngkldfnlk', 'ES', '37', 'SAELICES EL CHICO', 'fsdklgnldfngkldnfl', 654654654, 'sdfsdfsfd@sdfgdfg.sdfsdf', 'dffffffffffffffffffffffffffffffffffffffffffffffff', 'Car spare parts', NULL, NULL, NULL, NULL, NULL, 'media/products/18819-11.png', '01.10.18'),
-('VICENTICO', 'Sdfnsdkfjnksdjfnjksdfn', 'ES', '37', 'RACHITA, LA', 'jkbdfkjgbkgb', 989963145, 'sdsdfsdf@sdfgdfg.cccc', 'sdffffffffffffffffffffff cfffffffffffffffffffffff', 'Car spare parts', NULL, NULL, NULL, NULL, NULL, 'media/products/default-potho.jpg', '01.10.18');
+INSERT INTO `products` (`cod_pro`, `user_name`, `title`, `country`, `province`, `city`, `address`, `phone`, `email`, `description`, `product_type`, `brand`, `model`, `year`, `combustible`, `color`, `avatar`, `date_today`, `price`) VALUES
+(46, 'IANDO', 'Volante coche Honda', 'ES', '01', 'ABERASTURI', 'super 1', 951357456, 'ddd@gg.com', 'Lo vendo ya que me he comprado un coche nuevo', 'Car spare parts', NULL, NULL, NULL, NULL, NULL, 'media/products/10859-volante.png', '02.09.18', '90.00'),
+(47, 'IANDO', 'Volante de ford', 'ES', '46', 'VALENCIA', 'plonte 5', 654978741, 'aaaa@ggg.com', 'Volante seminuevo de ford focus', 'Car spare parts', NULL, NULL, NULL, NULL, NULL, 'media/products/23137-volante2.png', '02.09.18', '150.00'),
+(48, 'IANDO', 'Coche ford', 'ES', '46', 'VALENCIA', 'lorca 85', 951357852, 'pli@ddd.com', 'Coche 7 plazas seminuevo con ruedas nuevas', 'Car spare parts', NULL, NULL, NULL, NULL, NULL, 'media/products/31872-Toyota.png', '02.09.18', '7500.00'),
+(49, 'IANDO', 'Coche fiat', 'ES', '01', 'ABERASTURI', 'plol95', 987563145, 'ddd@sss.com', 'Lorem ipsum dolor sit amet consectetur adipisicing elit Tempore maxime', 'Car spare parts', NULL, NULL, NULL, NULL, NULL, 'media/products/31715-fiat.png', '02.09.18', '10000.00'),
+(50, 'IANDO', 'Coche ford', 'ES', '01', 'ABERASTURI', 'plomimo', 951357852, 'plomino@xxx.cpm', 'Lorem ipsum dolor sit amet consectetur adipisicing elit Tempore maxime', 'Car spare parts', NULL, NULL, NULL, NULL, NULL, 'media/products/29746-ford.png', '02.09.18', '18000.00'),
+(51, 'IANDO', 'Coche ford', 'ES', '01', 'ABERASTURI', 'renera85', 852357412, 'fff@ccc.com', 'fugone en venta con muy poca antiguedad', 'Car spare parts', NULL, NULL, NULL, NULL, NULL, 'media/products/8885-ford5.png', '02.09.18', '8000.00'),
+(52, 'IANDO', 'Coche ford focus', 'ES', '01', 'ABERASTURI', 'PLOMARESD 85', 951235774, 'OMIU@DDD.COM', 'ford focus con ruedas y espape nuevos', 'Car spare parts', NULL, NULL, NULL, NULL, NULL, 'media/products/7498-ford1.png', '02.09.18', '3500.00'),
+(53, 'IANDO', 'Coche ford scort', 'IS', 'NULL', NULL, 'promesa 85', 987456321, 'plomert@fff.vo', 'Ford scort con asientos nuevos ', 'Car spare parts', NULL, NULL, NULL, NULL, NULL, 'media/products/43-ford4.png', '02.09.18', '1500.00'),
+(54, 'IANDO', 'Asiento de piel ford', 'ES', '46', 'GANDIA', 'plorrr 85', 852469752, 'plor@fff.com', 'asento seminuevo de ford focus', 'Car spare parts', NULL, NULL, NULL, NULL, NULL, 'media/products/1849-asiento.png', '02.09.18', '180.00'),
+(55, 'IANDO', 'Asiento para nino', 'ES', '46', 'ONTINYENT', 'rotova 85', 963258741, 'ddddpl@fp.vf', 'Asiento para ninos mayores de 5 anos', 'Car spare parts', NULL, NULL, NULL, NULL, NULL, 'media/products/29849-asiento_boy.png', '02.09.18', '30.00'),
+(56, 'IANDO', 'Protector de asiento negro', 'ES', '46', 'XATIVA', 'polima 89', 852258852, 'plop@dd.com', 'Cubreasiento color negro muy comodo', 'Car spare parts', NULL, NULL, NULL, NULL, NULL, 'media/products/29534-asiento5.png', '02.09.18', '20.00'),
+(57, 'IANDO', 'Asientos delanteros', 'ES', '46', 'ONTINYENT', 'pronova 85', 963258741, 'plo@ddd.cvbn', 'Asiento delanteros de ford mondeo ', 'Car spare parts', NULL, NULL, NULL, NULL, NULL, 'media/products/13617-asiento5.png', '02.09.18', '250.00'),
+(58, 'IANDO', 'Asiento Bebe', 'ES', '46', 'VALENCIA', 'madri 56', 987654320, 'prtm@dfg.dd', 'Asiento de bebe para tesla 859', 'Car spare parts', NULL, NULL, NULL, NULL, NULL, 'media/products/22239-asiento9.png', '02.09.18', '500.00'),
+(59, 'IANDO', 'Cubreasiento', 'ES', '46', 'ONTINYENT', 'portillo 76', 951357986, 'pdks@cdw.cdq', 'Cubreasiento de plastico para asientos delanteros', 'Car spare parts', NULL, NULL, NULL, NULL, NULL, 'media/products/17430-cubre_asiento.png', '02.09.18', '15.99'),
+(60, 'IANDO', 'Cubreasiento', 'ES', '46', 'ONTINYENT', 'llorco 12', 745283987, 'loe@ddd.pop', 'Cubreasiento trasero de tela color negro', 'Car spare parts', NULL, NULL, NULL, NULL, NULL, 'media/products/24983-cubreasiento2.png', '02.09.18', '22.50'),
+(61, 'IANDO', 'Organizador para asiento', 'ES', '28', 'MADARCOS', 'malaga 4', 852369741, 'plos@gmail.com', 'Organizador de tela negro con  12 estancias', 'Car spare parts', NULL, NULL, NULL, NULL, NULL, 'media/products/24053-organizador_asiento.png', '02.09.18', '12.86'),
+(62, 'IANDO', 'Fundas asientos bmw serie 5', 'ES', '28', 'MADRID', 'madrid 987', 98765432, 'dron@gmail.com', 'Fundas de tela para asientos delanteros y traseros color gris y negro', 'Car spare parts', NULL, NULL, NULL, NULL, NULL, 'media/products/507-fundas-asientos-coche.png', '02.09.18', '59.75'),
+(63, 'IANDO', 'GPS con mapa europa del este', 'ES', '08', 'FALS', 'plenor 76', 672907163, 'fero@gmail.com', 'gps marca tomton actializado radio incorporada y sistema que detecta radares', 'Car spare parts', NULL, NULL, NULL, NULL, NULL, 'media/products/default-potho.jpg', '02.09.18', '250.00'),
+(64, 'IANDO', 'GPS Tomtom', 'ES', '46', 'XATIVA', 'xar 67', 856974569, 'froe@dd.ca', 'gps comprado hace dos anos con sistema radar y sensor de luz activo infrarrojos para asiento', 'Car spare parts', NULL, NULL, NULL, NULL, NULL, 'media/products/default-potho.jpg', '02.09.18', '354.68');
 
 --
 -- Índices para tablas volcadas
@@ -110,8 +173,161 @@ INSERT INTO `products` (`user_name`, `title`, `country`, `province`, `city`, `ad
 -- Indices de la tabla `products`
 --
 ALTER TABLE `products`
-  ADD PRIMARY KEY (`user_name`);
+  ADD PRIMARY KEY (`cod_pro`);
 
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `products`
+--
+ALTER TABLE `products`
+  MODIFY `cod_pro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+
+
+
+
+
+
+
+
+
+-- phpMyAdmin SQL Dump
+-- version 4.6.5.2
+-- https://www.phpmyadmin.net/
+--
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 09-02-2018 a las 22:35:30
+-- Versión del servidor: 10.1.21-MariaDB
+-- Versión de PHP: 5.6.30
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Base de datos: `practica_1.0`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `prod_comprados`
+--
+
+CREATE TABLE `prod_comprados` (
+  `id_pedido` int(11) NOT NULL COMMENT 'codigo pedido',
+  `cod_pro` int(11) NOT NULL COMMENT 'codigo producto',
+  `quantity` tinyint(4) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `prod_comprados`
+--
+
+INSERT INTO `prod_comprados` (`id_pedido`, `cod_pro`, `quantity`) VALUES
+(60, 46, 3),
+(60, 49, 1),
+(60, 55, 1),
+(60, 60, 1),
+(60, 62, 1),
+(61, 52, 1),
+(61, 54, 1),
+(61, 58, 1),
+(61, 59, 5),
+(61, 61, 2),
+(61, 60, 1),
+(61, 63, 1),
+(62, 47, 1),
+(62, 56, 5),
+(62, 55, 1),
+(62, 54, 1);
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+
+
+
+
+
+
+
+
+-- phpMyAdmin SQL Dump
+-- version 4.6.5.2
+-- https://www.phpmyadmin.net/
+--
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 09-02-2018 a las 22:36:00
+-- Versión del servidor: 10.1.21-MariaDB
+-- Versión de PHP: 5.6.30
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Base de datos: `practica_1.0`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `pedidos`
+--
+
+CREATE TABLE `pedidos` (
+  `id_pedido` int(11) NOT NULL COMMENT 'Clave primaria',
+  `user` varchar(20) NOT NULL COMMENT 'usuario comprador',
+  `order_date` varchar(9) NOT NULL COMMENT 'Fecha de la compra',
+  `total_price` decimal(8,2) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `pedidos`
+--
+
+INSERT INTO `pedidos` (`id_pedido`, `user`, `order_date`, `total_price`) VALUES
+(60, 'IANDO', '02.09.18', '10382.25'),
+(61, 'GIOVANI', '02.09.18', '4558.17'),
+(62, 'GIOVANI', '02.09.18', '460.00');
+
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `pedidos`
+--
+ALTER TABLE `pedidos`
+  ADD PRIMARY KEY (`id_pedido`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `pedidos`
+--
+ALTER TABLE `pedidos`
+  MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Clave primaria', AUTO_INCREMENT=63;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

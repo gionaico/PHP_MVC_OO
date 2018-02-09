@@ -73,7 +73,7 @@ var user_type=sessionStorage.getItem('user_type');
 
 
 
-    $('#li_logOut').click(function() {
+    $('#li_logOut2').click(function() {
 
         sessionStorage.clear();
         var div_bienvenida=document.getElementById('div_bienvenida');
@@ -84,13 +84,15 @@ var user_type=sessionStorage.getItem('user_type');
 
                 var li_singIn=document.getElementById('li_singIn');
                 var li_login=document.getElementById('li_login');
-                var li_logOut=document.getElementById('li_logOut');
+                var li_logOut=document.getElementById('li_logOut2');
                     li_singIn.style.display = 'block';
                     li_login.style.display = 'block';
                     li_logOut.style.display = 'none';
                     var redirect=document.URL;
                 window.location.href =redirect;
     });
+
+    
 
 });//end document.ready
 

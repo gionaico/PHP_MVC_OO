@@ -1,7 +1,5 @@
 <script src="module/login/view/js/login.js"></script>
-<br>
-<br>
-<br>
+
 
 
 <div class="modal fade"  id="modal_login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2" hidden>

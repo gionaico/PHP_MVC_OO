@@ -1,5 +1,12 @@
 
 $(document).ready(function () {
+	$(".efectoActive").mouseover(function(){
+		
+		$(this).attr("style", "background:#ffb901;")
+    });
+    $(".efectoActive").mouseout(function(){
+		$(this).attr("style", "")
+    });
 	if (localStorage.getItem('productos_carrito')) {
 		var carrito=localStorage.getItem('productos_carrito');
 		var json = JSON.parse(carrito);

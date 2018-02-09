@@ -27,6 +27,9 @@
                 var div_thumbnail=document.createElement("div");
                 div_thumbnail.setAttribute("class", "team-img thumbnail v_pro");
                 
+                var div_img=document.createElement("div");
+                div_img.setAttribute("class", "div_imagen");
+
 
                 var img=document.createElement("img");
                     img.setAttribute("src", json[i].avatar);
@@ -77,7 +80,9 @@
                     parr7.appendChild(button2);
                     div_row.appendChild(div_col);
                     div_col.appendChild(div_thumbnail);
-                    div_thumbnail.appendChild(img);
+                    div_thumbnail.appendChild(div_img);
+                    div_img.appendChild(img);
+
                     div_thumbnail.appendChild(div_content);
                     div_content.appendChild(h);
                     div_content.appendChild(border_team);

@@ -29,7 +29,7 @@
 			</div>
 		</a>
 
-		<a href="#" title="" class="a_myAccount">
+		<a href="index.php?page=myAccount&view=EditPerfile" title="" class="a_myAccount">
 			<div class="col-md-4">
 				<div class="team-img2 thumbnail"> <!-- team-img hace el hoover -->
 					<div class="row">
@@ -40,7 +40,7 @@
                 	</div>    
                 	<div class="col-md-offset-1 col-md-7">                		
 	                    <div class="">
-	                        <h3>Your Orders</h3>
+	                        <h3>Edit Perfile</h3>
 	                        <div>                        	
 	                            <span class="">List of your orders</span>
 	                        </div>

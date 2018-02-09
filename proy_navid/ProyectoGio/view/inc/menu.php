@@ -41,11 +41,11 @@
 						<li class="dropdown">
 				          	<a href="#"   class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Lenguage<span class="caret"></span></a>
 				         	<ul class="dropdown-menu">
-					            <li><a href="#" title=""   id="s_es"><img class="lenguage_b" src="view/img/multilenguage/spain.png" ></a></li>
+					            <li><a href="#" title="" class="efectoActive"  id="s_es"><img class="lenguage_b " src="view/img/multilenguage/spain.png" ></a></li>
 					            	<!-- <li role="separator" class="divider"></li> -->
-					            <li><a href="#" title=""  id="s_ca"><img class="lenguage_b" src="view/img/multilenguage/catalonia.png" alt="" ></a></li>
+					            <li><a href="#" title="" class="efectoActive" id="s_ca"><img class="lenguage_b " src="view/img/multilenguage/catalonia.png" alt="" ></a></li>
 					            	<!-- <li role="separator" class="divider"></li> -->
-					            <li><a href="#" title=""   id="s_en"><img class="lenguage_b" src="view/img/multilenguage/uk.png" alt="" ></a></li>
+					            <li><a href="#" title="" class="efectoActive"  id="s_en"><img class="lenguage_b " src="view/img/multilenguage/uk.png" alt="" ></a></li>
 					            <!-- <li role="separator" class="divider"></li> -->
 				          	</ul>
 				        </li>
@@ -54,7 +54,16 @@
 					    
 					    <li id="li_login"><a href="#"   data-toggle="modal" data-target="#modal_login"><span class="glyphicon glyphicon-log-in"></span > Login</a></li>
 
-					    <li style="display: none;" id="li_logOut"><a href="#"    ><span class="glyphicon glyphicon-log-out"></span >Log-out</a></li>
+					    <!-- <li style="display: none;" id="li_logOut"><a href="#"    ><span class="glyphicon glyphicon-log-out"></span >Log-out</a></li> -->
+
+					    <li class="dropdown" id="li_logOut" style="display: none;" > <!-- style="display: none;" -->
+				          	<a href="#"   class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> My Account<span class="caret"></span></a>
+				         	<ul class="dropdown-menu">
+					            <li><a href="index.php?page=myAccount&view=myAccount" class="efectoActive active"   id=""><span>Account</span></a></li>
+					            <li><a href="index.php?page=myAccount&view=yourOrders" class="efectoActive"   id=""><span>My Orders</span></a></li>	
+					            <li><a href="#" class="efectoActive"   id="li_logOut2"><span>Log-out</span></a></li>
+				          	</ul>
+				        </li>
 
 					    <li><a href="index.php?page=basket&view=basket" class="" ><span id="cont_prod" style="color: orange;"></span><span style="font-size: 23px;" class="glyphicon glyphicon-shopping-cart"></span>&nbsp;Basket</a></li>
 

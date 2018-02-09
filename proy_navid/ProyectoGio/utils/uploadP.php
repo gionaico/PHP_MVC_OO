@@ -31,9 +31,9 @@ function upload_filesP() {
     if($_FILES['file']['error'] !== 0) { //Assignarem a l'us default-avatar
         $error .=  'Archivo no subido correctamente <br>';
     }
-    
+    // Lorem ipsum dolor sit amet consectetur adipisicing elit Tempore maxime
     ////////////////////////////////////////////////////////////////////////////
-    if ($_FILES['file']['size'] > 100000 ){
+    if ($_FILES['file']['size'] > 125829120 ){
         $error .=  "Large File Size <br>";
     }
 
@@ -55,7 +55,7 @@ function upload_filesP() {
         }
         ////////////////////////////////////////////////////////////////////////////
         list($width, $height, $type, $attr) = @getimagesize($_FILES['file']['tmp_name']);
-        if ($width > 2000 || $height > 2000){
+        if ($width > 20000 || $height > 20000){
             $error .=   "Maximum width and height exceeded. Please upload images below 100x100 px size <br>";
         }
     }   

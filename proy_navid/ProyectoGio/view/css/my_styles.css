@@ -1,3 +1,7 @@
+.prodToDetaills{
+    margin-left: 140px;
+}
+
 /*MyAccount-------------------------------------------------------------------------*/
 .a_myAccount h3{
     color: black;
@@ -46,8 +50,9 @@ border-bottom: 1px solid #b5aeb5;
 
 }
 .img_pro{
+    margin-left: 20px;
     width: 300px;
-    height: 150px;
+    height: 230px;
     
 }
 .img_myAccount{

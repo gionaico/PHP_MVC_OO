@@ -3,7 +3,7 @@
     
        
 <div class="container">
-	<div class="row mi_slider">
+	<div class="row ">
         <div class="carousel slide"  id="carousel-1">
         	
         	<ol class="carousel-indicators">

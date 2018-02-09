@@ -1,7 +1,36 @@
 <script type="text/javascript" src="module/myAccount/view/js/yourOrders.js"></script>
 
 <div class="container" id="TusPedidos">
-	<div class="panel panel-default aboutus-text">
+	<div class="row">
+          <div class="col-md-5">
+                <h2 class="aboutus-title">Your Orders</h2>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<!-- <div class="panel panel-default aboutus-text">
 	  
 		<div class="panel-heading">
 			<div class=" row" >
@@ -22,7 +51,7 @@
 					
 					<div class="col-md-12">
 						<div class="col-md-9">
-						 <!-- ........................Para cada producto ...............................................-->
+						 <!- ........................Para cada producto ...............................................->
 							<div class="row">
 								<div class="col-md-3 " >
 									<a href="#" class="thumbnail">
@@ -44,7 +73,7 @@
 							<div class="row">
 								<div class="col-md-3 " >
 									<a href="#" class="thumbnail">
-										<img src="media/default-avatar.png"  > <!-- text-align:left; -->
+										<img src="media/default-avatar.png"  > <!- text-align:left; ->
 									</a>
 								</div>
 
@@ -58,7 +87,7 @@
 									</div>	
 								</div>
 							</div>
-						<!-- ........................Para cada producto ...............................................-->
+						<!- ........................Para cada producto ...............................................->
 						</div>
 
 						<div class="col-md-3 " style=" text-align:center; ">					
@@ -75,5 +104,4 @@
 				
 			</div>
 	 	</div>
-	</div>
-</div>
+	</div> -->
