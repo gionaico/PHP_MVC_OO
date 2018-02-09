@@ -1,9 +1,37 @@
+/*MyAccount-------------------------------------------------------------------------*/
 .a_myAccount h3{
     color: black;
+}
+.img_ViewPedido{
+    width: 100px;
 }
 .a_myAccount span{
     color: #696969;
 }
+
+.divPedPrinc{
+    border-radius: 10px 10px 10px 10px;
+    -moz-border-radius: 10px 10px 10px 10px;
+    -webkit-border-radius: 10px 10px 10px 10px;
+    border: 1px solid #b5aeb5;
+}
+.divRowPedido1{
+     height: 70px;
+     border-radius: 10px 10px 0px 0px;
+-moz-border-radius: 10px 10px 0px 0px;
+-webkit-border-radius: 10px 10px 0px 0px;
+/*border: 1px solid #b5aeb5;*/
+border-bottom: 1px solid #b5aeb5;
+    background: #F5F5F5;
+     /*border-bottom: solid #b5aeb5;*/
+
+}
+
+/*.divRowPedido2{
+    height: 180px;
+}*/
+
+
 .infoInLogin{
  background-color: #BC1010;
     padding: 7px 10px;

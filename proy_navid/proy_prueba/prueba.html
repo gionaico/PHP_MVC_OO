@@ -23,7 +23,7 @@
   </head>
   <body>
     <!-- <h1>eBay Search Results</h1> -->
-    <div id="results_api">
+    <div id="results_api" style=''>
     <script async defer src="https://svcs.ebay.com/services/search/FindingService/v1?SECURITY-APPNAME=giovanny-Proyecto-PRD-9134e8f72-11cd8019&OPERATION-NAME=findItemsByKeywords&SERVICE-VERSION=1.0.0&RESPONSE-DATA-FORMAT=JSON&callback=_cb_findItemsByKeywords&REST-PAYLOAD&keywords=gps &paginationInput.entriesPerPage=6&GLOBAL-ID=EBAY-ES&siteid=186"></script>
       
     </div>
@@ -67,6 +67,22 @@
         document.getElementById("results_api").innerHTML = html.join(""); 
       } 
         </script>
+
+
+        <div id="prueba">
+          
+        </div>
+
+        <script type="text/javascript">
+           var div=document.getElementById('prueba');
+           div.innerHTML="<div style='background:  yellow;'><strong>hola:</strong>frghbdfjhbd jbhgbdjgbjhdbg</div>";
+           //div.appendChild(parr1);
+        </script>
+
+
+
+      
+
     </body>
   </html>
 
