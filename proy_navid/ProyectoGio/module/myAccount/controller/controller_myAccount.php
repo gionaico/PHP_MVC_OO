@@ -2,7 +2,7 @@
 @session_start();
 $path_controller = $_SERVER['DOCUMENT_ROOT'] . '/proy_navid/ProyectoGio/';    
     include ($path_controller . "module/myAccount/model/DAOmyAccount.php");
-		
+
 	switch ($_GET['type']) {
 
 		case 'pedidos'://llega de basket.js
@@ -60,7 +60,18 @@ $path_controller = $_SERVER['DOCUMENT_ROOT'] . '/proy_navid/ProyectoGio/';
       exit;
       
 
-			break;
+			
+
+    case 'EditPerfile':
+      $user= $_POST["usuarioLogeado"];
+      $daoMyAccount = new DAOmyAccount();
+      $rdo = $daoMyAccount->UserDetails($user);
+      // $res=$rdo->fetch_assoc();
+      
+      echo json_encode($rdo->fetch_assoc());
+      exit;
+
+      break;
 
 		default:
 			# code...

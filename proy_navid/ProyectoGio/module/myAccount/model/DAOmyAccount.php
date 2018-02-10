@@ -16,5 +16,16 @@ $path_validaphp = $_SERVER['DOCUMENT_ROOT'] . '/proy_navid/ProyectoGio/';
             return $res;
     	}
 
-    }
+
+        function UserDetails($user){
+            $sql="SELECT * FROM usuario2 WHERE user='".$user."'";
+            $conexion = connect::con();
+            $res = mysqli_query($conexion, $sql);
+            connect::close($conexion);
+            return $res;
+        }
+
+
+
+    }// end clase DAO
  ?>
