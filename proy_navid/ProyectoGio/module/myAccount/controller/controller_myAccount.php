@@ -63,14 +63,45 @@ $path_controller = $_SERVER['DOCUMENT_ROOT'] . '/proy_navid/ProyectoGio/';
 			
 
     case 'EditPerfile':
-      $user= $_POST["usuarioLogeado"];
-      $daoMyAccount = new DAOmyAccount();
-      $rdo = $daoMyAccount->UserDetails($user);
-      // $res=$rdo->fetch_assoc();
-      
-      echo json_encode($rdo->fetch_assoc());
-      exit;
+        $user= $_POST["usuarioLogeado"];
+        $daoMyAccount = new DAOmyAccount();
+        $rdo = $daoMyAccount->UserDetails($user);
+        // $res=$rdo->fetch_assoc();      
+        echo json_encode($rdo->fetch_assoc());
+        exit;
 
+        break;
+
+    case 'ChangeName':
+        $dataJSON = json_decode($_POST["data"], true);
+        $daoMyAccount = new DAOmyAccount();
+        $rdo = $daoMyAccount->ChangeName($dataJSON);
+        if ($rdo) {
+          $msn="Your name and surname have been edited";
+        }else{
+          $msn="ERROR";
+        }
+        echo $msn;
+        exit;
+      // echo json_encode($dataJSON);
+
+        exit;
+      break;
+
+    case 'ChangeEmail':
+        $dataJSON = json_decode($_POST["data"], true);        
+        $daoMyAccount = new DAOmyAccount();
+        $rdo = $daoMyAccount->ChangeEmail($dataJSON);
+        if ($rdo) {
+          $msn="Your Email have been edited";
+        }else{
+          $msn="ERROR";
+        }
+        echo $msn;
+        exit;
+      // echo json_encode($dataJSON);
+
+        exit;
       break;
 
 		default:
