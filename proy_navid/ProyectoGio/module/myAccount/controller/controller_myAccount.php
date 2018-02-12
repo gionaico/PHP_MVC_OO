@@ -104,6 +104,40 @@ $path_controller = $_SERVER['DOCUMENT_ROOT'] . '/proy_navid/ProyectoGio/';
         exit;
       break;
 
+    case 'ChangePass':
+      $dataJSON = json_decode($_POST["data"], true);        
+      $daoMyAccount = new DAOmyAccount();
+       $rdo = $daoMyAccount->ChangePass($dataJSON);
+       
+       if (!$rdo) {
+        $msn="Incorrect Password";
+           echo (false);
+           exit;
+       }else{
+        $msn="Your Password has been changed";    
+          echo json_encode($msn);
+            exit;
+       }
+
+      break;
+
+    case 'ChangePhone':
+        $dataJSON = json_decode($_POST["data"], true);        
+        $daoMyAccount = new DAOmyAccount();
+        $rdo = $daoMyAccount->ChangePhone($dataJSON);
+
+        if ($rdo) {
+          $msn="Your Phone have been edited";
+        }else{
+          $msn="ERROR";
+        }
+        echo $msn;
+        exit;
+      // echo json_encode($dataJSON);
+
+        exit;
+      break;
+
 		default:
 			# code...
 			break;

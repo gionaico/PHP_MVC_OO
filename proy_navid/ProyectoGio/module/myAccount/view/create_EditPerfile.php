@@ -106,24 +106,23 @@
 	
 
 
-			<div class="col-md-offset-3 col-md-6 " id="divPass" style="">						
+			<div class="col-md-offset-3 col-md-6 " id="divPass" style="display:none">						
 				<div class="list-group">
-					  <div href="#" class="list-group-item" style="height: 400px;">					  	
-						  	<p>If you want to change the password associated with your Us as customer account, you may do so below. Make sure that you click the Save Changes button when you have finished. <br><br>Format:<br>- Min 1 letter mayus (A-Z)<br>- Min 1 letter minus (a-z) <br>- Min 1 numbrer <br>- Min 1 strage caracter ( -, +, _) </p>
+					  <div href="#" class="list-group-item" style="height: 430px;">					  	
+						  	<p>If you want to change the password associated with us as customer account, you may do so below. Make sure that you click the Save Changes button when you have finished. <br><br>Format:<br>- Min 1 letter mayus (A-Z)<br>- Min 1 letter minus (a-z) <br>- Min 1 numbrer <br>- Min 1 strage caracter ( -, +, _) </p>
 
 						  	<br>
 						  	<div class="row">
 						  		<div class="col-md-5">
 								  	<strong>Current password:</strong>
 								  	<input type="password" id="current_pass" name="">
-								  	<span id="sp_current_pass"></span>
-						  			
+								  	<span id="sp_current_pass"></span>						  			
 						  		</div>
 
 						  		<div class="col-md-5">
 						  			<strong>New password</strong>
 								  	<input type="password" id="new_pass" name="">
-								  	<span class="sp_new_pass"></span>
+								  	<span class="sp_new_pass" id="sp_new_pass"></span>
 						  		</div>
 						  	</div>
 					  		<br>
@@ -143,7 +142,21 @@
 				  </div>
 			</div>
 
+			
 
+			<div class="col-md-offset-3 col-md-6 " id="divEdPhone" style="display:none">				
+				<div class="list-group">
+					  <div href="#" class="list-group-item" style="height: 210px;">					  	
+						  	<p>If you want to change the name associated with your Us as customer account, you may do so below. Make sure that you click the Save Changes button when you have finished.</p>
+						  	<br>
+						  	<strong>New number phone:</strong>
+						  	<input type="" id="new_Phone" name="">
+						  	<span id="sp_new_Phone"></span>				  			
+					  		<br><br>					  						  	
+					  		<button id="savePhone" class="btn btn-warning" style="color:black; border-color: black;">Save Changes</button>					  	
+					  </div>
+				  </div>
+			</div>
 
 
 	</div>
