@@ -20,6 +20,16 @@ $path_DAO = $_SERVER['DOCUMENT_ROOT'] . '/proy_navid/ProyectoGio/';
 		}
 		/*-----------------------------------------------------------------------------------------*/
         /*-----------------------------------------------------------------------------------------*/
+		function all_productsLimit8(){
+			$sql = "SELECT * FROM products ORDER BY date_today DESC LIMIT 9";
+			
+			$conexion = connect::conProductos();
+            $res = mysqli_query($conexion, $sql);
+            connect::close($conexion);
+            return $res;
+		}
+		/*-----------------------------------------------------------------------------------------*/
+        /*-----------------------------------------------------------------------------------------*/
 		function Search($data){
 			$province=$data['province'];
 			$city=$data['city'];

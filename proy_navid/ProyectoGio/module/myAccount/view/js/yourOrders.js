@@ -36,6 +36,8 @@ $(document).ready(function () {
 
     if ((typeof(usuarioLogeado) == "undefined") || (usuarioLogeado == null)) {
         console.log("no logueado");
+        redirect="http://localhost/proy_navid/ProyectoGio/index.php";
+        window.location.href =redirect;
     }else{
         
         $.post('module/myAccount/controller/controller_myAccount.php?type=pedidos',

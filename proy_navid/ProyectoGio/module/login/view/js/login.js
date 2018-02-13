@@ -89,6 +89,10 @@ var user_type=sessionStorage.getItem('user_type');
                     li_login.style.display = 'block';
                     li_logOut.style.display = 'none';
                     var redirect=document.URL;
+                    if ((redirect=="http://localhost/proy_navid/ProyectoGio/index.php?page=myAccount&view=yourOrders") || (redirect=="http://localhost/proy_navid/ProyectoGio/index.php?page=myAccount&view=EditPerfile") ||(redirect=="http://localhost/proy_navid/ProyectoGio/index.php?page=myAccount&view=myAccount")) {
+                        redirect="http://localhost/proy_navid/ProyectoGio/index.php";
+                    }
+                    console.log(redirect);
                 window.location.href =redirect;
     });
 
