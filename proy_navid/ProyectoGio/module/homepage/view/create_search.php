@@ -93,32 +93,6 @@
                 <div class="form-group ">
                     <p><strong>email:&nbsp;&nbsp;</strong><i id="email"></i></p>
                 </div>
-
-                <div class="form-group depend_prodType">
-                    <p><strong>brand:&nbsp;&nbsp;</strong><i id="brand"></i></p>
-                </div>
-
-                <div class="form-group depend_prodType">
-                    <p><strong>model:&nbsp;&nbsp;</strong><i id="model"></i></p>
-                </div>
-
-                <div class="form-group depend_prodType">
-                    <p><strong>year:&nbsp;&nbsp;</strong><i id="year"></i></p>
-                </div>
-
-                <div class="form-group depend_prodType">
-                    <p><strong>combustible:&nbsp;&nbsp;</strong><i id="combustible"></i></p>
-                </div>
-
-                <div class="form-group depend_prodType">
-                    <p><strong>color:&nbsp;&nbsp;</strong><i id="color"></i></p>
-                </div>
-
-
-
-               
-                
-
                 
             </div>
 

@@ -56,12 +56,16 @@
                     button.setAttribute("id", json[i].cod_pro);
                     button.setAttribute("price", json[i].price);
                     button.setAttribute("title", json[i].title); 
-                    button.setAttribute("class", "btn btn-primary prodToBasket");
+                    button.setAttribute("class", "btn btn-primary col-md-12 prodToBasket btnDetaills2");
                 var button2=document.createElement("button");
                     button2.setAttribute("name", json[i].cod_pro); 
-                    button2.setAttribute("class", "btn btn-warning prodToDetaills"); 
+                    button2.setAttribute("class", "btn btn-warning prodToDetaills col-md-12 btnDetaills2"); 
                     button2.setAttribute("data-toggle", "modal"); 
                     button2.setAttribute("data-target", "#modal_productsDetails");
+
+                var button3=document.createElement("button");
+                    button3.setAttribute("class", "btn btn-success col-md-12 allDeta btnDetaills2");
+                    button3.setAttribute("id", json[i].cod_pro);
         //             <p>
         //   <a href="#" class="btn btn-primary" role="button">Botón</a>
         //   <a href="#" class="btn btn-default" role="button">Botón</a>
@@ -74,10 +78,12 @@
                     parr6.innerHTML="<strong>Price: </strong>"+json[i].price+"<strong> €</strong>";
                     //parr7.innerHTML="<button id='"+json[i].cod_pro+"' class='btn btn-primary prodToBasket' type='button'>Add to <span class='glyphicon glyphicon-shopping-cart'></span>    </button>";
                     button.innerHTML="Add to <span class='glyphicon glyphicon-shopping-cart'></span>";
-                    button2.innerHTML="Details <span class='glyphicon glyphicon-eye-open'></span>  ";
+                    button2.innerHTML="Quiq details <span class='glyphicon glyphicon-eye-open'></span>  ";
+                    button3.innerHTML="All Details <span class='glyphicon glyphicon-eye-open'></span>  ";
 
                     parr7.appendChild(button);
                     parr7.appendChild(button2);
+                    parr7.appendChild(button3);
                     div_row.appendChild(div_col);
                     div_col.appendChild(div_thumbnail);
                     div_thumbnail.appendChild(div_img);
@@ -103,6 +109,13 @@
              div_resultado.appendChild(div_row);   
             }
         }
+
+        $('.allDeta').click(function() {
+            var id = this.getAttribute('id');
+            localStorage.setItem("productoSeleccionado", id);
+            // alert(id);
+            window.location.href="http://localhost/proy_navid/ProyectoGio/index.php?page=homepage&view=product";
+        });
         /*AGREGAR AL CARRITO-------------------------------------------------------*/
         $('.prodToBasket').click(function(){
             var id = this.getAttribute('id');
@@ -218,14 +231,6 @@
                 $("#address").html(json_p['address']);
                 $("#phone").html(json_p['phone']);
                 $("#email").html(json_p['email']);
-                $("#brand").html(json_p['brand']);
-                $("#model").html(json_p['model']);
-                $("#year").html(json_p['year']);
-                $("#combustible").html(json_p['combustible']);
-                $("#color").html(json_p['color']);
-
-
-             
                   
                 }).fail(function() {
                     alert( "recepcion de datos fallida en boton detalles producto" );

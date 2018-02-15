@@ -90,6 +90,15 @@
 </div>
 
 
+
+
+
+
+<div class="form-group ">
+    <div class="container paddingTB60" id="dummies">
+        
+    </div>
+</div>
 <div class="form-group ">
     
     <div class="container">
@@ -146,15 +155,6 @@
                 </table>
             </div>
         </div>
-        
-    </div>
-</div>
-
-
-
-
-<div class="form-group ">
-    <div class="container paddingTB60" id="dummies">
         
     </div>
 </div>

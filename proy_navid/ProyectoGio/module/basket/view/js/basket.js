@@ -2,7 +2,7 @@ $(document).ready(function () {
 // $('#tab_comprar').DataTable();
 
 var worldToFind=localStorage.getItem('worldToFind');
-alert(worldToFind);
+//alert(worldToFind);
 var script=document.getElementById('script_api');
 var divApi=document.getElementById('results_api');
 script.setAttribute("src", "https://svcs.ebay.com/services/search/FindingService/v1?SECURITY-APPNAME=giovanny-Proyecto-PRD-9134e8f72-11cd8019&OPERATION-NAME=findItemsByKeywords&SERVICE-VERSION=1.0.0&RESPONSE-DATA-FORMAT=JSON&callback=_cb_findItemsByKeywords&REST-PAYLOAD&keywords="+worldToFind+" para coche&paginationInput.entriesPerPage=6&GLOBAL-ID=EBAY-ES&siteid=186");

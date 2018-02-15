@@ -65,7 +65,37 @@
                  break;
 
             case 'btn_search':
-               
+    //            function send_mailgun($email){
+    //     $config = array();
+    //     $config['api_key'] = "key-4af7c020fe32b5c88c0c034adafc5378"; //API Key
+    //     $config['api_url'] = "https://api.mailgun.net/v2/sandbox4c1cb4d3fb9146438f1411d073994e1d.mailgun.org/messages"; //API Base URL
+
+    //     $message = array();
+    //     $message['from'] = "giogio@gmail.com";
+    //     $message['to'] = $email;
+    //     $message['h:Reply-To'] = "giogio@gmail.com";
+    //     $message['subject'] = "Hello, this is a test";
+    //     $message['html'] = '<strong>knfgkjnkjdbfgkjb</strong>Hello ' . $email . ',</br></br> This is a test</br><div><img src="http://www.coordinadora.com/wp-content/uploads/sidebar_usuario-corporativo.png" alt="">
+            
+    //     </div>';
+     
+    //     $ch = curl_init();
+    //     curl_setopt($ch, CURLOPT_URL, $config['api_url']);
+    //     curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
+    //     curl_setopt($ch, CURLOPT_USERPWD, "api:{$config['api_key']}");
+    //     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    //     curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10);
+    //     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+    //     curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+    //     curl_setopt($ch, CURLOPT_POST, true); 
+    //     curl_setopt($ch, CURLOPT_POSTFIELDS,$message);
+    //     $result = curl_exec($ch);
+    //     curl_close($ch);
+    //     return $result;
+    // }
+    
+    // $jjjson = send_mailgun('gmc.yanez@gmail.com');
+
                     $data_prod = json_decode($_POST["data_prod"], true);//convierte en un array asociativo
             
                     $daoproduct = new DAOProducts();
@@ -130,6 +160,18 @@
                         );
                         array_push($All_productos, $producto); 
                     }
+                    echo json_encode($All_productos);//pasa el array que viene de DAO
+                    exit;
+               
+                 //echo $_POST['word_wrotten'];
+                 break;
+
+            case 'vistaProducto':
+                    $data = json_decode($_POST["data"], true);
+                    $daoproduct = new DAOProducts();
+                    $rdo = $daoproduct->product_details($data['id']);
+                    
+                    $All_productos =$rdo->fetch_assoc();
                     echo json_encode($All_productos);//pasa el array que viene de DAO
                     exit;
                

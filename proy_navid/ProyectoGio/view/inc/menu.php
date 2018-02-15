@@ -62,6 +62,7 @@
 					            <li><a href="index.php?page=myAccount&view=myAccount" class="efectoActive active"   id=""><span>Account</span></a></li>
 					            <li><a href="index.php?page=myAccount&view=yourOrders" class="efectoActive"   id=""><span>My Orders</span></a></li>	
 					            <li><a href="#" class="efectoActive"   id="li_logOut2"><span>Log-out</span></a></li>
+					            <li><a href="index.php?page=products&view=product" class="efectoActive"   id=""><span>prueba</span></a></li>
 				          	</ul>
 				        </li>
 

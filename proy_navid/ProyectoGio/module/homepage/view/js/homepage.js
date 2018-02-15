@@ -11,6 +11,9 @@ var coches_owner = new Array("Agency", "Person");
 
 $(document).ready(function() {
 
+if ( window.location.href!="http://localhost/proy_navid/ProyectoGio/index.php?page=homepage&view=search") {
+
+
 	$.post("module/homepage/controller/controller_homepage.php?homepage=ultimos_productos",	            
 	function(response){
 		console.log(response);
@@ -32,17 +35,25 @@ $(document).ready(function() {
 	            }
 	            if (cont<=4) {
 	                cont++;
+
+                 var a=document.createElement('a');
+                a.setAttribute("class", "a_producto");
+                a.setAttribute("id", json_cont2[i]['cod_pro']);
+                a.setAttribute("style", "color:black");
+
+
 	            var div_col = document.createElement("div");
 	            div_col.setAttribute("class", "col-md-4");
         		var div_thumbnail = document.createElement("div");
 	            div_thumbnail.setAttribute("class", "team-img thumbnail");
 
 	            var div_img=document.createElement("div");
-                
+                        
 
 	            var img = document.createElement("img");
 	            img.setAttribute("src", json_cont2[i]['avatar']);
 	            img.setAttribute("class", "img_pro2");
+                
 
 	            var div_content = document.createElement("div");
 	            div_content.setAttribute("class", "team-content");
@@ -58,39 +69,48 @@ $(document).ready(function() {
 	            var parr2 = document.createElement("p");
 	            var parr3 = document.createElement("p");
 	            var parr4 = document.createElement("p");
-	            var parr5 = document.createElement("p");
+                var parr5 = document.createElement("p");
 
-	            parr1.innerHTML = "<strong>Publication Date </strong>" + json_cont2[i]['publication_date'];
-	            parr2.innerHTML = "<strong>Product: </strong>" + json_cont2[i]['title'];
-	            parr3.innerHTML = "<strong>Price: </strong>" + json_cont2[i]['price'];
-	            parr4.innerHTML = "<strong>Mobile phone: </strong>" + json_cont2[i]['phone'];
-	            parr5.innerHTML = "<strong>City: </strong>" + json_cont2[i]['city'];
+                parr1.innerHTML = "<strong>Publication Date </strong>" + json_cont2[i]['publication_date'];
+                parr2.innerHTML = "<strong>Product: </strong>" + json_cont2[i]['title'];
+                parr3.innerHTML = "<strong>Price: </strong>" + json_cont2[i]['price'];
+                parr4.innerHTML = "<strong>Mobile phone: </strong>" + json_cont2[i]['phone'];
+                parr5.innerHTML = "<strong>City: </strong>" + json_cont2[i]['city'];
 
 
-	            var div_dummies = document.getElementById("dummies");
-	            div_row.appendChild(div_col);
+                var div_dummies = document.getElementById("dummies");
+                div_row.appendChild(a);
+                a.appendChild(div_col);
                 div_col.appendChild(div_thumbnail);
                 div_thumbnail.appendChild(div_img);
                 div_img.appendChild(img);
-	            div_thumbnail.appendChild(div_content);
-	            div_content.appendChild(h);
-	            div_content.appendChild(border_team);
-	            div_content.appendChild(parr1);
-	            div_content.appendChild(parr2);
-	            div_content.appendChild(parr3);
-	            div_content.appendChild(parr4);
-	            div_content.appendChild(parr5);
+                div_thumbnail.appendChild(div_content);
+                div_content.appendChild(h);
+                div_content.appendChild(border_team);
+                div_content.appendChild(parr1);
+                div_content.appendChild(parr2);
+                div_content.appendChild(parr3);
+                div_content.appendChild(parr4);
+                div_content.appendChild(parr5);
 
-	            // div_dummies.appendChild(div_row);
-	            }
-	            if ((i%3)==0) {
-	             div_dummies.appendChild(div_row);   
-	            }
-           }	   
+                // div_dummies.appendChild(div_row);
+                }
+                if ((i%3)==0) {
+                 div_dummies.appendChild(div_row);   
+                }
+           }       
 
-	}).fail(function() {
-	       alert( "recepcion de datos fallida en boton detalles producto" );
-	   });
+        $('.a_producto').click(function() {
+            var id = this.getAttribute('id');
+            localStorage.setItem("productoSeleccionado", id);
+            // alert(id);
+            window.location.href="http://localhost/proy_navid/ProyectoGio/index.php?page=homepage&view=product";
+        });
+
+    }).fail(function() {
+           alert( "recepcion de datos fallida en boton detalles producto" );
+       });
+    }
 
     // $("#submit_dummies").click(function() {
 
