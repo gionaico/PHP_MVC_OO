@@ -70,6 +70,16 @@ $path_validaphp = $_SERVER['DOCUMENT_ROOT'] . '/proy_navid/ProyectoGio/';
 		}
 
 
+    function getEmail($array){
+      $user=$array["user"];
+      $sql = " SELECT email FROM usuario2 WHERE user='".$user."'";
+      $conexion = connect::con();
+      $res = mysqli_query($conexion, $sql);
+      connect::close($conexion);
+      return $res;
+    }
+
+
 		// function ObtId_pedido($array, $order_date){ 
 		// 	$user=$array["user"];
   //           $total_price=$array["precio_peddido"];   

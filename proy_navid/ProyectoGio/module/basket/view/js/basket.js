@@ -186,16 +186,17 @@ divApi.appendChild(script);
 		       console.log("paga de usuario "+usuarioLogeado);
 		       var precio_peddido=(document.getElementById('totalPagar').innerHTML);
 		       var productosPedido=localStorage.getItem('productos_carrito');
-		       // console.log(json);
+		        console.log( JSON.parse(productosPedido));
 
 
 		       var data = {"precio_peddido": precio_peddido, "user": usuarioLogeado};
 			   var jsonPedido = JSON.stringify(data);
 
-			               //alert(jsonPedido);
+			               alert(jsonPedido);
 				$.post('module/basket/controller/controller_basket.php?basket=t_pedidos',
 				 {"jsonPedido": jsonPedido, "productosPedido":productosPedido},
 				function(response){
+						console.log(response);
 					 	var json = JSON.parse(response);
 						console.log(json.success);
 					 	if (json.success) {
