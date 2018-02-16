@@ -15,6 +15,18 @@
 			return $conexion;			
 		}
 
+        public static function conRecoverPass(){
+            $host = 'localhost';  
+            $user = "root";                     
+            $pass = "";                             
+            $db = "practica_1.0";                      
+            $port = 3306;                           
+            $tabla="recover_pass";
+            
+            $conexion = mysqli_connect($host, $user, $pass, $db, $port)or die(mysql_error());
+            return $conexion;           
+        }
+
 		public static function conProductos(){
 			$host = 'localhost';  
     		$user = "root";                     

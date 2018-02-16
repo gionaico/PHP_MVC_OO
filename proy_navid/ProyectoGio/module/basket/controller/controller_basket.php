@@ -57,15 +57,15 @@ $path_controller = $_SERVER['DOCUMENT_ROOT'] . '/proy_navid/ProyectoGio/';
 
           function send_mailgun($email, $productosPedido, $prueba, $Pedido){
             $config = array();
-            $config['api_key'] = "key-"; //API Key
+            $config['api_key'] = ""; //API Key
             $config['api_url'] = "https://api.mailgun.net/v2/sandbox4c1cb4d3fb9146438f1411d073994e1d.mailgun.org/messages"; //API Base URL
             $user=$Pedido["user"];
             $total_price=$Pedido["precio_peddido"];
             $message = array();
-            $message['from'] = "giogio@gmail.com";
+            $message['from'] = "gmc.yanez@gmail.com";
             $message['to'] = $email;
-            $message['h:Reply-To'] = "giogio@gmail.com";
-            $message['subject'] = "Hello, this is a test";
+            $message['h:Reply-To'] = "gm.ec@hotmail.com";
+            $message['subject'] = "Order Details";
             $message['html'] = '<p>Thanks <strong>' . $user . '</strong> for buy with us, you will recieve your order in the next 5 days.</p>
             <p>This is your order details;</p>
             </br></br></br>

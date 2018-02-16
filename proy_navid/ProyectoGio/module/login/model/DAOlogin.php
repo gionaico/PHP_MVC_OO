@@ -1,4 +1,8 @@
 <?php 
+$path_DAOlogin = $_SERVER['DOCUMENT_ROOT'] . '/proy_navid/ProyectoGio/';
+    // include($path . "module/user/model/DAOUser.php");
+    
+    include ($path_DAOlogin . "model/connect.php");
 // echo "daoLogin";
 // exit;
     function testLogin_m($login,  $pass){
@@ -70,6 +74,55 @@
         
     }
 
+
+    function getEmail($user){
+          
+          $sql = " SELECT email FROM usuario2 WHERE user='".$user."'";
+          $conexion = connect::con();
+          $res = mysqli_query($conexion, $sql);
+          connect::close($conexion);
+          return $res;
+    }
+
+
+    function CambiaPasswo($user, $password){
+          $password_cifrado=password_hash($password, PASSWORD_DEFAULT);
+
+          $sql = " UPDATE usuario2 SET password='".$password_cifrado."' WHERE user='".$user."'";
+          $conexion = connect::con();
+          $res = mysqli_query($conexion, $sql);
+          connect::close($conexion);
+          return $res;
+    }
+
+    // function BorrarCodes($user){
+          
+    //       $sql = " DELETE FROM recover_pass WHERE user='".$user."'";
+    //       $conexion = connect::conRecoverPass();
+    //       $res = mysqli_query($conexion, $sql);
+    //       connect::close($conexion);
+    //       return $res;
+    // }
+
+
+    // function insertCode($user, $code){
+          
+    //       $sql = " INSERT INTO recover_pass (user, codigo) VALUE ('".$user."', '".$code."')";
+    //       $conexion = connect::conRecoverPass();
+    //       $res = mysqli_query($conexion, $sql);
+    //       connect::close($conexion);
+    //       return $res;
+    // }
+
+    // function verificaCode($user, $code){
+          
+    //       $sql = " SELECT * FROM recover_pass WHERE user ='".$user."' and  CONVERT(codigo using latin1) collate latin1_general_cs like '".$codigo."'";
+    //       $conexion = connect::conRecoverPass();
+    //       $res = mysqli_query($conexion, $sql);
+    //       // $cant_filas=mysqli_num_rows($res);
+    //       connect::close($conexion);
+    //       return $res;
+    // }
 
 
     function make_login($user, $pass){

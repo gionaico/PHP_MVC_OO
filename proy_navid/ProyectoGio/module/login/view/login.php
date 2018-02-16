@@ -22,7 +22,7 @@
                 </div>
 
                 <div class="form-group ">
-                    <label class="control-label " for="user_log">Userr name</label>  
+                    <label class="control-label " for="user_log">User name</label>  
                     <input id="user_log" name="user_log" type="text" placeholder="usuario98" value="" class="form-control input-md color_input" required="required" value="">
                     <span id="sp_user_log" ></span>
                 </div>
@@ -34,7 +34,7 @@
                     
                 </div>
 
-                <a href="#" title="">Forgot your password?</a><br><br>
+                <a href="index.php?page=login&view=recoverPass"  title="">Forgot your password?</a><br><br>
                 <a href="index.php?page=sing_in&op=create" title=""><button type="button" class="btn btn-primary user_delete_ok" id="register">Register Now</button></a>
             </div>
 
@@ -45,3 +45,7 @@
         </div>
     </div>
 </div>
+
+
+
+
