@@ -8,7 +8,7 @@
         <div class="form-group">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-3 col-md-offset-1"> <!-- col-md-offset-3 -->
+                    <div class="col-md-3"> <!-- col-md-offset-3 -->
                         <select id="province_home" name="province_home" class="form-control input-md color_input" required="">
                             <option selected="">Select Province</option>
                         </select>
@@ -18,17 +18,51 @@
                             <option selected="">Select City</option>
                         </select>
                     </div>
-                    <div class="col-md-4">
-                        <div class="input-group">
-                            <input class="form-control color_input" id="search_home" list="datalist_search" name="search_home" placeholder="Search for" required/>
-                            <span class="input-group-btn">
-                                <a type="submit" href="#" class="btn btn-primary " id="btn_search"><i class="glyphicon glyphicon-search"></i></a>
-                            </span>
-                            <!-- index.php?page=homepage&view=search -->
-                            <datalist id="datalist_search">
-                                <option value="dddd"></option>
-                                
-                            </datalist>
+                    
+                    <div class="col-md-3">
+                        <select id="product_type" name="product_type" class="form-control input-md color_input">
+                            <option selected="">Product Type:</option>
+                            <option>Sale Vehicle</option>
+                            <option>Car spare parts</option>
+                            <option>Servicies for Vehicles</option>
+                            <!-- </script> -->
+                        </select>                                                    
+                    </div>
+
+                    <div class="col-md-3">
+                        <select id="product_type" name="product_type" class="form-control input-md color_input">
+                            <option selected="">Product Type:</option>
+                            <option>Sale Vehicle</option>
+                            <option>Car spare parts</option>
+                            <option>Servicies for Vehicles</option>
+                            <!-- </script> -->
+                        </select>                                                    
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    
+
+
+                    <div class="col-md-3 ">
+                         <label for="amount">Maximum price:</label>
+                        <input type="text" id="amount" readonly style="border:0; color:#f6931f; width:100px; font-weight:bold;">
+                          
+                        <div id="slider-range-min"></div>
+                    </div>
+
+                    <div class="col-md-3 center-block">
+                        <div class="center-block" style="width: 210px;">
+                            <label for="botones">Valoracion por Cliente</label>
+                            <br>
+                            <div class="btn-group" id="botones">
+                              <button type="button" class="btn btn-default">5</button>
+                              <button type="button" class="btn btn-default">6</button>
+                              <button type="button" class="btn btn-default">7</button>
+                              <button type="button" class="btn btn-default">8</button>
+                              <button type="button" class="btn btn-default">9</button>
+                              <button type="button" class="btn btn-default">10</button>
+                            </div>
                         </div>
                     </div>
                 </div>

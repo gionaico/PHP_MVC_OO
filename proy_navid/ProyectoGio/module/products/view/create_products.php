@@ -107,7 +107,7 @@
                         <option>Sale Vehicle</option>
                         <option>Car spare parts</option>
                         <option>Servicies for Vehicles</option>
-                        </script>
+                        <!-- </script> -->
                     </select>
                     <span id="sp_product_type"></span>
                   </div>

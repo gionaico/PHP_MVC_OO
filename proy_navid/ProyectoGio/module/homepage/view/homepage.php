@@ -1,60 +1,94 @@
 
 <script type="text/javascript" src="module/homepage/view/js/homepage.js"></script>
-    
+    <style>
+        .item img {width:100%; max-height:550px;display: block;}
+        .caraous-title {
+            position: absolute;
+            top: 20%;
+            left: 25px;
+            right: auto;
+            width: 96.66666666666666%;
+            color: #000;
+        }
+        .caraous-title h1 {color:#FFF;font-size:45px; font-weight:600;}
+        .caraous-title h3 {margin-bottom:30px;color:#fff;font-size:18px; letter-spacing:1px;}
+        .caraous-title span {color:#aa1f43;}
+        .caraous-img-box img {width:50%;}
+        /* Button */
+        .site-btn{padding:12px 25px 12px 25px;border-radius:2px;background:#DF314D;border-color:transparent;font-size:14px;}
+        .site-btn:hover{background:#C9223D ;border:transparent;}
+        .site-btn2{padding:12px 25px 12px 25px;border-radius:2px;background:#05681e;border-color:transparent;font-size:14px;}
+        .site-btn2:hover{background:rgb(128, 197, 71); ;border:transparent;}
+
+    </style>
        
-<div class="container">
-	<div class="row ">
-        <div class="carousel slide"  id="carousel-1">
-        	
-        	<ol class="carousel-indicators">
-				<li data-target="#carousel-1" data-slide-to="0" class="active"></li>
-				<li data-target="#carousel-1" data-slide-to="1"></li>
-				<li data-target="#carousel-1" data-slide-to="2"></li>
-			</ol>
-
-            <div class="carousel-inner" role="listbox">
-                <div class="item imgnormalizada active" >
-                        <a href="#">
-                            <img src="view/img/homepage/coche.jpg" class="img-responsive ">
-                        </a>
-                    <div class="carousel-caption">
-
-						<h3>Lorem ipsum dolor sit amet.</h3>
-						<p>Lorem ipsum dolor.</p>
-					</div>
-                </div>
-                
-                <div class="item imgnormalizada">
-                    	<a href="#">
-                    		<img src="view/img/homepage/motos.jpg" class="img-responsive ">
-                    	</a>
-                    <div class="carousel-caption">
-						<h3>Lorem ipsum dolor sit amet.</h3>
-						<p>Lorem ipsum dolor.</p>
-					</div>
-                </div>
-
-                <div class="item imgnormalizada">
-                    	<a href="#">
-                    		<img src="view/img/homepage/camiones.jpg" class="img-responsive ">
-                    	</a>
-                    <div class="carousel-caption">
-						<h3>Lorem ipsum dolor sit amet.</h3>
-						<p>Lorem ipsum dolor.</p>
-					</div>
-                </div>
+<div id="myCarousel" class="carousel slide" data-interval="false">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="1"></li>
+    <li data-target="#myCarousel" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="item active">
+      <img src="view/img/homepage/coche.jpg" style="width:100%" class="img-responsive">
+      <div class="container">
+        <div class="caraous-title text-center">
+            <div class="col-md-12">
+                <span>Non-Profit Organization</span>
+                    <h1><span>RAISE</span> YOUR HELPING HAND</h1>
+                    <h3>We are non-profit NGO & Charity Organization</h3>
+                    <a class="btn btn-lg btn-primary site-btn" href="#">Learn More</a>
+                    <a class="btn btn-lg btn-primary site-btn2" href="#">Learn More</a>
+               
                 
             </div>
-
-            <a class="left carousel-control" href="#carousel-1" data-slide="prev">
-            	<i class="glyphicon glyphicon-chevron-left"></i>
-            </a>
-            <a class="right carousel-control" href="#carousel-1" data-slide="next">
-            	<i class="glyphicon glyphicon-chevron-right"></i>
-            </a>
-
+        
         </div>
+      </div>
     </div>
+    <div class="item">
+      <img src="view/img/homepage/motos.jpg" class="img-responsive">
+      <div class="container">
+        <div class="caraous-title text-center">
+            <div class="col-md-12">
+                <span>Non-Profit Organization</span>
+                    <h1><span>RAISE</span> YOUR HELPING HAND</h1>
+                    <h3>We are non-profit NGO & Charity Organization</h3>
+                    <a class="btn btn-lg btn-primary site-btn" href="#">Learn More</a>
+                    <a class="btn btn-lg btn-primary site-btn2" href="#">Learn More</a>
+               
+                
+            </div>
+        
+        </div>
+      </div>
+    </div>
+    <div class="item">
+      <img src="view/img/homepage/camiones.jpg" class="img-responsive">
+      <div class="container">
+        <div class="caraous-title text-center">
+            <div class="col-md-12">
+                <span>Non-Profit Organization</span>
+                    <h1><span>CLEAN</span> WATER CHANGES EVERYTHING</h1>
+                    <h3>We are non-profit NGO & Charity Organization</h3>
+                    <a class="btn btn-lg btn-primary site-btn" href="#">Learn More</a>
+                    <a class="btn btn-lg btn-primary site-btn2" href="#">Learn More</a>
+               
+                
+            </div>
+        
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Controls -->
+  <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+    <span class="icon-prev"></span>
+  </a>
+  <a class="right carousel-control" href="#myCarousel" data-slide="next">
+    <span class="icon-next"></span>
+  </a>  
 </div>
 <br>
 <br>

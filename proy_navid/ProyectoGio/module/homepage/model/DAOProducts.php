@@ -7,7 +7,31 @@ $path_DAO = $_SERVER['DOCUMENT_ROOT'] . '/proy_navid/ProyectoGio/';
     
     // session_start();
 	class DAOProducts{
-		
+
+		function filtro($details){
+			$array=[];
+			$array[0]=$details[0]['province'];
+			$array[1]=$details[0]['city'];
+			$array[2]=$details[0]['product_type'];
+			$price=substr($details[0]['price'], 0, -2);
+			
+			$cont=0;
+			$cad=" ";
+			for ($i=0; $i <count($array) ; $i++) { 
+				
+				if ($array[$i]!="") {
+					$cad.=$array[$i]." and ";
+				}
+				
+			}
+
+			$sql = "SELECT * FROM products WHERE ".substr($cad, 0, -5)." and price<".$price."";
+
+			$conexion = connect::conProductos();
+            $res = mysqli_query($conexion, $sql);
+            connect::close($conexion);
+            return $res;
+		}
 		/*-----------------------------------------------------------------------------------------*/
         /*-----------------------------------------------------------------------------------------*/
 		function select_all_products(){

@@ -148,6 +148,32 @@
                  //echo $_POST['word_wrotten'];
                  break;
 
+            case 'filtro':
+                    $filtro = json_decode($_POST["filtro"], true);
+                    $daoproduct = new DAOProducts();
+                    $rdo = $daoproduct->filtro($filtro);
+                    // echo ($rdo);
+                    // exit;
+                    $All_productos = array();
+                    while($row = $rdo->fetch_assoc()){                                                
+                        $producto = array(
+                            'user' => $row['user_name'],
+                            'title' => $row['title'],
+                            'phone' => $row['phone'],
+                            'email' => $row['email'],
+                            'product_type' => $row['product_type'],
+                            'avatar' => $row['avatar'],
+                            'publication_date' => $row['date_today'],
+                            'city' => $row['city'],
+                            'description' => $row['description'],
+                            'price' => $row['price'],
+                            'cod_pro' => $row['cod_pro']
+                        );
+                        array_push($All_productos, $producto); 
+                    }
+                    echo json_encode($All_productos);
+                    exit;
+                 break;
 
 
              default:

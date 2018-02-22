@@ -1,152 +1,11 @@
  $(document).ready(function () {
-    var l=localStorage.getItem('productos_buscados');
-    prueba(JSON.parse(l));
-    var array_filtroxxx=[{province:"", city:"", product_type:"", price:""}];
-    localStorage.setItem('filtroDetails', JSON.stringify(array_filtroxxx));
-
-    $( function() {
-        $( "#slider-range-min" ).slider({
-          range: "min",
-          value: 2500,
-          min: 1,
-          max: 5000,
-          slide: function( event, ui ) {
-            $( "#amount" ).val(ui.value+ " €" );
-            var str=$( "#amount" ).val();
-            console.log(str);
-           CrearArrayPushLocalStorage("price", ""+str+"");
-            peticion();
-          }
-        });
-        $( "#amount" ).val($( "#slider-range-min" ).slider( "value" )+ " €" );
-        console.log($( "#amount" ).val());
-    });
-
-
-    $('#province_home').change(function() {
-        // if ($(this).val()==="") {
-        //     editaArray("province");
-        //     console.log("igual");
-        // }else{            
-            CrearArrayPushLocalStorage("province", "province='"+$(this).val()+"'");
-        //}
-        
-        console.log($(this).val());
-    });
-
-    $('#city_home').change(function() {
-        console.log($(this).val());
-        // if ($(this).val()==="Product Type:") {
-        //     editaArray("city");
-        //     console.log("igual");
-        // }else{
-            CrearArrayPushLocalStorage("city", "city='"+$(this).val()+"'");
-        //}
-        peticion();
-        
-    });
-
-
-    $('#product_type').change(function() {
-        console.log($(this).val());
-        console.log($(this).val());
-        if ($(this).val()==="Product Type:") {
-            editaArray("product_type");
-            console.log("igual");
-        }else{
-            CrearArrayPushLocalStorage("product_type", "product_type='"+$(this).val()+"'");
-        }
-        peticion();
-    });
-
-    
-        
- 
-//delete array_filtro.element_name;//borra un elemento 
- localStorage.removeItem("datos");
- localStorage.removeItem("data");
-
-var array_filtro=[];
-    var p="pepe";
-    array_filtro.push({ [""+p+""]:"pepe='juan'"});  
-    localStorage.setItem("datos", JSON.stringify(array_filtro));
-
-        var local_1=localStorage.getItem('datos');
+        var local_1=localStorage.getItem('productos_buscados');
         var json=JSON.parse(local_1);
-//var array_filtro2=[];
-    // var p="pepe='juan'";
-    if (!json['oeeee']) {
-        console.log("ddd");
-    }else{
-        console.log("kkhkhhk");
-    json.push({"o":"pepe='zsfsafsdf'"});  
-    localStorage.setItem("datos", JSON.stringify(json));
-    }
-//var udos=JSON.stringify(array_filtro); pasa un objeto a String
-console.log(JSON.parse(localStorage.getItem('datos'))[0]);
-
         console.log(json);
-        
     
 
-
-    
-}); //Document.ready   
-
-
-function CrearArrayPushLocalStorage(campoName, contenido){ 
-    var local_1=localStorage.getItem('filtroDetails');
-    var array_filtro=JSON.parse(local_1); 
-    console.log(JSON.parse(local_1));
-
-    // if (array_filtro[0][''+campoName+'']!="undefined") {
-    //     console.log(array_filtro[0]['province']);
-        array_filtro[0][""+campoName+""]=contenido;  
-        localStorage.setItem("filtroDetails", JSON.stringify(array_filtro)); //guarda algo en local storage
-    //}
-        
-}
-
-
-function editaArray(elemento){
-
-   var pru=localStorage.getItem("filtroDetails");
-   var json_filtro = JSON.parse(pru);
-    
-   
-   console.log(JSON.parse(pru));
-   //console.log(json_filtro[0]);
-   
-   json_filtro[0][""+elemento+""]="";
-   console.log(json_filtro);
-
-   var nuevo_json=JSON.stringify(json_filtro);
-   localStorage.setItem("filtroDetails", nuevo_json);
-   
-}
-
-function peticion(){
-    var filtro=localStorage.getItem("filtroDetails");
-    
-    
-
-    $.post('module/homepage/controller/controller_homepage.php?homepage=filtro',
-             {"filtro": filtro},
-    function(response){
-        console.log(response);
-        var json_cont2 = JSON.parse(response);
-        console.log(json_cont2);
-         prueba(json_cont2);
-           
-    }).fail(function() {
-        alert( "recepcion de datos fallida en boton detalles producto" );
-         });
-
-}
-
-function prueba(json){
         var div_resultado=document.getElementById('resultado');
-        div_resultado.innerHTML="";
+
         var cont=0;
         for (var i=0; i<json.length; i++) {
             
@@ -219,7 +78,7 @@ function prueba(json){
                     parr6.innerHTML="<strong>Price: </strong>"+json[i].price+"<strong> €</strong>";
                     //parr7.innerHTML="<button id='"+json[i].cod_pro+"' class='btn btn-primary prodToBasket' type='button'>Add to <span class='glyphicon glyphicon-shopping-cart'></span>    </button>";
                     button.innerHTML="Add to <span class='glyphicon glyphicon-shopping-cart'></span>";
-                    button2.innerHTML="Quick details <span class='glyphicon glyphicon-eye-open'></span>  ";
+                    button2.innerHTML="Quiq details <span class='glyphicon glyphicon-eye-open'></span>  ";
                     button3.innerHTML="All Details <span class='glyphicon glyphicon-eye-open'></span>  ";
 
                     parr7.appendChild(button);
@@ -377,4 +236,5 @@ function prueba(json){
                     alert( "recepcion de datos fallida en boton detalles producto" );
                 });
          });//end_prodToDetaills
- }
+    
+}); //Document.ready   
