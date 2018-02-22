@@ -439,8 +439,16 @@ a:hover, a:active {
 /*FORMULARIO*/
 .color_input{
     border: 1px solid #eea236;
-}
 
+}
+.sombra{
+    box-shadow: 2px 2px 25px #999;
+}
+/*.contFiltro{
+    background-color: #7FFF00;
+    opacity: 0.5;
+    filter:  alpha(opacity=50);
+}*/
 
 /*SERVICES*/
 .services_panel .panel{min-height: 377px;background: #fbfbfb;margin-top:10%;}

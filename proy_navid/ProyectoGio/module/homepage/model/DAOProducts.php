@@ -13,20 +13,45 @@ $path_DAO = $_SERVER['DOCUMENT_ROOT'] . '/proy_navid/ProyectoGio/';
 			$array[0]=$details[0]['province'];
 			$array[1]=$details[0]['city'];
 			$array[2]=$details[0]['product_type'];
-			$price=substr($details[0]['price'], 0, -2);
+			$f=$details[0]['price'];
+            $t=substr($f, 0, -4);
+            $array[3]=$t;
+            $fecha = date('Y-m-j');
+			$nuevafecha = strtotime ( '-'.$details[0]['publication_date'].' day' , strtotime ( $fecha ) ) ;
+			$nuevafecha2 = date ( 'Y-m-j' , $nuevafecha );
+
+            if ($details[0]['publication_date']=="0") {
+            	$array[4]=("date_today='".$nuevafecha2."'");	
+            }elseif ($details[0]['publication_date']=="") {
+            	# code...
+            	//no hace nada
+            }else{
+            	$array[4]=("date_today>'".$nuevafecha2."'");	
+            }
+
+
+			// $stringFecha=("publication_date>");
+			// echo ("date_today>'".$nuevafecha."'");
+			// exit;
+			// $price=substr($details[0]['price'], 0, -2);
 			
-			$cont=0;
+			
 			$cad=" ";
-			for ($i=0; $i <count($array) ; $i++) { 
-				
+			for ($i=0; $i <count($array) ; $i++) { 				
 				if ($array[$i]!="") {
 					$cad.=$array[$i]." and ";
-				}
-				
+				}				
 			}
 
-			$sql = "SELECT * FROM products WHERE ".substr($cad, 0, -5)." and price<".$price."";
-
+            	$order=$details[0]['order'];
+            if ($cad==" ") {
+            	$sql="SELECT * FROM products ".$order."";
+            }else{
+				$sql="SELECT * FROM products WHERE ".substr($cad, 0, -5)." ".$order."";
+            }
+			//$_SESSION["sql"]=$sql;
+			// echo ($sql);
+			// exit;
 			$conexion = connect::conProductos();
             $res = mysqli_query($conexion, $sql);
             connect::close($conexion);

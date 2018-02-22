@@ -1,20 +1,21 @@
  $(document).ready(function () {
     var l=localStorage.getItem('productos_buscados');
     prueba(JSON.parse(l));
-    var array_filtroxxx=[{province:"", city:"", product_type:"", price:""}];
+    var array_filtroxxx=[{province:"", city:"", product_type:"", price:"", publication_date:"", order:""}];
     localStorage.setItem('filtroDetails', JSON.stringify(array_filtroxxx));
 
     $( function() {
         $( "#slider-range-min" ).slider({
           range: "min",
           value: 2500,
-          min: 1,
+          min: 0,
           max: 5000,
+          step: 50,
           slide: function( event, ui ) {
             $( "#amount" ).val(ui.value+ " €" );
             var str=$( "#amount" ).val();
             console.log(str);
-           CrearArrayPushLocalStorage("price", ""+str+"");
+           CrearArrayPushLocalStorage("price","price<"+str+"");
             peticion();
           }
         });
@@ -22,6 +23,39 @@
         console.log($( "#amount" ).val());
     });
 
+    $('.publication_date').click(function() {
+        var id = this.getAttribute('id');
+        var elemento = document.getElementById(""+id+"");
+        elemento.className += " active";
+        if (id=="1") {
+          var text="0";
+        }else if (id=="2") {
+          var text="8";  
+        }else if (id=="3") {
+          var text="30";  
+        }else if (id=="4") {
+          var text="365";  
+        }
+        CrearArrayPushLocalStorage("publication_date", text);
+        peticion();
+        /* Act on the event */
+    });
+
+    $('#order').change(function() {
+        var order = document.getElementById('order').value;
+        if (order!="Order by") {          
+            if (order=="Price: Low to High") {
+              var text="ORDER BY price ASC";  
+            }else if (order=="Price: High to Low") {
+              var text=" ORDER BY price DESC";  
+            }else if (order=="Newest Arrivals") {
+              var text="ORDER BY date_today DESC";  
+            }
+            CrearArrayPushLocalStorage("order", text);
+            peticion();
+        }
+        //alert(order);
+    });
 
     $('#province_home').change(function() {
         // if ($(this).val()==="") {
@@ -30,7 +64,7 @@
         // }else{            
             CrearArrayPushLocalStorage("province", "province='"+$(this).val()+"'");
         //}
-        
+        peticion();
         console.log($(this).val());
     });
 
@@ -97,7 +131,7 @@ console.log(JSON.parse(localStorage.getItem('datos'))[0]);
 function CrearArrayPushLocalStorage(campoName, contenido){ 
     var local_1=localStorage.getItem('filtroDetails');
     var array_filtro=JSON.parse(local_1); 
-    console.log(JSON.parse(local_1));
+    //console.log(JSON.parse(local_1));
 
     // if (array_filtro[0][''+campoName+'']!="undefined") {
     //     console.log(array_filtro[0]['province']);
@@ -215,7 +249,7 @@ function prueba(json){
                     parr2.innerHTML="<strong>Title: </strong>"+json[i].title;
                     parr3.innerHTML="<strong>Phone: </strong>"+json[i].phone;
                     parr4.innerHTML="<strong>Email: </strong>"+json[i].email;
-                    parr5.innerHTML="<strong>Publication Date: </strong>"+json[i].date;
+                    parr5.innerHTML="<strong>Publication Date: </strong>"+json[i].publication_date;
                     parr6.innerHTML="<strong>Price: </strong>"+json[i].price+"<strong> €</strong>";
                     //parr7.innerHTML="<button id='"+json[i].cod_pro+"' class='btn btn-primary prodToBasket' type='button'>Add to <span class='glyphicon glyphicon-shopping-cart'></span>    </button>";
                     button.innerHTML="Add to <span class='glyphicon glyphicon-shopping-cart'></span>";

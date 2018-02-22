@@ -7,20 +7,23 @@
     <div class="row">
         <div class="form-group">
             <div class="container">
+                <div class="col-md-10 contFiltro">
+                    
+                
                 <div class="row">
-                    <div class="col-md-3"> <!-- col-md-offset-3 -->
-                        <select id="province_home" name="province_home" class="form-control input-md color_input" required="">
+                    <div class="col-md-4"> <!-- col-md-offset-3 -->
+                        <select id="province_home" name="province_home" class="form-control input-md color_input sombra" required="">
                             <option selected="">Select Province</option>
                         </select>
                     </div>
-                    <div class="col-md-3">
-                        <select id="city_home" name="city_home" class="form-control input-md color_input" required="">
+                    <div class="col-md-4">
+                        <select id="city_home" name="city_home" class="form-control input-md color_input sombra" required="">
                             <option selected="">Select City</option>
                         </select>
                     </div>
                     
-                    <div class="col-md-3">
-                        <select id="product_type" name="product_type" class="form-control input-md color_input">
+                    <div class="col-md-4">
+                        <select id="product_type" name="product_type" class="form-control input-md color_input sombra">
                             <option selected="">Product Type:</option>
                             <option>Sale Vehicle</option>
                             <option>Car spare parts</option>
@@ -29,43 +32,44 @@
                         </select>                                                    
                     </div>
 
-                    <div class="col-md-3">
-                        <select id="product_type" name="product_type" class="form-control input-md color_input">
-                            <option selected="">Product Type:</option>
-                            <option>Sale Vehicle</option>
-                            <option>Car spare parts</option>
-                            <option>Servicies for Vehicles</option>
-                            <!-- </script> -->
-                        </select>                                                    
-                    </div>
+                    
                 </div>
                 <br>
                 <div class="row">
                     
 
 
-                    <div class="col-md-3 ">
+                    <div class="col-md-4  ">
                          <label for="amount">Maximum price:</label>
                         <input type="text" id="amount" readonly style="border:0; color:#f6931f; width:100px; font-weight:bold;">
                           
                         <div id="slider-range-min"></div>
                     </div>
 
-                    <div class="col-md-3 center-block">
-                        <div class="center-block" style="width: 210px;">
-                            <label for="botones">Valoracion por Cliente</label>
+                    <div class="col-md-8 center-block">
+                        <div class="center-block " >
+                            <label for="botones">Publication Date</label>
                             <br>
+                            
                             <div class="btn-group" id="botones">
-                              <button type="button" class="btn btn-default">5</button>
-                              <button type="button" class="btn btn-default">6</button>
-                              <button type="button" class="btn btn-default">7</button>
-                              <button type="button" class="btn btn-default">8</button>
-                              <button type="button" class="btn btn-default">9</button>
-                              <button type="button" class="btn btn-default">10</button>
+                              <button type="button" class="btn btn-warning publication_date" id="1" >Today</button>
+                              <button type="button" class="btn btn-primary publication_date" id="2" >This week</button>
+                              <button type="button" class="btn btn-success publication_date" id="3" >This month</button>
+                              <button type="button" class="btn btn-danger publication_date" id="4" >This year</button>
+                              
                             </div>
                         </div>
                     </div>
                 </div>
+                </div>
+                <div class="col-md-2">
+                        <select id="order" name="order" class="form-control input-md color_input sombra">
+                            <option selected="">Order by</option>
+                            <option>Price: Low to High</option>
+                            <option>Price: High to Low</option>
+                            <option>Newest Arrivals</option>                              
+                        </select>                                                   
+                    </div>
             </div>
         </div>
     </div>

@@ -97,18 +97,18 @@
     <div class="container">
         <div class="row">
             <div class="col-md-3 col-md-offset-1"> <!-- col-md-offset-3 -->
-                <select id="province_home" name="province_home" class="form-control input-md color_input" required="">
+                <select id="province_home" name="province_home" class="form-control input-md color_input sombra" required="">
                     <option selected="">Select Province</option>
                 </select>
             </div>
             <div class="col-md-3">
-                <select id="city_home" name="city_home" class="form-control input-md color_input" required="">
+                <select id="city_home" name="city_home" class="form-control input-md color_input sombra" required="">
                     <option selected="">Select City</option>
                 </select>
             </div>
             <div class="col-md-4">
                 <div class="input-group">
-                    <input class="form-control color_input" id="search_home" list="datalist_search" name="search_home" placeholder="Search for" required/>
+                    <input class="form-control color_input sombra" id="search_home" list="datalist_search " name="search_home" placeholder="Search for" required/>
                     <span class="input-group-btn">
                         <a type="submit" href="#" class="btn btn-primary " id="btn_search"><i class="glyphicon glyphicon-search"></i></a>
                     </span>

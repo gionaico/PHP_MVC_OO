@@ -81,7 +81,7 @@
                             'email' => $row['email'],
                             'product_type' => $row['product_type'],
                             'avatar' => $row['avatar'],
-                            'date' => $row['date_today'],
+                            'publication_date' => $row['date_today'],
                             'city' => $row['city'],
                             'price' => $row['price'],
                             'cod_pro' => $row['cod_pro']
@@ -150,6 +150,10 @@
 
             case 'filtro':
                     $filtro = json_decode($_POST["filtro"], true);
+                    // $f=$filtro[0]['price'];
+                    // $t=substr($f, 0, -4);
+                    // echo json_encode($filtro[0]);
+                    // exit;
                     $daoproduct = new DAOProducts();
                     $rdo = $daoproduct->filtro($filtro);
                     // echo ($rdo);

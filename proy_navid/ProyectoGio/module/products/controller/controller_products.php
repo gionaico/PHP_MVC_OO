@@ -36,7 +36,7 @@ function alta_users() {
     $result = validate_prod($usersJSON);
     // echo ($result['datos']['price']);//imrime en forma de alert
     // exit;
-    $date_today=date("m.d.y");
+    $date_today=date("y/m/d");
 
     if (empty($_SESSION['result_avatar'])) {
         $_SESSION['result_avatar'] = array('resultado' => true, 'error' => "", 'datos' => 'media/products/default-potho.jpg');

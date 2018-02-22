@@ -5,7 +5,7 @@ function validate_prod($value) {
     $filtro = array(
         'un' => array(
             'filter' => FILTER_VALIDATE_REGEXP,
-            'options' => array('regexp' => '/^[0-9A-Z]{3,20}$/')
+            'options' => array('regexp' => '/^[0-9A-Za-z]{3,20}$/')
         ),
         'pbt' => array(
             'filter' => FILTER_VALIDATE_REGEXP,
