@@ -61,9 +61,12 @@ divApi.appendChild(script);
 					button.setAttribute("id", json_cont2[i]['id']);
 					button.setAttribute("tr", "tr_"+i);
 					button.setAttribute("class", "btn btn-danger delete_product");
+					var a=document.createElement("a");
+					a.setAttribute("class", "link");
+					a.setAttribute("link", json_cont2[i]['id']);
+					a.setAttribute("href", "#");
 
-
-					td1.innerHTML=json_cont2[i]['title'];
+					a.innerHTML=json_cont2[i]['title'];
 			        td2.innerHTML=json_cont2[i]['price']+" $";
 			        td4.innerHTML=(json_cont2[i]['price']*json_cont2[i]['quantity'])+" $";
 			        pagoTotal=pagoTotal+(json_cont2[i]['price']*json_cont2[i]['quantity']);
@@ -71,6 +74,7 @@ divApi.appendChild(script);
 
 			        td5.appendChild(button);
 
+			        td1.appendChild(a);
 			        tr1.appendChild(td1);
 			        tr1.appendChild(td2);
 			        tr1.appendChild(td3);
@@ -182,6 +186,13 @@ divApi.appendChild(script);
 					//alert(priceUnidades);	
 
 		    	});
+
+				$(".link").click(function() {
+					var id_link = this.getAttribute('link');
+					//alert(id_link);
+					localStorage.setItem("productoSeleccionado", id_link);
+					window.location.href="http://localhost/proy_navid/ProyectoGio/index.php?page=homepage&view=product";
+				});
 
 				$(".delete_product").click(function() {
 					var id_fila = this.getAttribute('tr');

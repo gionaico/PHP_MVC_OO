@@ -4,7 +4,7 @@
         .item img {width:100%; max-height:550px;display: block;}
         .caraous-title {
             position: absolute;
-            top: 20%;
+            top: 81%;
             left: 25px;
             right: auto;
             width: 96.66666666666666%;
@@ -35,15 +35,8 @@
       <div class="container">
         <div class="caraous-title text-center">
             <div class="col-md-12">
-                <span>Non-Profit Organization</span>
-                    <h1><span>RAISE</span> YOUR HELPING HAND</h1>
-                    <h3>We are non-profit NGO & Charity Organization</h3>
-                    <a class="btn btn-lg btn-primary site-btn" href="#">Learn More</a>
-                    <a class="btn btn-lg btn-primary site-btn2" href="#">Learn More</a>
-               
-                
-            </div>
-        
+                <h1><span>CARS </span>for any ocassion</h1>
+            </div>        
         </div>
       </div>
     </div>
@@ -52,15 +45,8 @@
       <div class="container">
         <div class="caraous-title text-center">
             <div class="col-md-12">
-                <span>Non-Profit Organization</span>
-                    <h1><span>RAISE</span> YOUR HELPING HAND</h1>
-                    <h3>We are non-profit NGO & Charity Organization</h3>
-                    <a class="btn btn-lg btn-primary site-btn" href="#">Learn More</a>
-                    <a class="btn btn-lg btn-primary site-btn2" href="#">Learn More</a>
-               
-                
-            </div>
-        
+                    <h1><span>MOTORBIKES</span> for all styles</h1>                              
+            </div>        
         </div>
       </div>
     </div>
@@ -69,15 +55,8 @@
       <div class="container">
         <div class="caraous-title text-center">
             <div class="col-md-12">
-                <span>Non-Profit Organization</span>
-                    <h1><span>CLEAN</span> WATER CHANGES EVERYTHING</h1>
-                    <h3>We are non-profit NGO & Charity Organization</h3>
-                    <a class="btn btn-lg btn-primary site-btn" href="#">Learn More</a>
-                    <a class="btn btn-lg btn-primary site-btn2" href="#">Learn More</a>
-               
-                
-            </div>
-        
+                    <h1><span>TRUCKS</span> of all kinds</h1>                      
+            </div>        
         </div>
       </div>
     </div>
