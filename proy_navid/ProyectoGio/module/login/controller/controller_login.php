@@ -11,6 +11,18 @@ $path_controllerLogin = $_SERVER['DOCUMENT_ROOT'] . '/proy_navid/ProyectoGio/';
 if (isset($_POST['login_users_json'])) {
     log_user();
 }
+if (isset($_POST['logOut'])) {
+    $_SESSION['usuarioLogueado75']=null;
+    exit;
+}
+if (isset($_POST['informacion'])) {
+      // $username=$_SESSION['user_log'];
+      // $usertype5=$_SESSION['user_type'];
+      $us=$_SESSION['usuarioLogueado75'];
+      // $us=null;
+    echo json_encode($us);
+    exit;
+}
 
 if (isset($_POST['UserName'])) {
     if (userAlreadyExists_m($_POST['UserName'])) {
@@ -75,8 +87,9 @@ function log_user() {
         $jsondata["logUser_type"] = $result['logUser_type'];
         
         
-        $_SESSION['user_log'] = $jsondata["user_log"];
-        $_SESSION['user_type'] = $result["logUser_type"];
+        $_SESSION['usuarioLogueado75'] =[ 'user_log' => $jsondata["user_log"], 
+                                        'user_type' => $jsondata["logUser_type"] ];
+        
         
     //    echo($jsondata["user_log"] );
     // exit;

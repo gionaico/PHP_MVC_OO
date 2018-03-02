@@ -15,7 +15,7 @@ $(document).ready(function () {
 		var cantidad_ac=0;
 		for (var i=0; i <json.length ; i++) { 
 		     cantidad_ac=json[i]['quantity'];
-		     total=total+cantidad_ac;
+		     total=total+parseInt(cantidad_ac);
 		}
 		// alert(total);
 		var basket2=document.getElementById('cont_prod');

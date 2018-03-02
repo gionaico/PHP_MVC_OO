@@ -243,7 +243,7 @@ function btn_search() {
     var city = document.getElementById('city_home').value;
     var word_wrotten = document.getElementById('search_home').value;
     localStorage.setItem("worldToFind", word_wrotten);
-    alert(localStorage.getItem('worldToFind'));
+    //alert(localStorage.getItem('worldToFind'));
     //exit;
 
     var data = { "province": province, "city": city, "word_wrotten": word_wrotten };
@@ -285,7 +285,7 @@ function autocomplete(word_wrotten) {
     var data_location_JSON = JSON.stringify(data);
 
     //alert(data_location_JSON);
-
+    document.getElementById("datalist_search").innerHTML="";
     $.post("module/homepage/controller/controller_homepage.php?homepage=search", { "data_location": data_location_JSON },
             function(response) {
                 var json = JSON.parse(response);

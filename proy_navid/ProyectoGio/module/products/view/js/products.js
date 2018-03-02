@@ -23,31 +23,69 @@ Dropzone.autoDiscover = false;
 $(document).ready(function () {
     console.log("prod "+usuarioLogeado);
       
-    if ((typeof(usuarioLogeado) == "undefined") || (usuarioLogeado == null)) {
-        $("#un").prop('disabled', true);
-        $("#pbt").prop('disabled', true);
-        $("#add1").prop('disabled', true);
-        $("#phone").prop('disabled', true);
-        $("#email").prop('disabled', true);
-        $("#message").prop('disabled', true);
-        $("#country").prop('disabled', true);
-        $("#product_type").prop('disabled', true);
-        $("#submit").prop('disabled', true);
-        var div_dropzone=document.getElementById('div_dropzone');
-                    div_dropzone.style.display = 'none';
-        $('#modal_login').modal('show'); // abrir
-        var info_logPro=document.getElementById('info_logPro');
-            info_logPro.style.display='block';
-        //$('#myModalExito').modal('hide'); // cerrar                    
-        // alert("NOOOOOOOO logueado");
-        //$("#dropzone").prop('disabled', true);
-    }else{
-        $("#un").attr("value",usuarioLogeado);
-        $("#un").prop('disabled', true);
 
-        console.log("oooooooooo ES "+usuarioLogeado);
+      $.post('module/products/controller/controller_products.php',
+                 {"checkUser": ""},
+     function(response){
+        var answer = response;
+         console.log(typeof(response));         
+        if ((answer== "null")||(answer==null)) {
+            $("#un").prop('disabled', true);
+            $("#pbt").prop('disabled', true);
+            $("#add1").prop('disabled', true);
+            $("#phone").prop('disabled', true);
+            $("#email").prop('disabled', true);
+            $("#message").prop('disabled', true);
+            $("#country").prop('disabled', true);
+            $("#product_type").prop('disabled', true);
+            $("#submit").prop('disabled', true);
+            var div_dropzone=document.getElementById('div_dropzone');
+                        div_dropzone.style.display = 'none';
+            $('#modal_login').modal('show'); // abrir
+            var info_logPro=document.getElementById('info_logPro');
+                info_logPro.style.display='block';
+            //$('#myModalExito').modal('hide'); // cerrar                    
+            // alert("NOOOOOOOO logueado");
+            //$("#dropzone").prop('disabled', true);
+        }else{
+            $("#un").attr("value",usuarioLogeado);
+            $("#un").prop('disabled', true);
+
+            console.log("oooooooooo ES "+usuarioLogeado);
+                   
+        }
                
-    }
+     }).fail(function() {
+            alert( "recepcion de datos fallida en boton detalles producto" );
+             });
+
+
+
+    // if ((typeof(usuarioLogeado) == "undefined") || (usuarioLogeado == null)) {
+    //     $("#un").prop('disabled', true);
+    //     $("#pbt").prop('disabled', true);
+    //     $("#add1").prop('disabled', true);
+    //     $("#phone").prop('disabled', true);
+    //     $("#email").prop('disabled', true);
+    //     $("#message").prop('disabled', true);
+    //     $("#country").prop('disabled', true);
+    //     $("#product_type").prop('disabled', true);
+    //     $("#submit").prop('disabled', true);
+    //     var div_dropzone=document.getElementById('div_dropzone');
+    //                 div_dropzone.style.display = 'none';
+    //     $('#modal_login').modal('show'); // abrir
+    //     var info_logPro=document.getElementById('info_logPro');
+    //         info_logPro.style.display='block';
+    //     //$('#myModalExito').modal('hide'); // cerrar                    
+    //     // alert("NOOOOOOOO logueado");
+    //     //$("#dropzone").prop('disabled', true);
+    // }else{
+    //     $("#un").attr("value",usuarioLogeado);
+    //     $("#un").prop('disabled', true);
+
+    //     console.log("oooooooooo ES "+usuarioLogeado);
+               
+    // }
     
     $("#product_type").change(function() {
         if ($(this).val()=="Sale Vehicle") {

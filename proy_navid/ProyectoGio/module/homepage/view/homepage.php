@@ -108,15 +108,22 @@
             </div>
             <div class="col-md-4">
                 <div class="input-group">
-                    <input class="form-control color_input sombra" id="search_home" list="datalist_search " name="search_home" placeholder="Search for" required/>
+                    <input type="text" class="form-control color_input sombra" id="search_home" list="datalist_search"  placeholder="Search for">
+                    <datalist id="datalist_search">
+                        <option value="abel"></option>
+                    </datalist>
                     <span class="input-group-btn">
                         <a type="submit" href="#" class="btn btn-primary " id="btn_search"><i class="glyphicon glyphicon-search"></i></a>
                     </span>
-                    <!-- index.php?page=homepage&view=search -->
+                   <!--  <input class="form-control color_input sombra" id="search_home" list="datalist_search " name="search_home" placeholder="Search for" required/>
                     <datalist id="datalist_search">
-                        <option value="dddd"></option>
-                        
+                        <option value="dddd">xxx</option>
+                        <option value="sssss">sssss</option>
                     </datalist>
+                    <span class="input-group-btn">
+                        <a type="submit" href="#" class="btn btn-primary " id="btn_search"><i class="glyphicon glyphicon-search"></i></a>
+                    </span> -->
+                    <!-- index.php?page=homepage&view=search -->
                 </div>
             </div>
         </div>

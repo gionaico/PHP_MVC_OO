@@ -170,7 +170,7 @@ function peticion(){
         console.log(response);
         var json_cont2 = JSON.parse(response);
         console.log(json_cont2);
-         prueba(json_cont2);
+         prueba();
            
     }).fail(function() {
         alert( "recepcion de datos fallida en boton detalles producto" );
@@ -178,7 +178,19 @@ function peticion(){
 
 }
 
-function prueba(json){
+function prueba(jsonc){
+ 
+
+ $.post('module/homepage/controller/controller_homepage.php?homepage=cargadatos',
+             
+ function(response){
+         var json = JSON.parse(response);
+         console.log(json);
+           
+ 
+
+
+
         var div_resultado=document.getElementById('resultado');
         div_resultado.innerHTML="";
         var cont=0;
@@ -411,4 +423,7 @@ function prueba(json){
                     alert( "recepcion de datos fallida en boton detalles producto" );
                 });
          });//end_prodToDetaills
+        }).fail(function() {
+        alert( "recepcion de datos fallida en boton detalles producto" );
+         });
  }

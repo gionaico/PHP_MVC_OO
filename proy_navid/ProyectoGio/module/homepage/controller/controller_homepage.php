@@ -88,6 +88,7 @@
                         );
                         array_push($All_productos, $producto);                
                     }
+                    $_SESSION['productosBuscados2']=$All_productos;
                     echo json_encode($All_productos);//pasa el array que viene de DAO
                 
                     exit;
@@ -178,7 +179,11 @@
                     echo json_encode($All_productos);
                     exit;
                  break;
-
+            case 'cargadatos':
+                    $datos=$_SESSION['productosBuscados2'];
+                    echo json_encode($datos);
+                    exit;
+                break;
 
              default:
                  try{

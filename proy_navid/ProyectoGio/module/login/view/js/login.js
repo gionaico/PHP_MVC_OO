@@ -9,6 +9,8 @@ function checkInput(idInput, pattern) {
 $(document).ready(function () {
 	 
 	// div_bienvenida.style.display = 'none';
+     
+
 
 	$("#user_log").keyup(function() {
 		if ($(this).val()=="") {
@@ -42,22 +44,25 @@ $(document).ready(function () {
 
 
 
-var usuarioLogeado=sessionStorage.getItem('app-usuarioLogeado');
-var user_type=sessionStorage.getItem('user_type');
-        //alert(usuarioLogeado);
-        if (usuarioLogeado==null) {
-            console.log("es null");
-        }
-    if ((typeof(usuarioLogeado) == "undefined") || (usuarioLogeado == null)) {
-        console.log("no logueado");
-    }else{
+// var usuarioLogeado=sessionStorage.getItem('app-usuarioLogeado');
+// var user_type=sessionStorage.getItem('user_type');
+//         //alert(usuarioLogeado);
+      
 
-        console.log("ESTO ES "+usuarioLogeado+" tipo "+user_type);
-                var div_bienvenida=document.getElementById('div_bienvenida');
-                div_bienvenida.style.display = 'block';
+     $.post('module/login/controller/controller_login.php',
+                 {"informacion": ""},
+     function(response){
+             var json_usuarios = JSON.parse(response);
+             console.log(json_usuarios);
+             // usuarioLogeado=json_usuarios['username'];
+             if (json_usuarios==null) {
+                console.log("no logueado");
+            }else{
+                console.log("logueado");
+                 div_bienvenida.style.display = 'block';
 
                 var id_session=document.getElementById('id_session');
-                id_session.innerHTML=usuarioLogeado;
+                id_session.innerHTML=json_usuarios['user_log'];
 
                 var li_singIn=document.getElementById('li_singIn');
                 var li_login=document.getElementById('li_login');
@@ -65,35 +70,91 @@ var user_type=sessionStorage.getItem('user_type');
                     li_singIn.style.display = 'none';
                     li_login.style.display = 'none';
                     li_logOut.style.display = 'block';
-                    if (user_type==1) {
+                    if (json_usuarios['user_type']=="1") {
                         var crud=document.getElementById('crud');
                         crud.style.display='block';
                     }
-    }
+            }
+               
+     }).fail(function() {
+            alert( "recepcion de datos fallida en boton detalles producto" );
+             });
+
+
+
+    // if ((typeof(usuarioLogeado) == "undefined") || (usuarioLogeado == null)) {
+    //     console.log("no logueado");
+    // }else{
+
+    //     console.log("ESTO ES "+usuarioLogeado+" tipo "+user_type);
+    //             var div_bienvenida=document.getElementById('div_bienvenida');
+    //             div_bienvenida.style.display = 'block';
+
+    //             var id_session=document.getElementById('id_session');
+    //             id_session.innerHTML=usuarioLogeado;
+
+    //             var li_singIn=document.getElementById('li_singIn');
+    //             var li_login=document.getElementById('li_login');
+    //             var li_logOut=document.getElementById('li_logOut');
+    //                 li_singIn.style.display = 'none';
+    //                 li_login.style.display = 'none';
+    //                 li_logOut.style.display = 'block';
+    //                 if (user_type==1) {
+    //                     var crud=document.getElementById('crud');
+    //                     crud.style.display='block';
+    //                 }
+    // }
 
 
 
     $('#li_logOut2').click(function() {
-
-        sessionStorage.clear();
-        var div_bienvenida=document.getElementById('div_bienvenida');
-                div_bienvenida.style.display = 'none';
-
-                var id_session=document.getElementById('id_session');
-                id_session.innerHTML=usuarioLogeado;
-
-                var li_singIn=document.getElementById('li_singIn');
-                var li_login=document.getElementById('li_login');
-                var li_logOut=document.getElementById('li_logOut2');
-                    li_singIn.style.display = 'block';
-                    li_login.style.display = 'block';
-                    li_logOut.style.display = 'none';
+         $.post('module/login/controller/controller_login.php',
+                     {"logOut": ""},
+         function(response){
+                 
                     var redirect=document.URL;
+                 console.log(response);
+                // var div_bienvenida=document.getElementById('div_bienvenida');
+                // div_bienvenida.style.display = 'none';
+
+                // var id_session=document.getElementById('id_session');
+                // id_session.innerHTML="";
+
+                // var li_singIn=document.getElementById('li_singIn');
+                // var li_login=document.getElementById('li_login');
+                // var li_logOut=document.getElementById('li_logOut2');
+                //     li_singIn.style.display = 'block';
+                //     li_login.style.display = 'block';
+                //     li_logOut.style.display = 'none';
                     if ((redirect=="http://localhost/proy_navid/ProyectoGio/index.php?page=myAccount&view=yourOrders") || (redirect=="http://localhost/proy_navid/ProyectoGio/index.php?page=myAccount&view=EditPerfile") ||(redirect=="http://localhost/proy_navid/ProyectoGio/index.php?page=myAccount&view=myAccount")) {
                         redirect="http://localhost/proy_navid/ProyectoGio/index.php";
                     }
                     console.log(redirect);
-                window.location.href =redirect;
+                window.location.href ="http://localhost/proy_navid/ProyectoGio/index.php";
+         }).fail(function() {
+                alert( "recepcion de datos fallida en boton detalles producto" );
+                 });
+
+
+        // sessionStorage.clear();
+        // var div_bienvenida=document.getElementById('div_bienvenida');
+        //         div_bienvenida.style.display = 'none';
+
+        //         var id_session=document.getElementById('id_session');
+        //         id_session.innerHTML=usuarioLogeado;
+
+        //         var li_singIn=document.getElementById('li_singIn');
+        //         var li_login=document.getElementById('li_login');
+        //         var li_logOut=document.getElementById('li_logOut2');
+        //             li_singIn.style.display = 'block';
+        //             li_login.style.display = 'block';
+        //             li_logOut.style.display = 'none';
+        //             var redirect=document.URL;
+        //             if ((redirect=="http://localhost/proy_navid/ProyectoGio/index.php?page=myAccount&view=yourOrders") || (redirect=="http://localhost/proy_navid/ProyectoGio/index.php?page=myAccount&view=EditPerfile") ||(redirect=="http://localhost/proy_navid/ProyectoGio/index.php?page=myAccount&view=myAccount")) {
+        //                 redirect="http://localhost/proy_navid/ProyectoGio/index.php";
+        //             }
+        //             console.log(redirect);
+        //         window.location.href =redirect;
     });
 
     
@@ -150,20 +211,20 @@ function validaLogin(){
         	//alert(json2);
         	// alert("ffffffffffffffffff"+json2.success); 
             if (response.success) {
-            	alert(response.user_log);
-            	$('#modal_login').modal('hide');
-                console.log(response.logUser_type);
+            	// alert(response.user_log);
+            	// $('#modal_login').modal('hide');
+             //    console.log(response.logUser_type);
 
-                var datosPrueba = {"user_log": response.user_log, "password_log": "password"};
-                console.log(datosPrueba.user_log);
+             //    var datosPrueba = {"user_log": response.user_log, "password_log": "password"};
+             //    console.log(datosPrueba.user_log);
 
-                sessionStorage.setItem('app-usuarioLogeado', response.user_log);
-                sessionStorage.setItem('user_type', response.logUser_type);
-                // usuarioLogeado = sessionStorage.getItem('app-usuarioLogeado');
-                console.log(sessionStorage.setItem('user_type', response.logUser_type));
+             //    sessionStorage.setItem('app-usuarioLogeado', response.user_log);
+             //    sessionStorage.setItem('user_type', response.logUser_type);
+             //    // usuarioLogeado = sessionStorage.getItem('app-usuarioLogeado');
+             //    console.log(sessionStorage.setItem('user_type', response.logUser_type));
                 console.log(document.URL);
                 var redirect=document.URL;
-                window.location.href =redirect; 
+                window.location.href =document.URL; 
                 
 
             	// var div_bienvenida=document.getElementById('div_bienvenida');

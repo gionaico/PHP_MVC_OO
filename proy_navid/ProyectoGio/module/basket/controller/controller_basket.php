@@ -9,9 +9,14 @@ $path_controller = $_SERVER['DOCUMENT_ROOT'] . '/proy_navid/ProyectoGio/';
 	switch ($_GET['basket']) {
 
 		case 't_pedidos'://llega de basket.js
-			$Pedido = json_decode($_POST["jsonPedido"], true);
-			$date_today=date("m.d.y");
-			$productosPedido=json_decode($_POST["productosPedido"], true);
+      $datosPed=$_SESSION['cestaCompra'];
+      $Pedido=[ $_SESSION['user_log'],$datosPed[1]];
+      $productosPedido=$_SESSION['cestaCompra'][0];
+			
+			// $productosPedido=json_decode($_POST["productosPedido"], true);
+      
+
+      $date_today=date("m.d.y");
 			// echo (count($productosPedido));
 			// exit;
 
@@ -19,21 +24,21 @@ $path_controller = $_SERVER['DOCUMENT_ROOT'] . '/proy_navid/ProyectoGio/';
       $rdo = $daoPedido->insertarPedido($Pedido, $date_today, $productosPedido);
 
       if ($rdo) {      	
-        $prueba="";
-        for ($i=0; $i <count($productosPedido) ; $i++) { 
-          $prueba.='<tr style="margin: 1px solid black;">
-                      <td style="text-align:center"><img style="width: 100px;" src="http://pickenselections.org/wp-content/gallery/commission/no_photo_available.jpg" alt=""></td>
-                      <td style="text-align:center">'.$productosPedido[$i]["title"].'</td>
-                      <td style="text-align:center">'.$productosPedido[$i]["price"].'  EUR</td>
-                      <td style="text-align:center">'.$productosPedido[$i]["quantity"].'</td>
-                    </tr>';
-        }; 
+        // $prueba="";
+        // for ($i=0; $i <count($productosPedido) ; $i++) { 
+        //   $prueba.='<tr style="margin: 1px solid black;">
+        //               <td style="text-align:center"><img style="width: 100px;" src="http://pickenselections.org/wp-content/gallery/commission/no_photo_available.jpg" alt=""></td>
+        //               <td style="text-align:center">'.$productosPedido[$i]["title"].'</td>
+        //               <td style="text-align:center">'.$productosPedido[$i]["price"].'  EUR</td>
+        //               <td style="text-align:center">'.$productosPedido[$i]["quantity"].'</td>
+        //             </tr>';
+        // }; 
 
-        $daoPedido2 = new DAObasket();
-        $rdo2 = $daoPedido2->getEmail($Pedido);
-        $email =$rdo2->fetch_assoc();
+        // $daoPedido2 = new DAObasket();
+        // $rdo2 = $daoPedido2->getEmail($Pedido);
+        // $email =$rdo2->fetch_assoc();
 
-        $enviarEmail = send_mailgun($email['email'], $productosPedido, $prueba, $Pedido); 
+        // $enviarEmail = send_mailgun($email['email'], $productosPedido, $prueba, $Pedido); 
       	$msn="You will recieve your products in the next days";
       	$success=true;
      		
@@ -94,6 +99,7 @@ $path_controller = $_SERVER['DOCUMENT_ROOT'] . '/proy_navid/ProyectoGio/';
         
       }
       $datosTotales=[$All_productos2, $suma];
+      $_SESSION['cestaCompra']=$datosTotales;
       echo json_encode($datosTotales);
       exit;
       break;

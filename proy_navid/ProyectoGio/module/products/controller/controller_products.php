@@ -22,6 +22,11 @@ if ((isset($_POST['alta_users_json']))) {
     alta_users();
 } 
 
+if ((isset($_POST['checkUser']))) {
+    $p=$_SESSION['usuarioLogueado75'];
+    echo json_encode($p);
+    exit;
+}
 
 
 

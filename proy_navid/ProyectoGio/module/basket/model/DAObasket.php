@@ -7,8 +7,8 @@ $path_validaphp = $_SERVER['DOCUMENT_ROOT'] . '/proy_navid/ProyectoGio/';
     	function insertarPedido($array, $date, $array2){
     		// echo ($array2[2]["quantity"]);
     		// exit;
-    		$user=$array["user"];
-            $precio_peddido=$array["precio_peddido"];
+    		$user=$array[0];
+            $precio_peddido=$array[1];
 
     		$sql = " INSERT INTO pedidos (user, order_date, total_price)"." VALUES ('$user', '$date', '$precio_peddido')";
     		$conexion = connect::conPedidos();
@@ -41,7 +41,7 @@ $path_validaphp = $_SERVER['DOCUMENT_ROOT'] . '/proy_navid/ProyectoGio/';
 
 
         function getEmail($array){
-          $user=$array["user"];
+          $user=$array[0];
           $sql = " SELECT email FROM usuario2 WHERE user='".$user."'";
           $conexion = connect::con();
           $res = mysqli_query($conexion, $sql);
