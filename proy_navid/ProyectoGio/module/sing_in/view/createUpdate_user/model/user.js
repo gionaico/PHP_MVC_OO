@@ -493,17 +493,15 @@ function validaForm(type_form){
         function (response) {
         	//var json2 = JSON.parse(response);
         	// alert("ffffffffffffffffff"+json2.success); 
+        	console.log(response);
             if (response.success) {
-            	//alert(respose);
+            	alert(response);
                 window.location.href = response.redirect; 
                 //Al establecer la propiedad va a redirigir la página.
 				// window.open('http://www.xyz.com'); //This will open xyz in a new window.
 				// window.location.href = 'http://www.xyz.com'; //Will take you to xyz.
             }
             
-              //alert(response);  //para debuguear
-            // }); //para debuguear
-        //}, "json").fail(function (xhr) {
         
         }, "json").fail(function(xhr, status, error) {
         	alert("tiene fallos");
@@ -581,26 +579,7 @@ function validaForm(type_form){
             }
 
 
-            // if (xhr.responseJSON.error_avatar){
-            //     $("#dropzone").focus().after("<div class='div_errPhp'><span  class='error' >" + xhr.responseJSON.error_avatar + "</span><br></div>");
-            //     $("#sp_dropzone").html("<span></span>");
-            // }
             
-            // if (xhr.responseJSON.success1) {
-            //     if (xhr.responseJSON.img_avatar !== "media/default-avatar.png") {
-            //     	alert("defaul");
-            //         //$("#progress").show();
-            //         //$("#bar").width('100%');
-            //         //$("#percent").html('100%');
-            //         //$('.msg').text('').removeClass('msg_error');
-            //         //$('.msg').text('Success Upload image!!').addClass('msg_ok').animate({ 'right' : '300px' }, 300);
-            //     }
-            // } else {
-            // 	alert("dsfsdfffffffffff");
-            //     $("#progress").hide();
-            //     $('.msg').text('').removeClass('msg_ok');
-            //     $('.msg').text('Error Upload image!!').addClass('msg_error').animate({'right': '300px'}, 300);
-            // }
         });
 
         }//end if(result)	

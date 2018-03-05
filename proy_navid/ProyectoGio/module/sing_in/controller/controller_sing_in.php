@@ -148,6 +148,8 @@
             if (isset($_GET['modal'])) {
                 $user=$_GET['modal'];
                 $_SESSION['userToDelete']=$user;
+                // echo $_SESSION['userToDelete'];
+                // exit;
                 try{
                     $daouser = new DAOUser();
                     $rdo = $daouser->select_user($user);
@@ -168,9 +170,10 @@
                 break;
             }elseif (isset($_GET['answer'])) {
                 $answer=$_GET['answer'];
+
                 try{
                     $daouser = new DAOUser();
-                    $rdo = $daouser->delete_user($_SESSION['userToDelete']);
+                    $rdo = $daouser->delete_user($answer);
                     
                  }catch (Exception $e){
                     echo json_encode("error");

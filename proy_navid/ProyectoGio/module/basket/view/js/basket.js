@@ -196,7 +196,10 @@ divApi.appendChild(script);
 
 				$(".delete_product").click(function() {
 					var id_fila = this.getAttribute('tr');
+					document.getElementById(id_fila).className = "0000";
+					alert(id_fila);
 					$("#"+id_fila).remove();
+					// document.getElementById("totalPagar").removeChild(id_fila);
 			       // alert("delete "+id);
 			       var id_producto=this.getAttribute('id');
 			       
@@ -235,57 +238,63 @@ divApi.appendChild(script);
 		            var basket2=document.getElementById('cont_prod');
 		                    basket2.innerHTML=total;
 					totalPagar.innerHTML=suma_precio+" $";
+					window.location.href =document.URL; 
 		            ////
 					/*----------------------------------------------------------------------------------------------*/
 
-		    	});
+		    	});//end deleteProduct
 
 		    	$('#pay_products').click(function() {
+		    		
 		    		var usuarioLogeado=sessionStorage.getItem('app-usuarioLogeado');//llega en string
-		    		if ((typeof(usuarioLogeado) == "undefined") || (usuarioLogeado == null)) {
-			    		$('#modal_login').modal('show'); // abrir
-			       		var info_logPro=document.getElementById('info_pay');
-			            info_logPro.style.display='block';
-			        }else{
-				       console.log("paga de usuario "+usuarioLogeado);
-				    //    var precio_peddido=(document.getElementById('totalPagar').innerHTML);
-				    //    var productosPedido=localStorage.getItem('productos_carrito');
-				    //     console.log( JSON.parse(productosPedido));
+		    		
+		    		$.post('module/basket/controller/controller_basket.php?basket=t_pedidos&check=checkUser',
+		    		 
+					function(response){
+						 	// var json_cont2 = JSON.parse(response);
+						 	if (response=="null") {
+						 		console.log("no registrado");
+						 		$('#modal_login').modal('show'); // abrir
+					       		var info_logPro=document.getElementById('info_pay');
+					            info_logPro.style.display='block';
+						 	}else {
+						 		var inputElements = document.getElementsByClassName('select_quantity');
+					    		var array = [];
+					    		for (var i = 0; i < inputElements.length; i++) {
+							    	var data = {"id": inputElements[i].getAttribute('id'), "quantity":inputElements[i].value};
+							        array[i]=data;
+							    }	
+							    console.log(array);
+								var json = JSON.stringify(array);
+
+							               //alert(jsonPedido);
+								$.post('module/basket/controller/controller_basket.php?basket=t_pedidos',
+								 {"datosCompra":json},
+								function(response){
+										console.log(response);
+									 	var json = JSON.parse(response);
+										console.log(json.success);
+									 	if (json.success) {
+									 		localStorage.removeItem("productos_carrito");
+									 		alert(json.resultado);
+									 		window.location.href ="index.php";
+									 	}else{
+									 		alert(json.resultado);
+									 	}
+									 	//alert(response);
+									   
+								}).fail(function() {
+								       alert( "recepcion de datos fallida en boton detalles producto" );
+								   });
+						 	}
+							console.log(response);
+						   
+					}).fail(function() {
+					       alert( "recepcion de datos fallida en boton detalles producto" );
+				   		});
 
 
-				    //    var data = {"precio_peddido": precio_peddido, "user": usuarioLogeado};
-					   // var jsonPedido = JSON.stringify(data);
-					   	var inputElements = document.getElementsByClassName('select_quantity');
-			    		var array = [];
-			    		for (var i = 0; i < inputElements.length; i++) {
-					    	var data = {"id": inputElements[i].getAttribute('id'), "quantity":inputElements[i].value};
-					        array[i]=data;
-					    }	
-					    console.log(array);
-						var json = JSON.stringify(array);
-
-					               //alert(jsonPedido);
-						$.post('module/basket/controller/controller_basket.php?basket=t_pedidos',
-						 {"datosCompra":json},
-						function(response){
-								console.log(response);
-							 	var json = JSON.parse(response);
-								console.log(json.success);
-							 	if (json.success) {
-							 		localStorage.removeItem("productos_carrito");
-							 		alert(json.resultado);
-							 		window.location.href ="index.php";
-							 	}else{
-							 		alert(json.resultado);
-							 	}
-							 	//alert(response);
-							   
-						}).fail(function() {
-						       alert( "recepcion de datos fallida en boton detalles producto" );
-						   });
-				    }
-			    		
-				   
+		    		
 		    	});
 
 		    }//end carga datos

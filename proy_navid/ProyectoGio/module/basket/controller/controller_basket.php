@@ -9,15 +9,19 @@ $path_controller = $_SERVER['DOCUMENT_ROOT'] . '/proy_navid/ProyectoGio/';
 	switch ($_GET['basket']) {
 
 		case 't_pedidos'://llega de basket.js
+    if (isset($_GET['check'])) {
+      echo json_encode($_SESSION['usuarioLogueado75']);
+      exit;
+    }
       $datosPed=$_SESSION['cestaCompra'];
-      $Pedido=[ $_SESSION['user_log'],$datosPed[1]];
+      $Pedido=[ $_SESSION['usuarioLogueado75'], $datosPed[1]];
       $productosPedido=$_SESSION['cestaCompra'][0];
 			
 			// $productosPedido=json_decode($_POST["productosPedido"], true);
       
 
       $date_today=date("m.d.y");
-			// echo (count($productosPedido));
+			// echo json_encode($Pedido[0]['user_log']);
 			// exit;
 
 			$daoPedido = new DAObasket();

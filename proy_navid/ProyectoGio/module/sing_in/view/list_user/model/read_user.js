@@ -60,6 +60,7 @@ $(document).ready(function () {
 
     $('.user_delete').click(function () { //modal_delete
             var id = this.getAttribute('id');
+            console.log(id);
             //alert(id);
 
             $.get('module/sing_in/controller/controller_sing_in.php?op=delete&modal='+id, 
@@ -72,34 +73,36 @@ $(document).ready(function () {
                     //pintar 503
                     window.location.href='index.php?page=503';
                 }else{
+
                     console.log(json.genere);
                     $("#user_delete_id").html(json.user);
-                    
+                    $('.user_delete_ok').click(function () { //modal_delete
+                    /////////////////////////
+                    console.log(id);
+                    //alert(id);
+
+                    $.get('module/sing_in/controller/controller_sing_in.php?op=delete&answer='+id, 
+                    function (respose) {
+                         //var json = JSON.parse(respose);
+                         console.log(respose);
+                        
+                        if(respose === 'error') {
+                            //console.log(json);
+                            //pintar 503
+                            window.location.href='index.php?page=503';
+                        }else{
+                            alert("User deleted successful");
+                            window.location.href='index.php?page=sing_in&op=list';
+                            
+                        }//end-else
+                    });
+                });//////////////////////////////
                 }//end-else
             });
         });
 
 
-    $('.user_delete_ok').click(function () { //modal_delete
-            var id = this.getAttribute('id');
-            //alert(id);
-
-            $.get('module/sing_in/controller/controller_sing_in.php?op=delete&answer='+id, 
-            function (respose) {
-                 var json = JSON.parse(respose);
-                 console.log(json);
-                
-                if(json === 'error') {
-                    //console.log(json);
-                    //pintar 503
-                    window.location.href='index.php?page=503';
-                }else{
-                    alert("User deleted successful");
-                    window.location.href='index.php?page=sing_in&op=list';
-                    
-                }//end-else
-            });
-        });
+    
 
 
 

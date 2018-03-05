@@ -28,7 +28,8 @@ $(document).ready(function () {
                  {"checkUser": ""},
      function(response){
         var answer = response;
-         console.log(typeof(response));         
+         console.log(typeof(response)); 
+         console.log(response.length);        
         if ((answer== "null")||(answer==null)) {
             $("#un").prop('disabled', true);
             $("#pbt").prop('disabled', true);

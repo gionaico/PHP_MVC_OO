@@ -6,7 +6,12 @@ $path_controller = $_SERVER['DOCUMENT_ROOT'] . '/proy_navid/ProyectoGio/';
 	switch ($_GET['type']) {
 
 		case 'pedidos'://llega de basket.js
-      $user= $_POST["usuarioLogeado"];
+    if (isset($_GET['checkUser'])) {
+
+      echo json_encode($_SESSION['usuarioLogueado75']);
+      exit;
+    }
+      $user= $_SESSION["usuarioLogueado75"]['user_log'];
       $daoMyAccount = new DAOmyAccount();
       $rdo = $daoMyAccount->AllPedidos($user);
 

@@ -35,7 +35,7 @@
       <div class="container">
         <div class="caraous-title text-center">
             <div class="col-md-12">
-                <h1><span>CARS </span>for any ocassion</h1>
+                <h1 ><span data-tr="cars">CARS </span><label data-tr="carsinfo">for any ocassion</label></h1>
             </div>        
         </div>
       </div>
@@ -45,7 +45,7 @@
       <div class="container">
         <div class="caraous-title text-center">
             <div class="col-md-12">
-                    <h1><span>MOTORBIKES</span> for all styles</h1>                              
+                    <h1><span data-tr="motorbikes">MOTORBIKES</span><label data-tr="motoinfo">for all styles</label> </h1>                              
             </div>        
         </div>
       </div>
@@ -55,7 +55,8 @@
       <div class="container">
         <div class="caraous-title text-center">
             <div class="col-md-12">
-                    <h1><span>TRUCKS</span> of all kinds</h1>                      
+                    <h1><span data-tr="trucks">TRUCKS</span> <label data-tr="truckinfo">of all kinds</label>
+                    </h1>                      
             </div>        
         </div>
       </div>

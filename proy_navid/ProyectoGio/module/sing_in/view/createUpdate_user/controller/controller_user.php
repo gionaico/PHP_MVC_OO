@@ -5,15 +5,16 @@ include ($_SERVER['DOCUMENT_ROOT'] .'/proy_navid/ProyectoGio/module/sing_in/view
 // echo ($_POST["alta_users_json"]);//imrime en forma de alert
 // exit;
 
-if ((isset($_POST['alta_users_json']))) {
-
+if (isset($_POST['alta_users_json'])) {
     alta_user();
 } 
 
 function alta_user() {
     //echo ($_POST["alta_users_json"]);//imrime en forma de alert
     $jsondata = array();
-    $usersJSON = json_decode($_POST["alta_users_json"], true);//convierte en un array asociativo
+    $usersJSON = json_decode($_POST['alta_users_json'], true);//convierte en un array asociativo
+    // echo ($usersJSON);
+    // exit;
     
     if($usersJSON['type_form']=="create"){
         $callback = "index.php?page=sing_in&op=create&check=true";
@@ -22,14 +23,7 @@ function alta_user() {
     }
 
     $result = validate_user($usersJSON);
-    // echo ($result['resultado']);
-    // exit;
-
-    // if (empty($_SESSION['result_avatar'])) {
-    //     $_SESSION['result_avatar'] = array('resultado' => true, 'error' => "", 'datos' => 'media/default-avatar.png');
-    // }
-
-    // $result_avatar = $_SESSION['result_avatar'];
+    
 
     if ($result['resultado']) {//$result['resultado'] viene de valida_php
 
@@ -57,7 +51,7 @@ function alta_user() {
         //redirigir a otra p�gina con los datos de $arrArgument y $mensaje
         $_SESSION['user'] = $arrArgument;
         $_SESSION['msje'] = $mensaje;
-         $callback = "index.php?page=sing_in&op=create&check=true";/////////////////////////////////////////////////////
+         //$callback = "index.php?page=sing_in&op=create&check=true";/////////////////////////////////////////////////////
 
         $jsondata["success"] = true;
         $jsondata["redirect"] = $callback;
@@ -70,13 +64,7 @@ function alta_user() {
         // $error_avatar = $result_avatar['error'];
         $jsondata["success"] = false;
         $jsondata["error"] = $result['error'];
-        // $jsondata["error_avatar"] = $result_avatar['error'];
-
-        // $jsondata["success1"] = false;
-        // if ($result_avatar['resultado']) {
-        //     $jsondata["success1"] = true;
-        //     $jsondata["img_avatar"] = $result_avatar['datos'];
-        // }
+        
         header('HTTP/1.0 400 Bad error');
         echo json_encode($jsondata);
         //exit;

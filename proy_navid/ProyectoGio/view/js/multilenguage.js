@@ -10,7 +10,13 @@ frases = {
 		'lenguage' : 'Lenguage',
 		'spanish' : 'Spanish',
 		'catalan' : 'Catalan',
-		'english' : 'English'
+		'english' : 'English',
+		'cars' : 'CARS ',
+		'motorbikes' : 'MOTORBIKES ',
+		'trucks' : 'TRUCKS ',
+		'carsinfo':'for any ocassion',
+		'motoinfo':'for all styles',
+		'truckinfo':'of all kinds'
 	},
 	'es' : {
 		'home' : 'Inicio',
@@ -23,7 +29,13 @@ frases = {
 		'lenguage' : 'Idioma',
 		'spanish' : 'Español',
 		'catalan' : 'Catalan',
-		'english' : 'Ingles'
+		'english' : 'Ingles',
+		'cars' : 'COCHES ',
+		'motorbikes' : 'MOTOS ',
+		'trucks' : 'CAMIONES ',
+		'carsinfo':'para cualquier ocasión',
+		'motoinfo':'para todos los estilos',
+		'truckinfo':'de todas las clases'
 	},
 	'ca' : {
 		'home' : 'Inici',
@@ -36,7 +48,13 @@ frases = {
 		'lenguage' : 'Llengua',
 		'spanish' : 'Castella',
 		'catalan' : 'Catalan',
-		'english' : 'Angles'
+		'english' : 'Angles',
+		'cars' : 'COTXE ',
+		'motorbikes' : 'MOTOS ',
+		'trucks' : 'CAMIONS ',
+		'carsinfo':'per a qualsevol ocasió',
+		'motoinfo':'per a tots els estils',
+		'truckinfo':'de totes les classes'
 	}
 };
 

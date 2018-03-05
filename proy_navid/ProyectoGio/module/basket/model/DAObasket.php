@@ -7,8 +7,8 @@ $path_validaphp = $_SERVER['DOCUMENT_ROOT'] . '/proy_navid/ProyectoGio/';
     	function insertarPedido($array, $date, $array2){
     		// echo ($array2[2]["quantity"]);
     		// exit;
-    		$user=$array[0];
-            $precio_peddido=$array[1];
+    		$user=$array[0]['user_log'];
+        $precio_peddido=$array[1];
 
     		$sql = " INSERT INTO pedidos (user, order_date, total_price)"." VALUES ('$user', '$date', '$precio_peddido')";
     		$conexion = connect::conPedidos();
