@@ -64,8 +64,32 @@ $path_controller = $_SERVER['DOCUMENT_ROOT'] . '/proy_navid/ProyectoGio/';
       echo json_encode($ap);
       exit;
       
+    case 'likes':
+      $user_name=$_SESSION['usuarioLogueado75'];
+      $daoA = new DAOmyAccount();
+      // echo ($user_name['user_log'].$cod_prod);
+      $rdo = $daoA->productsLikes($user_name['user_log']);
 
-			
+      $productos = array();
+      foreach ($rdo as $row) {
+
+        $datos_productos = array(          
+          'cod_pro' => $row['cod_pro'],
+          'avatar' => $row['avatar'],
+          'product_type' => $row['product_type'],
+          'price' => $row['price'],
+          'date_today' => $row['date_today'],
+          'description' => $row['description'],
+          'phone' => $row['phone'],
+          'email' => $row['email'],
+          'country' => $row['country'],
+          'title' => $row['title'],                          
+        );
+        array_push($productos, $datos_productos);
+      }
+      echo json_encode($productos);
+      exit;
+      break;			
 
     case 'EditPerfile':
         $user= $_POST["usuarioLogeado"];

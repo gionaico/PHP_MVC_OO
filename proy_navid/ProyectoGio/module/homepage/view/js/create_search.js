@@ -1,4 +1,5 @@
  $(document).ready(function () {
+
     var l=localStorage.getItem('productos_buscados');
     prueba2();
     var array_filtroxxx=[{province:"", city:"", product_type:"", price:"", publication_date:"", order:""}];
@@ -253,6 +254,10 @@ function prueba2(){
                 var button3=document.createElement("button");
                     button3.setAttribute("class", "btn btn-success col-md-12 allDeta btnDetaills2");
                     button3.setAttribute("id", json[i].cod_pro);
+
+                var button4=document.createElement("button");
+                    button4.setAttribute("class", "btn btn-info col-md-12 like btnDetaills2");
+                    button4.setAttribute("id", json[i].cod_pro);
                     //             <p>
                     //   <a href="#" class="btn btn-primary" role="button">Botón</a>
                     //   <a href="#" class="btn btn-default" role="button">Botón</a>
@@ -267,10 +272,12 @@ function prueba2(){
                     button.innerHTML="Add to <span class='glyphicon glyphicon-shopping-cart'></span>";
                     button2.innerHTML="Quick details <span class='glyphicon glyphicon-eye-open'></span>  ";
                     button3.innerHTML="All Details <span class='glyphicon glyphicon-eye-open'></span>  ";
+                    button4.innerHTML="Like <span class=''></span>  ";
 
                     parr7.appendChild(button);
                     parr7.appendChild(button2);
                     parr7.appendChild(button3);
+                    parr7.appendChild(button4);
                     div_row.appendChild(div_col);
                     div_col.appendChild(div_thumbnail);
                     div_thumbnail.appendChild(div_img);
@@ -303,6 +310,26 @@ function prueba2(){
             // alert(id);
             window.location.href="http://localhost/proy_navid/ProyectoGio/index.php?page=homepage&view=product";
         });
+
+        $('.like').click(function() {
+            var id = this.getAttribute('id');
+            alert("estas"+id);
+            $.post("module/homepage/controller/controller_homepage.php?homepage=like&id="+id,
+
+             function(response){
+                     // var json_cont2 = JSON.parse(response);
+                     console.log(response);
+                     if (response=="exito") {
+                        alert("El producto a sido senalado con un like");
+                     }else{
+                        alert("Error subida de datos");
+                     }
+                       
+             }).fail(function() {
+                    alert( "Por favor antes de dar 'LIKE' a un producto necesita iniciar sesion" );
+                     });
+        });
+
         /*AGREGAR AL CARRITO-------------------------------------------------------*/
         $('.prodToBasket').click(function(){
             var id = this.getAttribute('id');

@@ -24,6 +24,8 @@ if (isset($_POST['informacion'])) {
     exit;
 }
 
+
+
 if (isset($_POST['UserName'])) {
     if (userAlreadyExists_m($_POST['UserName'])) {
         $rdo=getEmail($_POST['UserName']);

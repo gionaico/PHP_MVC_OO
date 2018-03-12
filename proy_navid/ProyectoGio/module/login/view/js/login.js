@@ -52,8 +52,10 @@ $(document).ready(function () {
      $.post('module/login/controller/controller_login.php',
                  {"informacion": ""},
      function(response){
+             console.log(response);
              var json_usuarios = JSON.parse(response);
              console.log(json_usuarios);
+
              // usuarioLogeado=json_usuarios['username'];
              if (json_usuarios==null) {
                 console.log("no logueado");

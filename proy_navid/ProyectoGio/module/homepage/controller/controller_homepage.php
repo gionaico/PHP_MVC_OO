@@ -185,6 +185,29 @@
                     exit;
                 break;
 
+            case 'like':
+                if ($_SESSION['usuarioLogueado75']!=null) {
+                    $cod_prod=$_GET["id"];
+                    $user_name=$_SESSION['usuarioLogueado75'];
+                    $daoproduct = new DAOProducts();
+                    // echo ($user_name['user_log'].$cod_prod);
+                    $rdo = $daoproduct->insertLikes($user_name['user_log'], $cod_prod);
+                    
+                    
+                    if($rdo){                        
+                        echo ("exito");
+                        exit;                    
+                    }else{
+                        echo ("error");
+                        exit;
+                    }
+                }else{
+                    $jsondata = false;
+                    header('HTTP/1.0 400 Bad error');
+                    echo json_encode($jsondata);
+                }
+                break;
+
              default:
                  try{
                     $daoproduct = new DAOProducts();

@@ -10,7 +10,7 @@
 - PRODUCT DETAILS
 	* Tiene dos vistas, una rapida que mustra las rese;as basicas de un producto a travez de un modal y la otra nos envia a una vista mucho mas detallada donde tambien esta presente la api de ebay.
 
-- LOGIN con Javascript en LocalStorage.
+- LOGIN con Javascript.
 	* Lo que logra es mostrar o en su caso ocultar informacion en funcion del tipo de usuario que se esta loguenado.
 	* Admin puede ver el crud de todos los usuarios registrados en la aplicacion. Normal User no tiene acceso al crud anteriormete mencionado.
 	* Ambos pueden subir productos para venderlos.
@@ -50,6 +50,10 @@
 	*El carrito tiene una mejora adicional que consiste en que envia un email al usuario que esta comprando (utiliza el email que dio cuando se registro) con los detalles del pedido es decir productos comprados, cantidad de cada producto, precio/producto y precio total del pedido. El mensaje es personalizado para cada usuario utilizando sus datos de DB.
 	* Sincronizacion total con vista basket y el icono del carrito que aparece en la barra de menu junto a la cantidad de productos seleccionados.
 	* En la vista de basket se tiene la posibilidad de incrementar, reducir la cantidad de un producto e incliso el eliminarlo de la cesta de compra.
+
+-  Mejoras de seguridad 
+	* A la hora de comprar un producto, si alguien intenta cambiar los id de los productos la aplicacion hace una comparacion con lo que hay en DB, si se ha intentado cambiar algo nos redirige a index.php y vacia el carrito.
+	* No se puede acceder a la vist de los detalles de pedido cuando ya se ha cerrado sesion.
 
 
 

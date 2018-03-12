@@ -77,6 +77,15 @@ $path_DAO = $_SERVER['DOCUMENT_ROOT'] . '/proy_navid/ProyectoGio/';
             connect::close($conexion);
             return $res;
 		}
+
+		function insertLikes($user_name, $cod_prod){
+			$sql5 = "INSERT INTO megusta3 (user_name, cod_prod) VALUES ('$user_name', '$cod_prod')";
+			
+			$conexion = connect::conectarLike();
+            $res = mysqli_query($conexion, $sql5);
+            connect::close($conexion);
+            return $res;
+		}
 		/*-----------------------------------------------------------------------------------------*/
         /*-----------------------------------------------------------------------------------------*/
 		function Search($data){
