@@ -313,13 +313,13 @@ function prueba2(){
 
         $('.like').click(function() {
             var id = this.getAttribute('id');
-            alert("estas"+id);
+            console.log("product id ="+id);
             $.post("module/homepage/controller/controller_homepage.php?homepage=like&id="+id,
 
              function(response){
                      // var json_cont2 = JSON.parse(response);
                      console.log(response);
-                     if (response=="exito") {
+                     if (response) {
                         alert("El producto a sido senalado con un like");
                      }else{
                         alert("Error subida de datos");

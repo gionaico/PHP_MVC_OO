@@ -194,12 +194,13 @@
                     $rdo = $daoproduct->insertLikes($user_name['user_log'], $cod_prod);
                     
                     
-                    if($rdo){                        
-                        echo ("exito");
+                    if($rdo){
+                        $ans=true;                        
+                        echo ($ans);
                         exit;                    
                     }else{
-                        echo ("error");
-                        exit;
+                        $ans=false;                        
+                        echo ($ans);
                     }
                 }else{
                     $jsondata = false;
