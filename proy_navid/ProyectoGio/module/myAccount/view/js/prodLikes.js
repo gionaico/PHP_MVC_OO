@@ -1,6 +1,7 @@
 $(document).ready(function () {
 	$.post('module/myAccount/controller/controller_myAccount.php?type=likes',
              function(response){
+             	//sdfsdfsdf
                      var json = JSON.parse(response);
                      console.log(json);
                     var div_prin =document.getElementById("tablep"); 
